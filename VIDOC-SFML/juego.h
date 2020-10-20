@@ -10,12 +10,22 @@ private:
 RenderWindow *pantalla;
 Texture * fondo;
 Sprite * mapa;
+Texture * perso;
+Sprite * personaje;
+Texture * prese;
+Sprite * presentacion;
+Texture * log;
+Sprite * logo;
+Event * mover;
+Font *fuente;
+Text *leyenda;
 public:
 juego(int tamanio_x, int tamanio_y, char *titulo);
 void imprimir_pantalla();
 void ciclo();
+void moverlo();
+void presentacionJuego();
 };
-
 
 
 

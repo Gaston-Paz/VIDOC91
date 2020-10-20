@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1603224498 source:d:\desktop\gas\vidoc-sfml\main.cpp
+1603229010 source:d:\desktop\gas\vidoc-sfml\main.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 
@@ -412,14 +412,14 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1603224744 source:d:\desktop\gas\vidoc-sfml\juego.cpp
+1603231144 source:d:\desktop\gas\vidoc-sfml\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 
-1603225136 d:\desktop\gas\vidoc-sfml\juego.h
+1603231110 d:\desktop\gas\vidoc-sfml\juego.h
 	<SFML/Graphics.hpp>
 
-1603223947 source:d:\desktop\gas\vidoc-sfml\funciones.cpp
-	<SFML/Graphics.hpp>
+1603230464 source:d:\desktop\gas\vidoc-sfml\funciones.cpp
+	<iostream>
 	"juego.h"
 
