@@ -1,60 +1,30 @@
 #include <SFML/Graphics.hpp>
 #include "juego.h"
-
+#include "nivel.h"
 using namespace sf;
 
-
-juego::juego(int tamanio_x, int tamanio_y, char *titulo){
-
-pantalla = new RenderWindow(sf::VideoMode(tamanio_x,tamanio_y), titulo);
-
-fondo = new Texture;
-mapa = new Sprite;
-fondo->loadFromFile("mapa.png");
-mapa->setTexture(*fondo);
-
-perso = new Texture;
-personaje = new Sprite;
-perso->loadFromFile("loqui.png");
-personaje->setTexture(*perso);
-
-prese = new Texture;
-presentacion = new Sprite;
-prese->loadFromFile("presentacion.png");
-presentacion->setTexture(*prese);
-
-log = new Texture;
-logo = new Sprite;
-log->loadFromFile("Logo1.png");
-logo->setTexture(*log);
-
-fuente =  new Font();
-fuente->loadFromFile("fuente.ttf");
-
-leyenda = new Text();
-leyenda->setFont(*fuente);
-leyenda->setString("JUEGO NUEVO");
-leyenda->setPosition(100,100);
-leyenda->setColor(Color::Red);
-
-presentacionJuego();
-
-mover = new Event;
-
-ciclo();
-}
 void juego::imprimir_pantalla(){
+pantalla->display();
 pantalla->clear();
+}
+
+void juego::imprimir_fondo(){
 pantalla->draw(*mapa);
 pantalla->draw(*personaje);
-pantalla->display();
 }
+
 void juego::ciclo(){
+mover = new Event;
 while(pantalla->isOpen()){
     moverlo();
     imprimir_pantalla();
+    imprimir_fondo();
+    if(Keyboard::isKeyPressed(Keyboard::Enter)){
+    break;
+    }
 }
 }
+
 void juego::moverlo(){
 while(pantalla->pollEvent(*mover)){
     switch(mover->type){
@@ -84,7 +54,6 @@ case Event::KeyPressed:
 
 void juego::presentacionJuego(){
 
-
 while(!Keyboard::isKeyPressed(Keyboard::Enter)){
 pantalla->clear();
 logo->setPosition(100, -200);
@@ -102,4 +71,39 @@ pantalla->display();
 }
 
 
+}
+
+void juego::cargar_imagenes(){
+fondo = new Texture;
+mapa = new Sprite;
+fondo->loadFromFile("mapa.png");
+mapa->setTexture(*fondo);
+
+perso = new Texture;
+personaje = new Sprite;
+perso->loadFromFile("loqui.png");
+personaje->setTexture(*perso);
+
+prese = new Texture;
+presentacion = new Sprite;
+prese->loadFromFile("presentacion.png");
+presentacion->setTexture(*prese);
+
+log = new Texture;
+logo = new Sprite;
+log->loadFromFile("Logo1.png");
+logo->setTexture(*log);
+
+fuente =  new Font();
+fuente->loadFromFile("fuente.ttf");
+
+leyenda = new Text();
+leyenda->setFont(*fuente);
+leyenda->setString("JUEGO NUEVO");
+leyenda->setPosition(100,100);
+leyenda->setColor(Color::Red);
+}
+
+void juego::crear_pantalla(int tamanio_x, int tamanio_y, char *titulo){
+pantalla = new RenderWindow(sf::VideoMode(tamanio_x,tamanio_y), titulo);
 }

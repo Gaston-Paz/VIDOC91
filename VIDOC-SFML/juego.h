@@ -6,7 +6,7 @@ using namespace sf;
 
 
 class juego{
-private:
+protected:
 RenderWindow *pantalla;
 Texture * fondo;
 Sprite * mapa;
@@ -20,12 +20,15 @@ Event * mover;
 Font *fuente;
 Text *leyenda;
 public:
-juego(int tamanio_x, int tamanio_y, char *titulo);
 void imprimir_pantalla();
 void ciclo();
 void moverlo();
 void presentacionJuego();
+void imprimir_fondo();
+void cargar_imagenes();
+void crear_pantalla(int tamanio_x, int tamanio_y, char *titulo);
 };
+
 
 
 
