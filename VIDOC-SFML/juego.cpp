@@ -1,7 +1,16 @@
 #include <SFML/Graphics.hpp>
 #include "juego.h"
 #include "nivel.h"
+#include <iostream>
 using namespace sf;
+
+juego::juego(int x, int y, char * titulo){
+crear_pantalla(x,y,titulo);
+cargar_imagenes();
+presentacionJuego();
+ciclo();
+
+}
 
 void juego::imprimir_pantalla(){
 pantalla->display();
@@ -14,12 +23,20 @@ pantalla->draw(*personaje);
 }
 
 void juego::ciclo(){
+nivel * level;
 mover = new Event;
+
 while(pantalla->isOpen()){
     moverlo();
     imprimir_pantalla();
     imprimir_fondo();
-    if(Keyboard::isKeyPressed(Keyboard::Enter)){
+    if(Keyboard::isKeyPressed(Keyboard::Escape)){
+    while(!Keyboard::isKeyPressed(Keyboard::Down)){
+    level = new nivel(1,100);
+    pantalla->clear();
+    pantalla->draw(level->getEscenografia());
+    pantalla->display();
+    }
     break;
     }
 }
@@ -54,22 +71,25 @@ case Event::KeyPressed:
 
 void juego::presentacionJuego(){
 
-while(!Keyboard::isKeyPressed(Keyboard::Enter)){
+while(!Keyboard::isKeyPressed(Keyboard::Up)){
 pantalla->clear();
-logo->setPosition(100, -200);
+logo->setPosition(0,0);
 pantalla->draw(*logo);
 pantalla->display();
 }
 
 
-
-while(!Keyboard::isKeyPressed(Keyboard::Up)){
+while(!Keyboard::isKeyPressed(Keyboard::Escape)){
 pantalla->clear();
 pantalla->draw(*presentacion);
-pantalla->draw(*leyenda);
+pantalla->draw(*juegoNuevo);
+pantalla->draw(*continuarPartida);
+pantalla->draw(*puntuaciones);
+pantalla->draw(*salir);
 pantalla->display();
-}
+///pintar_menu();
 
+}
 
 }
 
@@ -91,19 +111,136 @@ presentacion->setTexture(*prese);
 
 log = new Texture;
 logo = new Sprite;
-log->loadFromFile("Logo1.png");
+log->loadFromFile("calavera.png");
 logo->setTexture(*log);
 
 fuente =  new Font();
-fuente->loadFromFile("fuente.ttf");
+fuente->loadFromFile("Base05.ttf");
 
-leyenda = new Text();
-leyenda->setFont(*fuente);
-leyenda->setString("JUEGO NUEVO");
-leyenda->setPosition(100,100);
-leyenda->setColor(Color::Red);
+juegoNuevo = new Text();
+juegoNuevo->setFont(*fuente);
+juegoNuevo->setString("JUEGO NUEVO");
+juegoNuevo->setPosition(100,100);
+juegoNuevo->setColor(Color::Red);
+
+continuarPartida = new Text();
+continuarPartida->setFont(*fuente);
+continuarPartida->setString("CONTINUAR PARTIDA");
+continuarPartida->setPosition(100,150);
+continuarPartida->setColor(Color::Red);
+
+puntuaciones = new Text();
+puntuaciones->setFont(*fuente);
+puntuaciones->setString("PUNTUACIONES");
+puntuaciones->setPosition(100,200);
+puntuaciones->setColor(Color::Red);
+
+salir = new Text();
+salir->setFont(*fuente);
+salir->setString("SALIR DEL JUEGO");
+salir->setPosition(100,250);
+salir->setColor(Color::Red);
+
 }
 
 void juego::crear_pantalla(int tamanio_x, int tamanio_y, char *titulo){
 pantalla = new RenderWindow(sf::VideoMode(tamanio_x,tamanio_y), titulo);
+}
+
+void juego::pintar_menu(){
+int x = 1;
+while(true){
+if(Keyboard::isKeyPressed(Keyboard::Enter)){
+break;
+}
+
+if(Keyboard::isKeyPressed(Keyboard::Up)){
+switch(x){
+case 1:
+salir->setColor(Color::White);
+juegoNuevo->setColor(Color::Red);
+puntuaciones->setColor(Color::Red);
+continuarPartida->setColor(Color::Red);
+x = 4;
+break;
+
+case 2:
+juegoNuevo->setColor(Color::White);
+continuarPartida->setColor(Color::Red);
+puntuaciones->setColor(Color::Red);
+salir->setColor(Color::Red);
+x = 1;
+break;
+
+case 3:
+juegoNuevo->setColor(Color::Red);
+continuarPartida->setColor(Color::White);
+puntuaciones->setColor(Color::Red);
+salir->setColor(Color::Red);
+x = 2;
+break;
+
+case 4:
+juegoNuevo->setColor(Color::Red);
+continuarPartida->setColor(Color::Red);
+puntuaciones->setColor(Color::White);
+salir->setColor(Color::Red);
+x = 3;
+break;
+}
+}
+
+else{
+if(Keyboard::isKeyPressed(Keyboard::Down)){
+switch(x){
+case 1:
+juegoNuevo->setColor(Color::Red);
+continuarPartida->setColor(Color::White);
+puntuaciones->setColor(Color::Red);
+salir->setColor(Color::Red);
+x = 2;
+break;
+
+case 2:
+juegoNuevo->setColor(Color::Red);
+continuarPartida->setColor(Color::Red);
+puntuaciones->setColor(Color::White);
+salir->setColor(Color::Red);
+x = 3;
+break;
+
+case 3:
+juegoNuevo->setColor(Color::Red);
+continuarPartida->setColor(Color::Red);
+puntuaciones->setColor(Color::Red);
+salir->setColor(Color::White);
+x = 4;
+break;
+
+case 4:
+juegoNuevo->setColor(Color::White);
+continuarPartida->setColor(Color::Red);
+puntuaciones->setColor(Color::Red);
+salir->setColor(Color::Red);
+x = 1;
+break;
+}
+
+}
+
+}
+
+
+pantalla->clear();
+pantalla->draw(*presentacion);
+pantalla->draw(*juegoNuevo);
+pantalla->draw(*continuarPartida);
+pantalla->draw(*puntuaciones);
+pantalla->draw(*salir);
+pantalla->display();
+
+}
+
+
+
 }

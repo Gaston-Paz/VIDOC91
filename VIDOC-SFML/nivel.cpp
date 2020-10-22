@@ -3,8 +3,9 @@
 #include "nivel.h"
 using namespace sf;
 
-void nivel::nivel_pantalla(int x, int y, char *titulo){
-pantalla = new RenderWindow(sf::VideoMode(x,y), titulo);
+nivel::nivel(int progreso, int life){
+cargar_imagenes(progreso, life);
+///imprimir_imagenes();
 }
 
 void nivel::cargar_imagenes(int difi, int vida){
@@ -13,12 +14,13 @@ escenografia = new Sprite;
 escena->loadFromFile("niveluno.png");
 escenografia->setTexture(*escena);
 }
-void nivel::imprimir_imagenes(){
-while(true){
-pantalla->clear();
-pantalla->draw(*escenografia);
-pantalla->display();
-}}
+
+///void nivel::imprimir_imagenes(){
+///while(true){
+///pantalla->clear();
+///pantalla->draw(*escenografia);
+///pantalla->display();
+///}}
 
 void nivel::setEscenografia(){
 switch(dificultad){
@@ -46,6 +48,7 @@ break;
 }
 
 }
+
 void nivel::setSalud(int vida){
 switch(vida/10){
 case 0:
@@ -129,7 +132,16 @@ break;
 
 
 }
+
 void nivel::setDificultad(int difi){
 dificultad = difi;
+}
+
+Texture nivel::getEscena(){
+return *escena;
+}
+
+Sprite nivel::getEscenografia(){
+return *escenografia;
 }
 
