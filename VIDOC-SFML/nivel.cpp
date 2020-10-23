@@ -9,10 +9,34 @@ cargar_imagenes(progreso, life);
 }
 
 void nivel::cargar_imagenes(int difi, int vida){
+switch(difi){
+case 1:
 escena = new Texture;
 escenografia = new Sprite;
-escena->loadFromFile("niveluno.png");
+escena->loadFromFile("nivel1.png");
 escenografia->setTexture(*escena);
+break;
+case 2:
+escena = new Texture;
+escenografia = new Sprite;
+escena->loadFromFile("nivel2.png");
+escenografia->setTexture(*escena);
+break;
+case 3:
+escena = new Texture;
+escenografia = new Sprite;
+escena->loadFromFile("nivel3.png");
+escenografia->setTexture(*escena);
+break;
+case 4:
+escena = new Texture;
+escenografia = new Sprite;
+escena->loadFromFile("nivel4.png");
+escenografia->setTexture(*escena);
+break;
+
+}
+
 }
 
 ///void nivel::imprimir_imagenes(){
@@ -27,7 +51,7 @@ switch(dificultad){
 case 1:
 escena = new Texture;
 escenografia = new Sprite;
-escena->loadFromFile("niveluno.png");
+escena->loadFromFile("nivel1.png");
 escenografia->setTexture(*escena);
 break;
 
@@ -35,14 +59,14 @@ break;
 case 3:
 escena = new Texture;
 escenografia = new Sprite;
-escena->loadFromFile("niveluno.png");
+escena->loadFromFile("nivel1.png");
 escenografia->setTexture(*escena);
 break;
 
 case 4:
 escena = new Texture;
 escenografia = new Sprite;
-escena->loadFromFile("niveluno.png");
+escena->loadFromFile("nivel1.png");
 escenografia->setTexture(*escena);
 break;
 }

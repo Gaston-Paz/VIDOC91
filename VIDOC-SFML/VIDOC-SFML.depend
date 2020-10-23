@@ -854,10 +854,11 @@
 	<SFML/Graphics.hpp>
 	"juego.h"
 
-1603391660 source:d:\desktop\gas\vidoc91\vidoc-sfml\juego.cpp
+1603398835 source:d:\desktop\gas\vidoc91\vidoc-sfml\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"nivel.h"
+	<iostream>
 
 1525812018 d:\desktop\gas\vidoc91\vidoc-sfml\sfml\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -1280,7 +1281,7 @@
 	"juego.h"
 	"nivel.h"
 
-1603391402 source:d:\desktop\gas\vidoc91\vidoc-sfml\nivel.cpp
+1603399101 source:d:\desktop\gas\vidoc91\vidoc-sfml\nivel.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"nivel.h"

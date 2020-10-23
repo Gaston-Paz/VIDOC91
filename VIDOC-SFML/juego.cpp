@@ -30,6 +30,7 @@ while(pantalla->isOpen()){
     moverlo();
     imprimir_pantalla();
     imprimir_fondo();
+
     if(Keyboard::isKeyPressed(Keyboard::Escape)){
     while(!Keyboard::isKeyPressed(Keyboard::Down)){
     level = new nivel(1,100);
@@ -45,7 +46,7 @@ while(pantalla->isOpen()){
 void juego::moverlo(){
 while(pantalla->pollEvent(*mover)){
     switch(mover->type){
-case Event::Closed:
+    case Event::Closed:
     pantalla->close();
     exit(1);
     break;
@@ -79,7 +80,7 @@ pantalla->display();
 }
 
 
-while(!Keyboard::isKeyPressed(Keyboard::Escape)){
+while(!Keyboard::isKeyPressed(Keyboard::Enter)){
 pantalla->clear();
 pantalla->draw(*presentacion);
 pantalla->draw(*juegoNuevo);
@@ -106,7 +107,7 @@ personaje->setTexture(*perso);
 
 prese = new Texture;
 presentacion = new Sprite;
-prese->loadFromFile("presentacion.png");
+prese->loadFromFile("menu.png");
 presentacion->setTexture(*prese);
 
 log = new Texture;
@@ -120,26 +121,26 @@ fuente->loadFromFile("Base05.ttf");
 juegoNuevo = new Text();
 juegoNuevo->setFont(*fuente);
 juegoNuevo->setString("JUEGO NUEVO");
-juegoNuevo->setPosition(100,100);
-juegoNuevo->setColor(Color::Red);
+juegoNuevo->setPosition(200,75);
+juegoNuevo->setColor(Color::Black);
 
 continuarPartida = new Text();
 continuarPartida->setFont(*fuente);
 continuarPartida->setString("CONTINUAR PARTIDA");
-continuarPartida->setPosition(100,150);
-continuarPartida->setColor(Color::Red);
+continuarPartida->setPosition(200,150);
+continuarPartida->setColor(Color::Black);
 
 puntuaciones = new Text();
 puntuaciones->setFont(*fuente);
 puntuaciones->setString("PUNTUACIONES");
-puntuaciones->setPosition(100,200);
-puntuaciones->setColor(Color::Red);
+puntuaciones->setPosition(200,225);
+puntuaciones->setColor(Color::Black);
 
 salir = new Text();
 salir->setFont(*fuente);
 salir->setString("SALIR DEL JUEGO");
-salir->setPosition(100,250);
-salir->setColor(Color::Red);
+salir->setPosition(200,300);
+salir->setColor(Color::Black);
 
 }
 
@@ -244,3 +245,5 @@ pantalla->display();
 
 
 }
+
+
