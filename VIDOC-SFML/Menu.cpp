@@ -19,7 +19,7 @@ Presentacion->setTexture(*Prese);
 
 }
 
-Sprite Menu::getfondo(){
+Sprite Menu::getfondomenu(){
 return *Presentacion;
 
 }
@@ -39,7 +39,7 @@ else{
 nuevo->setColor(Color::White);
 }}
 
-void Menu::setcontinuar(int x,int y,char *Fuente,char *Titulo, bool Pinta1){
+void Menu::setcontinuar(int x,int y,char *Fuente,char *Titulo, bool Pinta){
 Tipografia =  new Font();
 Tipografia->loadFromFile(Fuente);
 
@@ -47,14 +47,14 @@ continuar = new Text;
 continuar->setFont(*Tipografia);
 continuar->setString(Titulo);
 continuar->setPosition(x,y);
-if(Pinta1){
-nuevo->setColor(Color::Red);
+if(Pinta){
+continuar->setColor(Color::Red);
 }
 else{
-nuevo->setColor(Color::White);
+continuar->setColor(Color::White);
 }}
 
-void Menu::setpuntuacion(int x,int y,char *Fuente,char *Titulo, bool Pinta2){
+void Menu::setpuntuacion(int x,int y,char *Fuente,char *Titulo, bool Pinta){
 Tipografia =  new Font();
 Tipografia->loadFromFile(Fuente);
 
@@ -62,14 +62,14 @@ puntuacion = new Text;
 puntuacion->setFont(*Tipografia);
 puntuacion->setString(Titulo);
 puntuacion->setPosition(x,y);
-if(Pinta2){
-nuevo->setColor(Color::Red);
+if(Pinta){
+puntuacion->setColor(Color::Red);
 }
 else{
-nuevo->setColor(Color::White);
+puntuacion->setColor(Color::White);
 }}
 
-void Menu::setsalir(int x,int y,char *Fuente,char *Titulo, bool Pinta3){
+void Menu::setsalir(int x,int y,char *Fuente,char *Titulo, bool Pinta){
  Tipografia =  new Font();
 Tipografia->loadFromFile(Fuente);
 
@@ -77,11 +77,11 @@ salir = new Text;
 salir->setFont(*Tipografia);
 salir->setString(Titulo);
 salir->setPosition(x,y);
-if(Pinta3){
-nuevo->setColor(Color::Red);
+if(Pinta){
+salir->setColor(Color::Red);
 }
 else{
-nuevo->setColor(Color::White);
+salir->setColor(Color::White);
 }}
 
 Text Menu::getnuevo(){

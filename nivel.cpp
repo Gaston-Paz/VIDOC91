@@ -3,44 +3,46 @@
 #include "nivel.h"
 using namespace sf;
 
-void nivel::nivel_pantalla(int x, int y, char *titulo){
-pantalla = new RenderWindow(sf::VideoMode(x,y), titulo);
-}
+nivel::nivel(int difi, int vida){
+cargar_imagenes(difi, vida);
+imprimir_imagenes();
 
+}
 void nivel::cargar_imagenes(int difi, int vida){
-escena = new Texture;
-escenografia = new Sprite;
-escena->loadFromFile("niveluno.png");
-escenografia->setTexture(*escena);
+setEscenografia();
+setSalud(vida);
+setDificultad(difi);
 }
 void nivel::imprimir_imagenes(){
-while(true){
-pantalla->clear();
-pantalla->draw(*escenografia);
-pantalla->display();
-}}
 
+}
 void nivel::setEscenografia(){
 switch(dificultad){
 case 1:
 escena = new Texture;
 escenografia = new Sprite;
-escena->loadFromFile("niveluno.png");
+escena->loadFromFile("mapa.png");
 escenografia->setTexture(*escena);
 break;
 
+case 2:
+escena = new Texture;
+escenografia = new Sprite;
+escena->loadFromFile("mapa.png");
+escenografia->setTexture(*escena);
+break;
 
 case 3:
 escena = new Texture;
 escenografia = new Sprite;
-escena->loadFromFile("niveluno.png");
+escena->loadFromFile("mapa.png");
 escenografia->setTexture(*escena);
 break;
 
 case 4:
 escena = new Texture;
 escenografia = new Sprite;
-escena->loadFromFile("niveluno.png");
+escena->loadFromFile("mapa.png");
 escenografia->setTexture(*escena);
 break;
 }
@@ -121,7 +123,7 @@ break;
 case 10:
 barra = new Texture;
 salud = new Sprite;
-barra->loadFromFile("IU.png");
+barra->loadFromFile("mapa.png");
 salud->setTexture(*barra);
 break;
 
@@ -132,4 +134,3 @@ break;
 void nivel::setDificultad(int difi){
 dificultad = difi;
 }
-
