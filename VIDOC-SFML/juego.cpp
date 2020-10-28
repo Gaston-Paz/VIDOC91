@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include "juego.h"
-#include "nivel.h"
+#include "Presentacion.h"
+#include "Menu.h"
+
 using namespace sf;
 
 void juego::imprimir_pantalla(){
@@ -54,20 +56,15 @@ case Event::KeyPressed:
 
 void juego::presentacionJuego(){
 
-while(!Keyboard::isKeyPressed(Keyboard::Enter)){
+int Tics = 0;
+Presentacion *Logo;
+Logo = new Presentacion;
+Logo->setpresentacion();
+while(Tics<300){
 pantalla->clear();
-logo->setPosition(100, -200);
-pantalla->draw(*logo);
+pantalla->draw(Logo->getpresentacion());
 pantalla->display();
-}
-
-
-
-while(!Keyboard::isKeyPressed(Keyboard::Up)){
-pantalla->clear();
-pantalla->draw(*presentacion);
-pantalla->draw(*leyenda);
-pantalla->display();
+Tics++;
 }
 
 
@@ -84,26 +81,118 @@ personaje = new Sprite;
 perso->loadFromFile("loqui.png");
 personaje->setTexture(*perso);
 
-prese = new Texture;
-presentacion = new Sprite;
-prese->loadFromFile("presentacion.png");
-presentacion->setTexture(*prese);
 
-log = new Texture;
-logo = new Sprite;
-log->loadFromFile("Logo1.png");
-logo->setTexture(*log);
 
-fuente =  new Font();
-fuente->loadFromFile("fuente.ttf");
 
-leyenda = new Text();
-leyenda->setFont(*fuente);
-leyenda->setString("JUEGO NUEVO");
-leyenda->setPosition(100,100);
-leyenda->setColor(Color::Red);
 }
 
 void juego::crear_pantalla(int tamanio_x, int tamanio_y, char *titulo){
 pantalla = new RenderWindow(sf::VideoMode(tamanio_x,tamanio_y), titulo);
+pantalla->setFramerateLimit(60);
 }
+
+void juego::imprimir_menu(){
+mover_menu = new Event;
+Menu *Principal;
+int variable =1;
+Principal = new Menu;
+Principal->setfondomenu();
+Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
+Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",true);
+Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",true);
+Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",true);
+
+while(!Keyboard::isKeyPressed(Keyboard::Enter)){
+funciones_menu(Principal);
+movimiento_menu(Principal, &variable);
+
+
+}}
+
+void juego::funciones_menu(Menu *Principal){
+pantalla->clear();
+pantalla->draw(Principal->getfondo());
+pantalla->draw(Principal->getnuevo());
+pantalla->draw(Principal->getcontinuar());
+pantalla->draw(Principal->getpuntuacion());
+pantalla->draw(Principal->getsalir());
+pantalla->display();
+}
+
+void juego::movimiento_menu(Menu *Principal, int *variable){
+while(pantalla->pollEvent(*mover_menu)){
+    switch(mover_menu->type){
+case Event::Closed:
+    pantalla->close();
+    exit(1);
+    break;
+
+
+case Event::KeyPressed:
+if(Keyboard::isKeyPressed(Keyboard::Up)){
+switch(*variable){
+case 1:
+    *variable = 4;
+Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
+Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",false);
+Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",false);
+Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",true);
+    break;
+case 2:
+    *variable = 1;
+Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",true);
+Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",false);
+Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",false);
+Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
+    break;
+case 3:
+    *variable = 2;
+Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
+Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",true);
+Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",false);
+Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
+    break;
+case 4:
+    *variable =3;
+Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
+Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",false);
+Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",true);
+Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
+    break;
+    }}
+    if(Keyboard::isKeyPressed(Keyboard::Down)){
+switch(*variable){
+case 1:
+    *variable = 2;
+Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
+Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",true);
+Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",false);
+Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
+    break;
+case 2:
+    *variable = 3;
+Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
+Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",false);
+Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",true);
+Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
+    break;
+case 3:
+    *variable = 4;
+Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
+Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",false);
+Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",false);
+Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",true);
+    break;
+case 4:
+    *variable =1;
+Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",true);
+Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",false);
+Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",false);
+Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
+    break;
+    }}}}}
+
+
+
+
+

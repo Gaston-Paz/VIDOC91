@@ -423,10 +423,11 @@
 	<iostream>
 	"juego.h"
 
-1603316139 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.cpp
+1603845477 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
-	"nivel.h"
+	"Presentacion.h"
+	"Menu.h"
 
 1603226158 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\sfml\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -837,20 +838,35 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1603315713 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.h
+1603843922 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.h
 	<SFML/Graphics.hpp>
+	"Menu.h"
 
-1603316194 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\main.cpp
+1603746087 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\main.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
-	"nivel.h"
+	"Presentacion.h"
+	"Menu.h"
 
 1603316139 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\nivel.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"nivel.h"
 
-1603316227 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\nivel.h
+1603742870 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\nivel.h
 	<SFML/Graphics.hpp>
-	"juego.h"
+
+1603743171 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\presentacion.h
+	<SFML/Graphics.hpp>
+
+1603845574 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\menu.cpp
+	<SFML/Graphics.hpp>
+	"Menu.h"
+
+1603845574 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\menu.h
+	<SFML/Graphics.hpp>
+
+1603744820 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\presentacion.cpp
+	<SFML/Graphics.hpp>
+	"Presentacion.h"
 

@@ -1,8 +1,6 @@
 #ifndef NIVEL_H_INCLUDED
 #define NIVEL_H_INCLUDED
 #include <SFML/Graphics.hpp>
-#include "juego.h"
-
 
 class nivel:public juego{
 
