@@ -2,7 +2,7 @@
 #define NIVEL_H_INCLUDED
 #include <SFML/Graphics.hpp>
 
-class nivel:public juego{
+class nivel{
 
 private:
 int dificultad;
@@ -10,15 +10,17 @@ Texture * escena;
 Sprite * escenografia;
 Texture * barra;
 Sprite * salud;
-RenderWindow *pantalla;
+
+
 public:
-void nivel_pantalla(int x, int y, char *titulo);
+nivel(int progreso, int life);
 void setDificultad(int difi);
 void setEscenografia();
 void setSalud(int vida);
 void cargar_imagenes(int difi, int vida);
-void imprimir_imagenes();
-
+///void imprimir_imagenes();
+Texture getEscena();
+Sprite getEscenografia();
 };
 
 #endif // NIVEL_H_INCLUDED

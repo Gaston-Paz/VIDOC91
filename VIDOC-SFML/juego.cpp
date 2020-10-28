@@ -1,9 +1,16 @@
 #include <SFML/Graphics.hpp>
 #include "juego.h"
-#include "Presentacion.h"
-#include "Menu.h"
-
+#include "nivel.h"
+#include <iostream>
 using namespace sf;
+
+juego::juego(int x, int y, char * titulo){
+crear_pantalla(x,y,titulo);
+cargar_imagenes();
+presentacionJuego();
+ciclo();
+
+}
 
 void juego::imprimir_pantalla(){
 pantalla->display();
@@ -16,12 +23,21 @@ pantalla->draw(*personaje);
 }
 
 void juego::ciclo(){
+nivel * level;
 mover = new Event;
+
 while(pantalla->isOpen()){
     moverlo();
     imprimir_pantalla();
     imprimir_fondo();
-    if(Keyboard::isKeyPressed(Keyboard::Enter)){
+
+    if(Keyboard::isKeyPressed(Keyboard::Escape)){
+    while(!Keyboard::isKeyPressed(Keyboard::Down)){
+    level = new nivel(1,100);
+    pantalla->clear();
+    pantalla->draw(level->getEscenografia());
+    pantalla->display();
+    }
     break;
     }
 }
@@ -30,7 +46,7 @@ while(pantalla->isOpen()){
 void juego::moverlo(){
 while(pantalla->pollEvent(*mover)){
     switch(mover->type){
-case Event::Closed:
+    case Event::Closed:
     pantalla->close();
     exit(1);
     break;
@@ -56,17 +72,25 @@ case Event::KeyPressed:
 
 void juego::presentacionJuego(){
 
-int Tics = 0;
-Presentacion *Logo;
-Logo = new Presentacion;
-Logo->setpresentacion();
-while(Tics<300){
+while(!Keyboard::isKeyPressed(Keyboard::Up)){
 pantalla->clear();
-pantalla->draw(Logo->getpresentacion());
+logo->setPosition(0,0);
+pantalla->draw(*logo);
 pantalla->display();
-Tics++;
 }
 
+
+while(!Keyboard::isKeyPressed(Keyboard::Enter)){
+pantalla->clear();
+pantalla->draw(*presentacion);
+pantalla->draw(*juegoNuevo);
+pantalla->draw(*continuarPartida);
+pantalla->draw(*puntuaciones);
+pantalla->draw(*salir);
+pantalla->display();
+///pintar_menu();
+
+}
 
 }
 
@@ -81,118 +105,145 @@ personaje = new Sprite;
 perso->loadFromFile("loqui.png");
 personaje->setTexture(*perso);
 
+prese = new Texture;
+presentacion = new Sprite;
+prese->loadFromFile("menu.png");
+presentacion->setTexture(*prese);
 
+log = new Texture;
+logo = new Sprite;
+log->loadFromFile("calavera.png");
+logo->setTexture(*log);
 
+fuente =  new Font();
+fuente->loadFromFile("Base05.ttf");
+
+juegoNuevo = new Text();
+juegoNuevo->setFont(*fuente);
+juegoNuevo->setString("JUEGO NUEVO");
+juegoNuevo->setPosition(200,75);
+juegoNuevo->setColor(Color::Black);
+
+continuarPartida = new Text();
+continuarPartida->setFont(*fuente);
+continuarPartida->setString("CONTINUAR PARTIDA");
+continuarPartida->setPosition(200,150);
+continuarPartida->setColor(Color::Black);
+
+puntuaciones = new Text();
+puntuaciones->setFont(*fuente);
+puntuaciones->setString("PUNTUACIONES");
+puntuaciones->setPosition(200,225);
+puntuaciones->setColor(Color::Black);
+
+salir = new Text();
+salir->setFont(*fuente);
+salir->setString("SALIR DEL JUEGO");
+salir->setPosition(200,300);
+salir->setColor(Color::Black);
 
 }
 
 void juego::crear_pantalla(int tamanio_x, int tamanio_y, char *titulo){
 pantalla = new RenderWindow(sf::VideoMode(tamanio_x,tamanio_y), titulo);
-pantalla->setFramerateLimit(60);
 }
 
-void juego::imprimir_menu(){
-mover_menu = new Event;
-Menu *Principal;
-int variable =1;
-Principal = new Menu;
-Principal->setfondomenu();
-Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",true);
-Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",true);
-Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",true);
-
-while(!Keyboard::isKeyPressed(Keyboard::Enter)){
-funciones_menu(Principal);
-movimiento_menu(Principal, &variable);
-
-
-}}
-
-void juego::funciones_menu(Menu *Principal){
-pantalla->clear();
-pantalla->draw(Principal->getfondo());
-pantalla->draw(Principal->getnuevo());
-pantalla->draw(Principal->getcontinuar());
-pantalla->draw(Principal->getpuntuacion());
-pantalla->draw(Principal->getsalir());
-pantalla->display();
+void juego::pintar_menu(){
+int x = 1;
+while(true){
+if(Keyboard::isKeyPressed(Keyboard::Enter)){
+break;
 }
 
-void juego::movimiento_menu(Menu *Principal, int *variable){
-while(pantalla->pollEvent(*mover_menu)){
-    switch(mover_menu->type){
-case Event::Closed:
-    pantalla->close();
-    exit(1);
-    break;
-
-
-case Event::KeyPressed:
 if(Keyboard::isKeyPressed(Keyboard::Up)){
-switch(*variable){
+switch(x){
 case 1:
-    *variable = 4;
-Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",false);
-Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",false);
-Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",true);
-    break;
+salir->setColor(Color::White);
+juegoNuevo->setColor(Color::Red);
+puntuaciones->setColor(Color::Red);
+continuarPartida->setColor(Color::Red);
+x = 4;
+break;
+
 case 2:
-    *variable = 1;
-Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",true);
-Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",false);
-Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",false);
-Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
-    break;
+juegoNuevo->setColor(Color::White);
+continuarPartida->setColor(Color::Red);
+puntuaciones->setColor(Color::Red);
+salir->setColor(Color::Red);
+x = 1;
+break;
+
 case 3:
-    *variable = 2;
-Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",true);
-Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",false);
-Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
-    break;
+juegoNuevo->setColor(Color::Red);
+continuarPartida->setColor(Color::White);
+puntuaciones->setColor(Color::Red);
+salir->setColor(Color::Red);
+x = 2;
+break;
+
 case 4:
-    *variable =3;
-Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",false);
-Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",true);
-Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
-    break;
-    }}
-    if(Keyboard::isKeyPressed(Keyboard::Down)){
-switch(*variable){
+juegoNuevo->setColor(Color::Red);
+continuarPartida->setColor(Color::Red);
+puntuaciones->setColor(Color::White);
+salir->setColor(Color::Red);
+x = 3;
+break;
+}
+}
+
+else{
+if(Keyboard::isKeyPressed(Keyboard::Down)){
+switch(x){
 case 1:
-    *variable = 2;
-Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",true);
-Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",false);
-Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
-    break;
+juegoNuevo->setColor(Color::Red);
+continuarPartida->setColor(Color::White);
+puntuaciones->setColor(Color::Red);
+salir->setColor(Color::Red);
+x = 2;
+break;
+
 case 2:
-    *variable = 3;
-Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",false);
-Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",true);
-Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
-    break;
+juegoNuevo->setColor(Color::Red);
+continuarPartida->setColor(Color::Red);
+puntuaciones->setColor(Color::White);
+salir->setColor(Color::Red);
+x = 3;
+break;
+
 case 3:
-    *variable = 4;
-Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",false);
-Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",false);
-Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",true);
-    break;
+juegoNuevo->setColor(Color::Red);
+continuarPartida->setColor(Color::Red);
+puntuaciones->setColor(Color::Red);
+salir->setColor(Color::White);
+x = 4;
+break;
+
 case 4:
-    *variable =1;
-Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",true);
-Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",false);
-Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",false);
-Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
-    break;
-    }}}}}
+juegoNuevo->setColor(Color::White);
+continuarPartida->setColor(Color::Red);
+puntuaciones->setColor(Color::Red);
+salir->setColor(Color::Red);
+x = 1;
+break;
+}
+
+}
+
+}
+
+
+pantalla->clear();
+pantalla->draw(*presentacion);
+pantalla->draw(*juegoNuevo);
+pantalla->draw(*continuarPartida);
+pantalla->draw(*puntuaciones);
+pantalla->draw(*salir);
+pantalla->display();
+
+}
 
 
 
+}
 
 
