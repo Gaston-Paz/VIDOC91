@@ -25,7 +25,11 @@ void perder_vida();
 void curacion();
 Sprite getpersonajenivel();
 void setpersonajeimagennivel();
+<<<<<<< HEAD
 void setpersonajeimagen(int a, int b);
+=======
+void setpersonajeimagen();
+>>>>>>> 1d4435fef2687bca096edd8932279848cee72d62
 };
 
 

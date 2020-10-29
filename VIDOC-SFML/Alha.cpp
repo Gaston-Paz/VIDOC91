@@ -54,12 +54,21 @@ Sprite Alha::getpersonajenivel(){
 return *Alhaito_nivel;
 }
 */
+<<<<<<< HEAD
 void Alha::setpersonajeimagen(int a, int b){
+=======
+void Alha::setpersonajeimagen(){
+
+>>>>>>> 1d4435fef2687bca096edd8932279848cee72d62
 Diosito = new Texture;
 Alhaito = new Sprite;
 Diosito->loadFromFile("loqui.png");
 Alhaito->setTexture(*Diosito);
+<<<<<<< HEAD
 Alhaito->setPosition(Alhaito->getPosition().x+a,Alhaito->getPosition().y+b);
+=======
+
+>>>>>>> 1d4435fef2687bca096edd8932279848cee72d62
 }
 
 /*void Alha::setpersonajeimagennivel(){
