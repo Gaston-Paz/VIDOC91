@@ -17,13 +17,13 @@ public:
 void setopciones(int);
 void setopcionesataques(int);
 void setnuevo(int x,int y,char *Fuente,char *Titulo,bool Pinta);
-void setcontinuar(int x,int y,char *Fuente,char *Titulo,bool Pinta1);
-void setpuntuacion(int x,int y,char *Fuente,char *Titulo,bool Pinta2);
-void setsalir(int x,int y,char *Fuente,char *Titulo,bool Pinta3);
+void setcontinuar(int x,int y,char *Fuente,char *Titulo,bool Pinta);
+void setpuntuacion(int x,int y,char *Fuente,char *Titulo,bool Pinta);
+void setsalir(int x,int y,char *Fuente,char *Titulo,bool Pinta);
 Text setleyenda(int,int,char *,char *,char *);
 void setfondomenu();
 Text getleyenda();
-Sprite getfondo();
+Sprite getfondomenu();
 void setvector(Text *, int);
 Text getnuevo();
 Text getcontinuar();

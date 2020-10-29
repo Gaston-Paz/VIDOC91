@@ -2,55 +2,25 @@
 #include "juego.h"
 #include "Presentacion.h"
 #include "Menu.h"
-
+#include "Mapa.h"
+#include "Alha.h"
 using namespace sf;
 
-void juego::imprimir_pantalla(){
-pantalla->display();
-pantalla->clear();
-}
-
-void juego::imprimir_fondo(){
-pantalla->draw(*mapa);
-pantalla->draw(*personaje);
-}
-
-void juego::ciclo(){
+void juego::ciclo(Mapa *Mapita){
 mover = new Event;
+Alha *Munieco;
+Munieco = new Alha;
+
+Munieco->setpersonajeimagen(0,0);
 while(pantalla->isOpen()){
-    moverlo();
-    imprimir_pantalla();
-    imprimir_fondo();
-    if(Keyboard::isKeyPressed(Keyboard::Enter)){
+    pantalla->clear();
+    caminar(Munieco);
+    pantalla->draw(Mapita->getmapa());
+    pantalla->draw(Munieco->getpersonaje());
+    pantalla->display();
+    if(Keyboard::isKeyPressed(Keyboard::Escape)){
     break;
     }
-}
-}
-
-void juego::moverlo(){
-while(pantalla->pollEvent(*mover)){
-    switch(mover->type){
-case Event::Closed:
-    pantalla->close();
-    exit(1);
-    break;
-
-
-case Event::KeyPressed:
-    if (Keyboard::isKeyPressed(Keyboard::Right)){
-        personaje->setPosition(personaje->getPosition().x + 10 ,personaje->getPosition().y);
-    }
-    if (Keyboard::isKeyPressed(Keyboard::Left)){
-    personaje->setPosition(personaje->getPosition().x - 10 ,personaje->getPosition().y);
-    }
-          if (Keyboard::isKeyPressed(Keyboard::Up)){
-    personaje->setPosition(personaje->getPosition().x ,personaje->getPosition().y - 10);
-    }
-          if (Keyboard::isKeyPressed(Keyboard::Down)){
-    personaje->setPosition(personaje->getPosition().x ,personaje->getPosition().y + 10);
-    };
-
-}
 }
 }
 
@@ -70,22 +40,6 @@ Tics++;
 
 }
 
-void juego::cargar_imagenes(){
-fondo = new Texture;
-mapa = new Sprite;
-fondo->loadFromFile("mapa.png");
-mapa->setTexture(*fondo);
-
-perso = new Texture;
-personaje = new Sprite;
-perso->loadFromFile("loqui.png");
-personaje->setTexture(*perso);
-
-
-
-
-}
-
 void juego::crear_pantalla(int tamanio_x, int tamanio_y, char *titulo){
 pantalla = new RenderWindow(sf::VideoMode(tamanio_x,tamanio_y), titulo);
 pantalla->setFramerateLimit(60);
@@ -96,22 +50,22 @@ mover_menu = new Event;
 Menu *Principal;
 int variable =1;
 Principal = new Menu;
+Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",true);
+Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",false);
+Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",false);
+Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
 Principal->setfondomenu();
-Principal->setnuevo(250,125,"fuente.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"fuente.ttf","CONTINUAR JUEGO",true);
-Principal->setpuntuacion(250,275,"fuente.ttf","PUNTUACION",true);
-Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",true);
 
 while(!Keyboard::isKeyPressed(Keyboard::Enter)){
 funciones_menu(Principal);
 movimiento_menu(Principal, &variable);
-
-
-}}
+}
+variable_valor(&variable);
+}
 
 void juego::funciones_menu(Menu *Principal){
 pantalla->clear();
-pantalla->draw(Principal->getfondo());
+pantalla->draw(Principal->getfondomenu());
 pantalla->draw(Principal->getnuevo());
 pantalla->draw(Principal->getcontinuar());
 pantalla->draw(Principal->getpuntuacion());
@@ -120,6 +74,7 @@ pantalla->display();
 }
 
 void juego::movimiento_menu(Menu *Principal, int *variable){
+
 while(pantalla->pollEvent(*mover_menu)){
     switch(mover_menu->type){
 case Event::Closed:
@@ -192,7 +147,54 @@ Principal->setsalir(250,350,"fuente.ttf","SALIR DEL JUEGO",false);
     break;
     }}}}}
 
+void juego::variable_valor(int *variable){
+Mapa *Mapita;
+Mapita = new Mapa;
+switch(*variable){
+case 1:
+
+Mapita->setmapa();
+ciclo(Mapita);
+
+break;
+/*
+case 2:
+
+break;
+case 3:
+
+break;
+case 4:
+
+break;
+*/
+}}
+
+void juego::caminar(Alha *Munieco){
+
+while(pantalla->pollEvent(*mover)){
+    switch(mover->type){
+case Event::Closed:
+    pantalla->close();
+    exit(1);
+    break;
 
 
+case Event::KeyPressed:
+    if (Keyboard::isKeyPressed(Keyboard::Right)){
+    Munieco->setpersonajeimagen(10,0);
+    }
+    if (Keyboard::isKeyPressed(Keyboard::Left)){
+    Munieco->setpersonajeimagen(-10,0);
+    }
+          if (Keyboard::isKeyPressed(Keyboard::Up)){
+    Munieco->setpersonajeimagen(0,-10);
+    }
+          if (Keyboard::isKeyPressed(Keyboard::Down)){
+    Munieco->setpersonajeimagen(0,10);
+    };
 
+}
+}
+}
 

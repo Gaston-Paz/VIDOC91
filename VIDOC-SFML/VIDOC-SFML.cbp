@@ -38,8 +38,15 @@
 			<Add library="sfml-system" />
 			<Add directory="SFML/lib" />
 		</Linker>
+		<Unit filename="Alha.cpp" />
+		<Unit filename="Alha.h" />
+		<Unit filename="Enemigos.h" />
+		<Unit filename="Mapa.cpp" />
+		<Unit filename="Mapa.h" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.h" />
+		<Unit filename="Personaje.cpp" />
+		<Unit filename="Personaje.h" />
 		<Unit filename="Presentacion.cpp" />
 		<Unit filename="Presentacion.h" />
 		<Unit filename="juego.cpp" />
