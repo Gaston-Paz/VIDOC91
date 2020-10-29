@@ -4,6 +4,7 @@
 #include "Menu.h"
 #include "Mapa.h"
 #include "Alha.h"
+#include "Casa.h"
 using namespace sf;
 
 
@@ -22,6 +23,7 @@ Event * mover;
 Font *fuente;
 Text *leyenda;
 Event *mover_menu;
+
 public:
 void imprimir_pantalla();
 void ciclo(Mapa *Mapita);
@@ -35,6 +37,7 @@ void funciones_menu(Menu *Principal);
 void movimiento_menu(Menu *Principal, int *variable);
 void variable_valor(int *variable);
 void caminar(Alha *Munieco);
+void entrarNivel(Casa *casucha, Alha *Munieco);
 };
 
 

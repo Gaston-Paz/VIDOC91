@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -49,11 +51,13 @@
 		<Unit filename="Personaje.h" />
 		<Unit filename="Presentacion.cpp" />
 		<Unit filename="Presentacion.h" />
+		<Unit filename="include/Casa.h" />
 		<Unit filename="juego.cpp" />
 		<Unit filename="juego.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="nivel.cpp" />
 		<Unit filename="nivel.h" />
+		<Unit filename="src/Casa.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
