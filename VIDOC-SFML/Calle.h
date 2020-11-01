@@ -30,23 +30,14 @@ public:
 
 void setcallesita();
 Sprite &getcallesita();
-void setcallesita2();
 Sprite &getcallesita2();
-void setcallesita3();
 Sprite &getcallesita3();
-void setcallesita4();
 Sprite &getcallesita4();
-void setcallesita5();
 Sprite &getcallesita5();
-void setcallesita6();
 Sprite &getcallesita6();
-void setcallesita7();
 Sprite &getcallesita7();
-void setcallesita8();
 Sprite &getcallesita8();
-void setcallesita9();
 Sprite &getcallesita9();
-void setcallesita10();
 Sprite &getcallesita10();
 };
 

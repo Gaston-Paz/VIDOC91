@@ -423,7 +423,7 @@
 	<iostream>
 	"juego.h"
 
-1604260846 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.cpp
+1604264664 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"Presentacion.h"
@@ -1854,7 +1854,7 @@
 1603915635 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\mapa.h
 	<SFML/Graphics.hpp>
 
-1604011289 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\include\casa.h
+1604264078 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\include\casa.h
 	<SFML/Graphics.hpp>
 
 1604188450 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\mapa.cpp
@@ -1866,14 +1866,14 @@
 	"Personaje.h"
 	<cstring>
 
-1604262998 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\src\casa.cpp
+1604264078 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\src\casa.cpp
 	<SFML/Graphics.hpp>
 	"Casa.h"
 
-1604262809 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\calle.cpp
+1604264403 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\calle.cpp
 	<SFML/Graphics.hpp>
 	"Calle.h"
 
-1604260846 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\calle.h
+1604264403 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\calle.h
 	<SFML/Graphics.hpp>
 

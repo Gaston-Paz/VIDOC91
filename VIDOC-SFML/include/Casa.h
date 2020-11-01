@@ -8,11 +8,22 @@ class Casa{
 private:
 Texture *home;
 Sprite *casita;
-
+Texture *home1;
+Sprite *casita1;
+Texture *home2;
+Sprite *casita2;
+Texture *home3;
+Sprite *casita3;
+Texture *home4;
+Sprite *casita4;
 
 public:
 void setcasita();
 Sprite &getcasita();
+Sprite &getcasita1();
+Sprite &getcasita2();
+Sprite &getcasita3();
+Sprite &getcasita4();
 
 };
 

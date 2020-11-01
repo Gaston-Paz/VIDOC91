@@ -19,15 +19,6 @@ casucha->setcasita();
 Calle *callesita1;
 callesita1 = new Calle;
 callesita1->setcallesita();
-callesita1->setcallesita2();
-callesita1->setcallesita3();
-callesita1->setcallesita4();
-callesita1->setcallesita5();
-callesita1->setcallesita6();
-callesita1->setcallesita7();
-callesita1->setcallesita8();
-callesita1->setcallesita9();
-callesita1->setcallesita10();
 Munieco->setpersonajeimagen(1050,150);
 
 while(pantalla->isOpen()){
@@ -230,14 +221,28 @@ case Event::KeyPressed:
 }
 }
 
-
 void juego::entrarNivel(Casa *casucha, Alha *Munieco){
 
 if(casucha->getcasita().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())){
    std::cout<<"Holi";
 
    }
+if(casucha->getcasita1().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())){
+   std::cout<<"Holi";
 
+   }
+if(casucha->getcasita2().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())){
+   std::cout<<"Holi";
+
+   }
+if(casucha->getcasita3().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())){
+   std::cout<<"Holi";
+
+   }
+if(casucha->getcasita4().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())){
+   std::cout<<"Holi";
+
+   }
 
 }
 
