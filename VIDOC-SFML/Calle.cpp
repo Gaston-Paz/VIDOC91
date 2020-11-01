@@ -7,7 +7,7 @@ calle1 = new Texture;
 carretera1 = new Sprite;
 calle1->loadFromFile("calle1.jpg");
 carretera1->setTexture(*calle1);
-carretera1->setPosition(1051,159);
+carretera1->setPosition(1079,158);
 
 }
 
@@ -22,7 +22,7 @@ calle2 = new Texture;
 carretera2 = new Sprite;
 calle2->loadFromFile("calle2.jpg");
 carretera2->setTexture(*calle2);
-carretera2->setPosition(960,225);
+carretera2->setPosition(990,247);
 
 }
 
@@ -35,7 +35,7 @@ calle3 = new Texture;
 carretera3 = new Sprite;
 calle3->loadFromFile("calle3.jpg");
 carretera3->setTexture(*calle3);
-carretera3->setPosition(960,225);
+carretera3->setPosition(990,264);
 
 }
 
@@ -48,7 +48,7 @@ calle4 = new Texture;
 carretera4 = new Sprite;
 calle4->loadFromFile("calle4.jpg");
 carretera4->setTexture(*calle4);
-carretera4->setPosition(420,350);
+carretera4->setPosition(420,383);
 
 }
 
@@ -61,7 +61,7 @@ calle5 = new Texture;
 carretera5 = new Sprite;
 calle5->loadFromFile("calle5.jpg");
 carretera5->setTexture(*calle5);
-carretera5->setPosition(0,0);
+carretera5->setPosition(720,288);
 
 }
 
@@ -74,7 +74,7 @@ calle6 = new Texture;
 carretera6 = new Sprite;
 calle6->loadFromFile("calle6.jpg");
 carretera6->setTexture(*calle6);
-carretera6->setPosition(0,0);
+carretera6->setPosition(379,200);
 
 }
 
@@ -87,7 +87,7 @@ calle7 = new Texture;
 carretera7 = new Sprite;
 calle7->loadFromFile("calle7.jpg");
 carretera7->setTexture(*calle7);
-carretera7->setPosition(0,0);
+carretera7->setPosition(218,672);
 
 }
 
@@ -100,7 +100,7 @@ calle8 = new Texture;
 carretera8 = new Sprite;
 calle8->loadFromFile("calle8.jpg");
 carretera8->setTexture(*calle8);
-carretera8->setPosition(0,0);
+carretera8->setPosition(210,640);
 
 }
 
@@ -113,7 +113,7 @@ calle9 = new Texture;
 carretera9 = new Sprite;
 calle9->loadFromFile("calle9.jpg");
 carretera9->setTexture(*calle9);
-carretera9->setPosition(0,0);
+carretera9->setPosition(420,647);
 
 }
 
