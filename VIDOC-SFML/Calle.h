@@ -22,6 +22,10 @@ Sprite *carretera7;
 Texture *calle7;
 Sprite *carretera8;
 Texture *calle8;
+Sprite *carretera9;
+Texture *calle9;
+Sprite *carretera10;
+Texture *calle10;
 public:
 
 void setcallesita();
@@ -40,7 +44,10 @@ void setcallesita7();
 Sprite &getcallesita7();
 void setcallesita8();
 Sprite &getcallesita8();
-
+void setcallesita9();
+Sprite &getcallesita9();
+void setcallesita10();
+Sprite &getcallesita10();
 };
 
 #endif // CALLE_H_INCLUDED

@@ -26,6 +26,8 @@ callesita1->setcallesita5();
 callesita1->setcallesita6();
 callesita1->setcallesita7();
 callesita1->setcallesita8();
+callesita1->setcallesita9();
+callesita1->setcallesita10();
 Munieco->setpersonajeimagen(1050,150);
 
 while(pantalla->isOpen()){
@@ -43,6 +45,8 @@ while(pantalla->isOpen()){
     pantalla->draw(callesita1->getcallesita6());
     pantalla->draw(callesita1->getcallesita7());
     pantalla->draw(callesita1->getcallesita8());
+    pantalla->draw(callesita1->getcallesita9());
+    pantalla->draw(callesita1->getcallesita10());
     pantalla->draw(Munieco->getpersonaje());
     pantalla->display();
     if(Keyboard::isKeyPressed(Keyboard::Escape)){
@@ -246,7 +250,9 @@ while(!((callesita1->getcallesita().getGlobalBounds().intersects(Munieco->getper
             (callesita1->getcallesita5().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
             (callesita1->getcallesita6().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
             (callesita1->getcallesita7().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
-            (callesita1->getcallesita8().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     )){
+            (callesita1->getcallesita8().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
+            (callesita1->getcallesita9().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
+            (callesita1->getcallesita10().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     )){
 switch(mover->type){
 case Event::KeyPressed:
     if (Keyboard::isKeyPressed(Keyboard::Right)){

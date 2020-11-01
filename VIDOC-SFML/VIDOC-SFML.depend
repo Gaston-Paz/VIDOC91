@@ -423,7 +423,7 @@
 	<iostream>
 	"juego.h"
 
-1604258399 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.cpp
+1604260846 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"Presentacion.h"
@@ -1874,6 +1874,6 @@
 	<SFML/Graphics.hpp>
 	"Calle.h"
 
-1604258093 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\calle.h
+1604260846 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\calle.h
 	<SFML/Graphics.hpp>
 
