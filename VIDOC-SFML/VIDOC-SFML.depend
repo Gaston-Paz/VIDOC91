@@ -423,11 +423,16 @@
 	<iostream>
 	"juego.h"
 
-1603845477 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.cpp
+1604195984 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"Presentacion.h"
 	"Menu.h"
+	"Mapa.h"
+	"Alha.h"
+	"Casa.h"
+	"Calle.h"
+	<iostream>
 
 1603226158 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\sfml\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -838,32 +843,36 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1603843922 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.h
+1604195904 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.h
 	<SFML/Graphics.hpp>
 	"Menu.h"
+	"Mapa.h"
+	"Alha.h"
+	"Casa.h"
+	"Calle.h"
 
-1603746087 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\main.cpp
+1604188450 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\main.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"Presentacion.h"
 	"Menu.h"
 
-1603316139 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\nivel.cpp
+1603846201 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\nivel.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"nivel.h"
 
-1603742870 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\nivel.h
+1603846201 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\nivel.h
 	<SFML/Graphics.hpp>
 
 1603743171 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\presentacion.h
 	<SFML/Graphics.hpp>
 
-1603845574 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\menu.cpp
+1603914394 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\menu.cpp
 	<SFML/Graphics.hpp>
 	"Menu.h"
 
-1603845574 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\menu.h
+1603914394 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\menu.h
 	<SFML/Graphics.hpp>
 
 1603744820 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\presentacion.cpp
@@ -1829,4 +1838,42 @@
 1604006887 source:d:\desktop\gas\vidoc91\vidoc-sfml\src\casa.cpp
 	<SFML/Graphics.hpp>
 	"Casa.h"
+
+1604193902 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\alha.cpp
+	<SFML/Graphics.hpp>
+	"Personaje.h"
+	"Alha.h"
+
+1603925548 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\personaje.h
+	<SFML/Graphics.hpp>
+
+1604193027 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\alha.h
+	<SFML/Graphics.hpp>
+	"Personaje.h"
+
+1603915635 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\mapa.h
+	<SFML/Graphics.hpp>
+
+1604011289 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\include\casa.h
+	<SFML/Graphics.hpp>
+
+1604188450 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\mapa.cpp
+	<SFML/Graphics.hpp>
+	"Mapa.h"
+
+1603922143 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\personaje.cpp
+	<SFML/Graphics.hpp>
+	"Personaje.h"
+	<cstring>
+
+1604177171 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\src\casa.cpp
+	<SFML/Graphics.hpp>
+	"Casa.h"
+
+1604193261 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\calle.cpp
+	<SFML/Graphics.hpp>
+	"Calle.h"
+
+1604193016 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\calle.h
+	<SFML/Graphics.hpp>
 

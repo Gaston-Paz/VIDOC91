@@ -41,6 +41,7 @@ if()
 Sprite &Alha::getpersonaje(){
 return *Alhaito;
 }
+
 /*
 void Alha::perder_vida(){
 
@@ -60,13 +61,48 @@ void Alha::setpersonajeimagen(int a, int b){
 
 Diosito = new Texture;
 Alhaito = new Sprite;
-Diosito->loadFromFile("loqui.png");
+Diosito->loadFromFile("PERSONAJEPRUEBA.png");
 Alhaito->setTexture(*Diosito);
 
 Alhaito->setPosition(a, b);
+}
 
+void Alha::setpersonajeimageniz(int a, int b){
 
+Diosito = new Texture;
+Alhaito = new Sprite;
+Diosito->loadFromFile("PERSONAJEIZQUIERDA.png");
+Alhaito->setTexture(*Diosito);
 
+Alhaito->setPosition(a, b);
+}
+
+void Alha::setpersonajeimageniz2(int a, int b){
+
+Diosito = new Texture;
+Alhaito = new Sprite;
+Diosito->loadFromFile("PERSONAJEIZQUIERDA2.png");
+Alhaito->setTexture(*Diosito);
+
+Alhaito->setPosition(a, b);
+}
+
+void Alha::setpersonajeimagende(int a, int b){
+
+Diosito = new Texture;
+Alhaito = new Sprite;
+Diosito->loadFromFile("PERSONAJEDERECHA.png");
+Alhaito->setTexture(*Diosito);
+Alhaito->setPosition(a, b);
+}
+
+void Alha::setpersonajeimagenat(int a, int b){
+
+Diosito = new Texture;
+Alhaito = new Sprite;
+Diosito->loadFromFile("PERSONAJEATRAS.png");
+Alhaito->setTexture(*Diosito);
+Alhaito->setPosition(a, b);
 }
 
 int Alha::posicionpersonajex(){
@@ -76,6 +112,7 @@ return Alhaito->getPosition().x;
 int Alha::posicionpersonajey(){
 return Alhaito->getPosition().y;
 }
+
 
 /*void Alha::setpersonajeimagennivel(){
 Diosito_nivel = new Texture;

@@ -5,6 +5,7 @@
 #include "Mapa.h"
 #include "Alha.h"
 #include "Casa.h"
+#include "Calle.h"
 #include <iostream>
 using namespace sf;
 
@@ -15,14 +16,19 @@ Munieco = new Alha;
 Casa *casucha;
 casucha = new Casa;
 casucha->setcasita();
+Calle *callesita1;
+callesita1 = new Calle;
+callesita1->setcallesita();
 Munieco->setpersonajeimagen(1050,150);
 
 while(pantalla->isOpen()){
     pantalla->clear();
     caminar(Munieco);
     entrarNivel(casucha, Munieco);
+    nosalircalle(callesita1,Munieco);
     pantalla->draw(Mapita->getmapa());
     pantalla->draw(casucha->getcasita());
+    pantalla->draw(callesita1->getcallesita());
     pantalla->draw(Munieco->getpersonaje());
     pantalla->display();
     if(Keyboard::isKeyPressed(Keyboard::Escape)){
@@ -190,15 +196,15 @@ case Event::Closed:
 
 case Event::KeyPressed:
     if (Keyboard::isKeyPressed(Keyboard::Right)){
-    Munieco->setpersonajeimagen(Munieco->posicionpersonajex() + 10,Munieco->posicionpersonajey());
+    Munieco->setpersonajeimagende(Munieco->posicionpersonajex() + 10,Munieco->posicionpersonajey());
     }
     if (Keyboard::isKeyPressed(Keyboard::Left)){
-    Munieco->setpersonajeimagen(Munieco->posicionpersonajex() - 10,Munieco->posicionpersonajey());
+    Munieco->setpersonajeimageniz(Munieco->posicionpersonajex() - 10,Munieco->posicionpersonajey());
     }
-          if (Keyboard::isKeyPressed(Keyboard::Up)){
-    Munieco->setpersonajeimagen(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()-10);
+    if (Keyboard::isKeyPressed(Keyboard::Up)){
+    Munieco->setpersonajeimagenat(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()-10);
     }
-          if (Keyboard::isKeyPressed(Keyboard::Down)){
+    if (Keyboard::isKeyPressed(Keyboard::Down)){
     Munieco->setpersonajeimagen(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()+ 10);
     };
 
@@ -210,10 +216,32 @@ case Event::KeyPressed:
 void juego::entrarNivel(Casa *casucha, Alha *Munieco){
 
 if(casucha->getcasita().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())){
-   std::cout<<"Colisiono";
+   std::cout<<"Holi";
 
    }
 
 
 }
+
+void juego::nosalircalle(Calle *callesita1, Alha *Munieco){
+
+while(!(callesita1->getcallesita().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))){
+switch(mover->type){
+case Event::KeyPressed:
+    if (Keyboard::isKeyPressed(Keyboard::Right)){
+    Munieco->setpersonajeimagende(Munieco->posicionpersonajex() - 10,Munieco->posicionpersonajey());
+    }
+        if(Keyboard::isKeyPressed(Keyboard::Left)){
+    Munieco->setpersonajeimageniz(Munieco->posicionpersonajex() +10 ,Munieco->posicionpersonajey());
+    }
+          if (Keyboard::isKeyPressed(Keyboard::Up)){
+    Munieco->setpersonajeimagenat(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()+10);
+    }
+          if (Keyboard::isKeyPressed(Keyboard::Down)){
+    Munieco->setpersonajeimagen(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()- 10);
+    };
+   }
+
+
+}}
 

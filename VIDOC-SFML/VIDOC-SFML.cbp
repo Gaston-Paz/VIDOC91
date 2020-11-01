@@ -42,6 +42,8 @@
 		</Linker>
 		<Unit filename="Alha.cpp" />
 		<Unit filename="Alha.h" />
+		<Unit filename="Calle.cpp" />
+		<Unit filename="Calle.h" />
 		<Unit filename="Enemigos.h" />
 		<Unit filename="Mapa.cpp" />
 		<Unit filename="Mapa.h" />

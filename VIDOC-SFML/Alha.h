@@ -12,7 +12,9 @@ Texture *Diosito;
 Sprite *Alhaito_nivel;
 Texture *Diosito_nivel;
 Event *mover;
-///getbox?
+Sprite *Alhaito1;
+Texture *Diosito1;
+
 
 public:
 
@@ -26,9 +28,13 @@ void curacion();
 Sprite getpersonajenivel();
 void setpersonajeimagennivel();
 void setpersonajeimagen(int a, int b);
-
+void setpersonajeimageniz(int a, int b);
+void setpersonajeimageniz2(int a, int b);
+void setpersonajeimagende(int a, int b);
+void setpersonajeimagenat(int a, int b);
 int posicionpersonajex();
 int posicionpersonajey();
+
 };
 
 
