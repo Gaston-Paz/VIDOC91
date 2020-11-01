@@ -19,6 +19,13 @@ casucha->setcasita();
 Calle *callesita1;
 callesita1 = new Calle;
 callesita1->setcallesita();
+callesita1->setcallesita2();
+callesita1->setcallesita3();
+callesita1->setcallesita4();
+callesita1->setcallesita5();
+callesita1->setcallesita6();
+callesita1->setcallesita7();
+callesita1->setcallesita8();
 Munieco->setpersonajeimagen(1050,150);
 
 while(pantalla->isOpen()){
@@ -29,6 +36,13 @@ while(pantalla->isOpen()){
     pantalla->draw(Mapita->getmapa());
     pantalla->draw(casucha->getcasita());
     pantalla->draw(callesita1->getcallesita());
+    pantalla->draw(callesita1->getcallesita2());
+    pantalla->draw(callesita1->getcallesita3());
+    pantalla->draw(callesita1->getcallesita4());
+    pantalla->draw(callesita1->getcallesita5());
+    pantalla->draw(callesita1->getcallesita6());
+    pantalla->draw(callesita1->getcallesita7());
+    pantalla->draw(callesita1->getcallesita8());
     pantalla->draw(Munieco->getpersonaje());
     pantalla->display();
     if(Keyboard::isKeyPressed(Keyboard::Escape)){
@@ -225,7 +239,14 @@ if(casucha->getcasita().getGlobalBounds().intersects(Munieco->getpersonaje().get
 
 void juego::nosalircalle(Calle *callesita1, Alha *Munieco){
 
-while(!(callesita1->getcallesita().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))){
+while(!((callesita1->getcallesita().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
+            (callesita1->getcallesita2().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))   ||
+            (callesita1->getcallesita3().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
+            (callesita1->getcallesita4().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
+            (callesita1->getcallesita5().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
+            (callesita1->getcallesita6().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
+            (callesita1->getcallesita7().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
+            (callesita1->getcallesita8().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     )){
 switch(mover->type){
 case Event::KeyPressed:
     if (Keyboard::isKeyPressed(Keyboard::Right)){
@@ -241,6 +262,7 @@ case Event::KeyPressed:
     Munieco->setpersonajeimagen(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()- 10);
     };
    }
+
 
 
 }}
