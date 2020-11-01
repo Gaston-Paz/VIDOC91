@@ -126,7 +126,7 @@ calle10 = new Texture;
 carretera10 = new Sprite;
 calle10->loadFromFile("calle10.jpg");
 carretera10->setTexture(*calle10);
-carretera10->setPosition(0,0);
+carretera10->setPosition(30,360);
 
 }
 

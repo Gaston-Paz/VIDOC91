@@ -7,7 +7,7 @@ home = new Texture;
 casita = new Sprite;
 home->loadFromFile("puerta1.png");
 casita->setTexture(*home);
-casita->setPosition(285,239);
+casita->setPosition(55,329);
 
 }
 Sprite &Casa::getcasita(){

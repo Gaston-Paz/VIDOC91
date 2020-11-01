@@ -36,7 +36,6 @@ while(pantalla->isOpen()){
     entrarNivel(casucha, Munieco);
     nosalircalle(callesita1,Munieco);
     pantalla->draw(Mapita->getmapa());
-    pantalla->draw(casucha->getcasita());
     pantalla->draw(callesita1->getcallesita());
     pantalla->draw(callesita1->getcallesita2());
     pantalla->draw(callesita1->getcallesita3());
@@ -47,6 +46,7 @@ while(pantalla->isOpen()){
     pantalla->draw(callesita1->getcallesita8());
     pantalla->draw(callesita1->getcallesita9());
     pantalla->draw(callesita1->getcallesita10());
+    pantalla->draw(casucha->getcasita());
     pantalla->draw(Munieco->getpersonaje());
     pantalla->display();
     if(Keyboard::isKeyPressed(Keyboard::Escape)){
@@ -214,16 +214,16 @@ case Event::Closed:
 
 case Event::KeyPressed:
     if (Keyboard::isKeyPressed(Keyboard::Right)){
-    Munieco->setpersonajeimagende(Munieco->posicionpersonajex() + 10,Munieco->posicionpersonajey());
+    Munieco->setpersonajeimagende(Munieco->posicionpersonajex() + 15,Munieco->posicionpersonajey());
     }
     if (Keyboard::isKeyPressed(Keyboard::Left)){
-    Munieco->setpersonajeimageniz(Munieco->posicionpersonajex() - 10,Munieco->posicionpersonajey());
+    Munieco->setpersonajeimageniz(Munieco->posicionpersonajex() - 15,Munieco->posicionpersonajey());
     }
     if (Keyboard::isKeyPressed(Keyboard::Up)){
-    Munieco->setpersonajeimagenat(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()-10);
+    Munieco->setpersonajeimagenat(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()-15);
     }
     if (Keyboard::isKeyPressed(Keyboard::Down)){
-    Munieco->setpersonajeimagen(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()+ 10);
+    Munieco->setpersonajeimagen(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()+ 15);
     };
 
 }
@@ -256,16 +256,16 @@ while(!((callesita1->getcallesita().getGlobalBounds().intersects(Munieco->getper
 switch(mover->type){
 case Event::KeyPressed:
     if (Keyboard::isKeyPressed(Keyboard::Right)){
-    Munieco->setpersonajeimagende(Munieco->posicionpersonajex() - 10,Munieco->posicionpersonajey());
+    Munieco->setpersonajeimagende(Munieco->posicionpersonajex() - 15,Munieco->posicionpersonajey());
     }
         if(Keyboard::isKeyPressed(Keyboard::Left)){
-    Munieco->setpersonajeimageniz(Munieco->posicionpersonajex() +10 ,Munieco->posicionpersonajey());
+    Munieco->setpersonajeimageniz(Munieco->posicionpersonajex() +15 ,Munieco->posicionpersonajey());
     }
           if (Keyboard::isKeyPressed(Keyboard::Up)){
-    Munieco->setpersonajeimagenat(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()+10);
+    Munieco->setpersonajeimagenat(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()+15);
     }
           if (Keyboard::isKeyPressed(Keyboard::Down)){
-    Munieco->setpersonajeimagen(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()- 10);
+    Munieco->setpersonajeimagen(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()- 15);
     };
    }
 

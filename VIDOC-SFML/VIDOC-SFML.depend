@@ -1866,11 +1866,11 @@
 	"Personaje.h"
 	<cstring>
 
-1604177171 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\src\casa.cpp
+1604262998 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\src\casa.cpp
 	<SFML/Graphics.hpp>
 	"Casa.h"
 
-1604261350 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\calle.cpp
+1604262809 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\calle.cpp
 	<SFML/Graphics.hpp>
 	"Calle.h"
 
