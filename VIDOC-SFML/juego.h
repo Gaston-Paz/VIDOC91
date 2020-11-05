@@ -12,19 +12,12 @@ using namespace sf;
 class juego{
 protected:
 RenderWindow *pantalla;
-Texture * fondo;
-Sprite * mapa;
-Texture * perso;
-Sprite * personaje;
-Texture * prese;
-Sprite * presentacion;
-Texture * log;
-Sprite * logo;
+Event * mover_menu;
 Event * mover;
-Font *fuente;
-Text *leyenda;
-Event *mover_menu;
+
+
 public:
+
 void imprimir_pantalla();
 void ciclo(Mapa *Mapita);
 void moverlo();

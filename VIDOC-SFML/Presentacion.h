@@ -5,11 +5,11 @@ using namespace sf;
 
 class Presentacion{
 private:
-Sprite * Logo;
-Texture * Fondo;
+Sprite Logo;
+Texture Fondo;
 public:
 void setpresentacion();
-Sprite getpresentacion();
+Sprite &getpresentacion();
 };
 
 

@@ -11,34 +11,32 @@ using namespace sf;
 
 void juego::ciclo(Mapa *Mapita){
 mover = new Event;
-Alha *Munieco;
-Munieco = new Alha;
-Casa *casucha;
-casucha = new Casa;
-casucha->setcasita();
-Calle *callesita1;
-callesita1 = new Calle;
-callesita1->setcallesita();
-Munieco->setpersonajeimagen(1050,150);
+Alha Munieco;
+Calle callesita1;
+Casa casucha;
+
+casucha.setcasita();
+callesita1.setcallesita();
+Munieco.setpersonajeimagen(1050,150);
 
 while(pantalla->isOpen()){
     pantalla->clear();
-    caminar(Munieco);
-    entrarNivel(casucha, Munieco);
-    nosalircalle(callesita1,Munieco);
+    caminar(&Munieco);
+    entrarNivel(&casucha, &Munieco);
+    nosalircalle(&callesita1,&Munieco);
     pantalla->draw(Mapita->getmapa());
-    pantalla->draw(callesita1->getcallesita());
-    pantalla->draw(callesita1->getcallesita2());
-    pantalla->draw(callesita1->getcallesita3());
-    pantalla->draw(callesita1->getcallesita4());
-    pantalla->draw(callesita1->getcallesita5());
-    pantalla->draw(callesita1->getcallesita6());
-    pantalla->draw(callesita1->getcallesita7());
-    pantalla->draw(callesita1->getcallesita8());
-    pantalla->draw(callesita1->getcallesita9());
-    pantalla->draw(callesita1->getcallesita10());
-    pantalla->draw(casucha->getcasita());
-    pantalla->draw(Munieco->getpersonaje());
+    pantalla->draw(callesita1.getcallesita());
+    pantalla->draw(callesita1.getcallesita2());
+    pantalla->draw(callesita1.getcallesita3());
+    pantalla->draw(callesita1.getcallesita4());
+    pantalla->draw(callesita1.getcallesita5());
+    pantalla->draw(callesita1.getcallesita6());
+    pantalla->draw(callesita1.getcallesita7());
+    pantalla->draw(callesita1.getcallesita8());
+    pantalla->draw(callesita1.getcallesita9());
+    pantalla->draw(callesita1.getcallesita10());
+    pantalla->draw(casucha.getcasita());
+    pantalla->draw(Munieco.getpersonaje());
     pantalla->display();
     if(Keyboard::isKeyPressed(Keyboard::Escape)){
     break;
@@ -49,12 +47,12 @@ while(pantalla->isOpen()){
 void juego::presentacionJuego(){
 
 int Tics = 0;
-Presentacion *Logo;
-Logo = new Presentacion;
-Logo->setpresentacion();
+Presentacion Logo;
+Logo.setpresentacion();
+
 while(Tics<100){
 pantalla->clear();
-pantalla->draw(Logo->getpresentacion());
+pantalla->draw(Logo.getpresentacion());
 pantalla->display();
 Tics++;
 }
@@ -69,18 +67,18 @@ pantalla->setFramerateLimit(60);
 
 void juego::imprimir_menu(){
 mover_menu = new Event;
-Menu *Principal;
+Menu Principal;
 int variable =1;
-Principal = new Menu;
-Principal->setnuevo(250,125,"Base05.ttf","JUEGO NUEVO",true);
-Principal->setcontinuar(250,200,"Base05.ttf","CONTINUAR JUEGO",false);
-Principal->setpuntuacion(250,275,"Base05.ttf","PUNTUACION",false);
-Principal->setsalir(250,350,"Base05.ttf","SALIR DEL JUEGO",false);
-Principal->setfondomenu();
+
+Principal.setnuevo(250,125,"Base05.ttf","JUEGO NUEVO",true);
+Principal.setcontinuar(250,200,"Base05.ttf","CONTINUAR JUEGO",false);
+Principal.setpuntuacion(250,275,"Base05.ttf","PUNTUACION",false);
+Principal.setsalir(250,350,"Base05.ttf","SALIR DEL JUEGO",false);
+Principal.setfondomenu();
 
 while(!Keyboard::isKeyPressed(Keyboard::Enter)){
-funciones_menu(Principal);
-movimiento_menu(Principal, &variable);
+funciones_menu(&Principal);
+movimiento_menu(&Principal, &variable);
 }
 variable_valor(&variable);
 }
@@ -170,13 +168,13 @@ Principal->setsalir(250,350,"Base05.ttf","SALIR DEL JUEGO",false);
     }}}}}
 
 void juego::variable_valor(int *variable){
-Mapa *Mapita;
-Mapita = new Mapa;
+Mapa Mapita;
+
 switch(*variable){
 case 1:
 
-Mapita->setmapa();
-ciclo(Mapita);
+Mapita.setmapa();
+ciclo(&Mapita);
 
 break;
 /*

@@ -8,9 +8,8 @@ using namespace sf;
 
 int main(int argc, char * args[])
 {
-juego * vidoc;
-vidoc = new juego;
-vidoc->crear_pantalla(1280,720,"VIDOC91");
-vidoc->presentacionJuego();
-vidoc->imprimir_menu();
+juego vidoc;
+vidoc.crear_pantalla(1280,720,"VIDOC91");
+vidoc.presentacionJuego();
+vidoc.imprimir_menu();
 return 0;}

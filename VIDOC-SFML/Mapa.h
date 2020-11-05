@@ -5,12 +5,12 @@ using namespace sf;
 
 class Mapa{
 private:
-Sprite *Mapa;
-Texture *Archivo;
+Sprite Mapa;
+Texture Archivo;
 
 public:
 void setmapa();
-Sprite getmapa();
+Sprite &getmapa();
 };
 
 #endif // MAPA_H_INCLUDED

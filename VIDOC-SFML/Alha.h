@@ -7,13 +7,13 @@ using namespace sf;
 
 class Alha:public Personaje{
 private:
-Sprite *Alhaito;
-Texture *Diosito;
-Sprite *Alhaito_nivel;
-Texture *Diosito_nivel;
+Sprite Alhaito;
+Texture Diosito;
+Sprite Alhaito_nivel;
+Texture Diosito_nivel;
 Event *mover;
-Sprite *Alhaito1;
-Texture *Diosito1;
+Sprite Alhaito1;
+Texture Diosito1;
 
 
 public:
@@ -25,7 +25,7 @@ int defenderse();
 Sprite &getpersonaje();
 void perder_vida();
 void curacion();
-Sprite getpersonajenivel();
+Sprite &getpersonajenivel();
 void setpersonajeimagennivel();
 void setpersonajeimagen(int a, int b);
 void setpersonajeimageniz(int a, int b);

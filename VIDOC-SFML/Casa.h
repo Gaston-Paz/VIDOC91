@@ -6,16 +6,16 @@ using namespace sf;
 
 class Casa{
 private:
-Texture *home;
-Sprite *casita;
-Texture *home1;
-Sprite *casita1;
-Texture *home2;
-Sprite *casita2;
-Texture *home3;
-Sprite *casita3;
-Texture *home4;
-Sprite *casita4;
+Texture home;
+Sprite casita;
+Texture home1;
+Sprite casita1;
+Texture home2;
+Sprite casita2;
+Texture home3;
+Sprite casita3;
+Texture home4;
+Sprite casita4;
 
 public:
 void setcasita();

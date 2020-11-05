@@ -44,6 +44,8 @@
 		<Unit filename="Alha.h" />
 		<Unit filename="Calle.cpp" />
 		<Unit filename="Calle.h" />
+		<Unit filename="Casa.cpp" />
+		<Unit filename="Casa.h" />
 		<Unit filename="Enemigos.h" />
 		<Unit filename="Mapa.cpp" />
 		<Unit filename="Mapa.h" />
@@ -53,13 +55,11 @@
 		<Unit filename="Personaje.h" />
 		<Unit filename="Presentacion.cpp" />
 		<Unit filename="Presentacion.h" />
-		<Unit filename="include/Casa.h" />
 		<Unit filename="juego.cpp" />
 		<Unit filename="juego.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="nivel.cpp" />
 		<Unit filename="nivel.h" />
-		<Unit filename="src/Casa.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
