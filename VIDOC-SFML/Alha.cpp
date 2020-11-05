@@ -42,21 +42,6 @@ Sprite &Alha::getpersonaje(){
 return Alhaito;
 }
 
-/*
-void Alha::perder_vida(){
-
-}
-
-void Alha::curacion(){
-Salud += 20;
-
-}
-
-Sprite Alha::getpersonajenivel(){
-return *Alhaito_nivel;
-}
-*/
-
 void Alha::setpersonajeimagen(int a, int b){
 
 
@@ -107,6 +92,14 @@ int Alha::posicionpersonajey(){
 return Alhaito.getPosition().y;
 }
 
+void Alha::setataque(){
+Tipo_ataque = rand()%4+1;
+srand(time(NULL));
+}
+
+int Alha::getataque(){
+return Tipo_ataque;
+}
 
 /*void Alha::setpersonajeimagennivel(){
 Diosito_nivel = new Texture;

@@ -46,7 +46,6 @@
 		<Unit filename="Calle.h" />
 		<Unit filename="Casa.cpp" />
 		<Unit filename="Casa.h" />
-		<Unit filename="Enemigos.h" />
 		<Unit filename="Mapa.cpp" />
 		<Unit filename="Mapa.h" />
 		<Unit filename="Menu.cpp" />
@@ -55,6 +54,8 @@
 		<Unit filename="Personaje.h" />
 		<Unit filename="Presentacion.cpp" />
 		<Unit filename="Presentacion.h" />
+		<Unit filename="Raviolete.cpp" />
+		<Unit filename="Raviolete.h" />
 		<Unit filename="juego.cpp" />
 		<Unit filename="juego.h" />
 		<Unit filename="main.cpp" />

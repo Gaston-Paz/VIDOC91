@@ -16,11 +16,6 @@ void Personaje::setdefensa(bool Condicion){
 Defensa = Condicion;
 }
 
-void Personaje::setataque(){
-srand(time(NULL));
-Tipo_ataque = rand()%4+1;
-}
-
 int Personaje::getsalud(){
 return Salud;
 }
@@ -33,12 +28,12 @@ bool Personaje::getdefensa(){
 return Defensa;
 }
 
-int Personaje::getataque(){
-return Tipo_ataque;
-}
-
 void Personaje::bajar_salud(int Danio){
+if(Salud-Danio <= 0){
+    Salud = 0;
+}else{
 Salud -= Danio;
+}
 }
 
 

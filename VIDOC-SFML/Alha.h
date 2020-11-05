@@ -14,16 +14,15 @@ Texture Diosito_nivel;
 Event *mover;
 Sprite Alhaito1;
 Texture Diosito1;
-
+int Tipo_ataque;
 
 public:
-
 Alha();
 int getdanio();
 void entrar_nivel();
 int defenderse();
 Sprite &getpersonaje();
-void perder_vida();
+
 void curacion();
 Sprite &getpersonajenivel();
 void setpersonajeimagennivel();
@@ -34,7 +33,8 @@ void setpersonajeimagende(int a, int b);
 void setpersonajeimagenat(int a, int b);
 int posicionpersonajex();
 int posicionpersonajey();
-
+void setataque();
+int getataque();
 };
 
 

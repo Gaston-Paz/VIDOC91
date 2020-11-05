@@ -6,6 +6,8 @@
 #include "Alha.h"
 #include "Casa.h"
 #include "Calle.h"
+#include "nivel.h"
+#include "Raviolete.h"
 #include <iostream>
 using namespace sf;
 
@@ -230,7 +232,8 @@ if(casucha->getcasita1().getGlobalBounds().intersects(Munieco->getpersonaje().ge
 
    }
 if(casucha->getcasita2().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())){
-   std::cout<<"Holi";
+   ///std::cout<<"primer nivel";
+   ingresar();
 
    }
 if(casucha->getcasita3().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())){
@@ -276,3 +279,17 @@ case Event::KeyPressed:
 
 }}
 
+void juego::ingresar(){
+nivel level(1);
+Raviolete raviol;
+Alha principal;
+std::cout<<"Salud de Raviolete: "<<raviol.getsalud();
+while(pantalla->isOpen()){
+pantalla->clear();
+pantalla->draw(level.getfondo1());
+pantalla->display();
+raviol.bajar_salud(principal.getdanio());
+
+
+}
+}

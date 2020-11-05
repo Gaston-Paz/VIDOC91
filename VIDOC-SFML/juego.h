@@ -32,6 +32,7 @@ void variable_valor(int *variable);
 void caminar(Alha *Munieco);
 void entrarNivel(Casa *casucha, Alha *Munieco);
 void nosalircalle(Calle *callesita1, Alha *Munieco);
+void ingresar();
 };
 
 

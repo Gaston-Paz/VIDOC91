@@ -1,23 +1,21 @@
 #ifndef NIVEL_H_INCLUDED
 #define NIVEL_H_INCLUDED
 #include <SFML/Graphics.hpp>
+#include "Alha.h"
+#include "Raviolete.h"
+using namespace sf;
 
-class nivel:public juego{
-
+class nivel{
 private:
-int dificultad;
-Texture * escena;
-Sprite * escenografia;
-Texture * barra;
-Sprite * salud;
-RenderWindow *pantalla;
+Texture fondo;
+Sprite fondi;
+Alha personaje;
+Raviolete ravio;
+///IU interfaz;
 public:
-void nivel_pantalla(int x, int y, char *titulo);
-void setDificultad(int difi);
-void setEscenografia();
-void setSalud(int vida);
-void cargar_imagenes(int difi, int vida);
-void imprimir_imagenes();
+nivel(int level);
+void setfondos1();
+Sprite &getfondo1();
 
 };
 

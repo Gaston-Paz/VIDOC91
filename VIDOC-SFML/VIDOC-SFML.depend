@@ -1877,7 +1877,7 @@
 1604264403 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\calle.h
 	<SFML/Graphics.hpp>
 
-1604602318 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\alha.cpp
+1604608575 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\alha.cpp
 	<SFML/Graphics.hpp>
 	"Personaje.h"
 	"Alha.h"
@@ -2291,10 +2291,10 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1604601022 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\personaje.h
+1604609690 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\personaje.h
 	<SFML/Graphics.hpp>
 
-1604602318 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\alha.h
+1604608573 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\alha.h
 	<SFML/Graphics.hpp>
 	"Personaje.h"
 
@@ -2305,7 +2305,7 @@
 1604602055 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\calle.h
 	<SFML/Graphics.hpp>
 
-1604603559 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\juego.cpp
+1604610672 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"Presentacion.h"
@@ -2314,9 +2314,11 @@
 	"Alha.h"
 	"Casa.h"
 	"Calle.h"
+	"nivel.h"
+	"Raviolete.h"
 	<iostream>
 
-1604603588 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\juego.h
+1604609363 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\juego.h
 	<SFML/Graphics.hpp>
 	"Menu.h"
 	"Mapa.h"
@@ -2350,15 +2352,16 @@
 	<SFML/Graphics.hpp>
 	"Menu.h"
 
-1604601023 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\nivel.cpp
+1604609696 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\nivel.cpp
 	<SFML/Graphics.hpp>
-	"juego.h"
 	"nivel.h"
 
-1604601023 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\nivel.h
+1604609577 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\nivel.h
 	<SFML/Graphics.hpp>
+	"Alha.h"
+	"Raviolete.h"
 
-1604601022 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\personaje.cpp
+1604610455 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\personaje.cpp
 	<SFML/Graphics.hpp>
 	"Personaje.h"
 	<cstring>
@@ -2373,4 +2376,17 @@
 
 1604603817 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\casa.h
 	<SFML/Graphics.hpp>
+
+1604603817 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\casa.cpp
+	<SFML/Graphics.hpp>
+	"Casa.h"
+
+1604610612 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\raviolete.cpp
+	<SFML/Graphics.hpp>
+	"Raviolete.h"
+	"Personaje.h"
+
+1604610601 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\raviolete.h
+	<SFML/Graphics.hpp>
+	"Personaje.h"
 
