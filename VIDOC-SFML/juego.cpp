@@ -249,18 +249,18 @@ if(casucha->getcasita4().getGlobalBounds().intersects(Munieco->getpersonaje().ge
 
 void juego::nosalircalle(Calle *callesita1, Alha *Munieco){
 
-while(!((callesita1->getcallesita().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
-            (callesita1->getcallesita2().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))   ||
-            (callesita1->getcallesita3().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
-            (callesita1->getcallesita4().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
-            (callesita1->getcallesita5().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
-            (callesita1->getcallesita6().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
-            (callesita1->getcallesita7().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
-            (callesita1->getcallesita8().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
-            (callesita1->getcallesita9().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     ||
-            (callesita1->getcallesita10().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))     )){
-switch(mover->type){
-case Event::KeyPressed:
+while(!( (callesita1->getcallesita().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))         ||
+            (callesita1->getcallesita2().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
+            (callesita1->getcallesita3().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
+            (callesita1->getcallesita4().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
+            (callesita1->getcallesita5().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
+            (callesita1->getcallesita6().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
+            (callesita1->getcallesita7().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
+            (callesita1->getcallesita8().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
+            (callesita1->getcallesita9().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
+            (callesita1->getcallesita10().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())))){
+
+
     if (Keyboard::isKeyPressed(Keyboard::Right)){
     Munieco->setpersonajeimagende(Munieco->posicionpersonajex() - 15,Munieco->posicionpersonajey());
     }
@@ -273,7 +273,7 @@ case Event::KeyPressed:
           if (Keyboard::isKeyPressed(Keyboard::Down)){
     Munieco->setpersonajeimagen(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()- 15);
     };
-   }
+
 
 
 
@@ -289,6 +289,8 @@ pantalla->clear();
 pantalla->draw(level.getfondo1());
 pantalla->display();
 raviol.bajar_salud(principal.getdanio());
+
+std::cout<<raviol.getsalud();
 
 
 }
