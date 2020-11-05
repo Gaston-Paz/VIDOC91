@@ -20,9 +20,8 @@ public:
 Alha();
 int getdanio();
 void entrar_nivel();
-int defenderse();
+bool defenderse();
 Sprite &getpersonaje();
-
 void curacion();
 Sprite &getpersonajenivel();
 void setpersonajeimagennivel();
@@ -34,7 +33,7 @@ void setpersonajeimagenat(int a, int b);
 int posicionpersonajex();
 int posicionpersonajey();
 void setataque();
-int getataque();
+
 };
 
 

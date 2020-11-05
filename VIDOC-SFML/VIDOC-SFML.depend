@@ -1880,7 +1880,7 @@
 1604611048 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\calle.h
 	<SFML/Graphics.hpp>
 
-1604608575 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\alha.cpp
+1604615459 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\alha.cpp
 	<SFML/Graphics.hpp>
 	"Personaje.h"
 	"Alha.h"
@@ -2297,7 +2297,7 @@
 1604609690 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\personaje.h
 	<SFML/Graphics.hpp>
 
-1604608573 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\alha.h
+1604615434 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\alha.h
 	<SFML/Graphics.hpp>
 	"Personaje.h"
 
@@ -2308,7 +2308,7 @@
 1604602055 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\calle.h
 	<SFML/Graphics.hpp>
 
-1604610672 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\juego.cpp
+1604615156 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"Presentacion.h"
@@ -2347,7 +2347,7 @@
 	"Presentacion.h"
 	"Menu.h"
 
-1604601890 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\mapa.cpp
+1604613291 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\mapa.cpp
 	<SFML/Graphics.hpp>
 	"Mapa.h"
 
@@ -2384,7 +2384,7 @@
 	<SFML/Graphics.hpp>
 	"Casa.h"
 
-1604610612 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\raviolete.cpp
+1604614335 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\raviolete.cpp
 	<SFML/Graphics.hpp>
 	"Raviolete.h"
 	"Personaje.h"

@@ -12,7 +12,7 @@ setsalud(100);
 int Alha::getdanio(){
 int Danio;
 setataque();
-switch(getataque()){
+switch(Tipo_ataque){
 case 1:
 Danio = 10;
 break;
@@ -33,10 +33,12 @@ void Alha::entrar_nivel(){
 
 }
 
-/*int Alha::defenderse(){
-if()
+bool Alha::defenderse(){
+Defensa = rand()%1;
+srand(time(NULL));
+return Defensa;
 }
-*/
+
 
 Sprite &Alha::getpersonaje(){
 return Alhaito;
@@ -97,9 +99,6 @@ Tipo_ataque = rand()%4+1;
 srand(time(NULL));
 }
 
-int Alha::getataque(){
-return Tipo_ataque;
-}
 
 /*void Alha::setpersonajeimagennivel(){
 Diosito_nivel = new Texture;

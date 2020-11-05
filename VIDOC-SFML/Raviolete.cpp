@@ -16,6 +16,7 @@ Tipo_ataque = rand()%4+1;
 srand(time(NULL));
 }
 int Raviolete::getataque(){
+setataque();
 switch(Tipo_ataque){
 case 1:
 return 5;

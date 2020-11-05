@@ -283,14 +283,43 @@ void juego::ingresar(){
 nivel level(1);
 Raviolete raviol;
 Alha principal;
-std::cout<<"Salud de Raviolete: "<<raviol.getsalud();
+
+std::cout<<"VIDA RAVIOL: "<<raviol.getsalud();
+std::cout<<std::endl<<"VIDA YO: "<<principal.getsalud();
+std::cout<<std::endl;
+
 while(pantalla->isOpen()){
 pantalla->clear();
 pantalla->draw(level.getfondo1());
 pantalla->display();
-raviol.bajar_salud(principal.getdanio());
 
-std::cout<<raviol.getsalud();
+
+if(Keyboard::isKeyPressed(Keyboard::Enter)){
+raviol.bajar_salud(principal.getdanio());
+system("cls");
+std::cout<<"VIDA RAVIOL: "<<raviol.getsalud();
+std::cout<<std::endl<<"VIDA YO: "<<principal.getsalud();
+std::cout<<std::endl;
+
+}
+
+if(Keyboard::isKeyPressed(Keyboard::Space)){
+    if(principal.getsalud() < 90){
+        if(!(principal.defenderse())){
+            raviol.bajar_salud(principal.getdanio());
+
+        }
+}
+else{principal.bajar_salud(raviol.getataque());}
+system("cls");
+std::cout<<"VIDA RAVIOL: "<<raviol.getsalud();
+std::cout<<std::endl<<"VIDA YO: "<<principal.getsalud();
+std::cout<<std::endl;
+
+}
+
+
+
 
 
 }
