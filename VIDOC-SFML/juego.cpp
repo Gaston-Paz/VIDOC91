@@ -1,326 +1,421 @@
 #include <SFML/Graphics.hpp>
 #include "juego.h"
-#include "Presentacion.h"
+#include "present.h"
 #include "Menu.h"
 #include "Mapa.h"
+#include "Personaje.h"
 #include "Alha.h"
-#include "Casa.h"
-#include "Calle.h"
-#include "nivel.h"
-#include "Raviolete.h"
 #include <iostream>
-using namespace sf;
 
-void juego::ciclo(Mapa *Mapita){
-mover = new Event;
-Alha Munieco;
-Calle callesita1;
-Casa casucha;
+juego::juego(){
 
-casucha.setcasita();
-callesita1.setcallesita();
-Munieco.setpersonajeimagen(1050,150);
+    state = present;
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "VIDOC 91");
+    window.setFramerateLimit(60);
+    int x = 0, y = 0;
 
-while(pantalla->isOpen()){
-    pantalla->clear();
-    caminar(&Munieco);
-    entrarNivel(&casucha, &Munieco);
-    nosalircalle(&callesita1,&Munieco);
-    pantalla->draw(Mapita->getmapa());
-    pantalla->draw(callesita1.getcallesita());
-    pantalla->draw(callesita1.getcallesita2());
-    pantalla->draw(callesita1.getcallesita3());
-    pantalla->draw(callesita1.getcallesita4());
-    pantalla->draw(callesita1.getcallesita5());
-    pantalla->draw(callesita1.getcallesita6());
-    pantalla->draw(callesita1.getcallesita7());
-    pantalla->draw(callesita1.getcallesita8());
-    pantalla->draw(callesita1.getcallesita9());
-    pantalla->draw(callesita1.getcallesita10());
-    pantalla->draw(casucha.getcasita());
-    pantalla->draw(Munieco.getpersonaje());
-    pantalla->display();
-    if(Keyboard::isKeyPressed(Keyboard::Escape)){
-    break;
-    }
-}
-}
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed){
+                 window.close();
+            }
+            if(event.key.code == sf::Keyboard::Right){
+                actor.setEstado(camina_derecha);
+                y = 2;
+                if(x > 2){x = 0;}
+                actor.setpersonajeimagen(x*47,y*72,47,72);
+                if(chequearlimite()){
+                   actor.getpersonaje().move(1,0);
+                }
 
-void juego::presentacionJuego(){
+                x++;
 
-int Tics = 0;
-Presentacion Logo;
-Logo.setpresentacion();
+            }
+            if(event.key.code == sf::Keyboard::Left){
+                actor.setEstado(camina_izquierda);
+                y = 1;
+                if(x > 2){x = 0;}
+                actor.setpersonajeimagen(x*47,y*72,47,72);
+                if(chequearlimite()){
+                   actor.getpersonaje().move(-1,0);
+                }
+                x++;
 
-while(Tics<100){
-pantalla->clear();
-pantalla->draw(Logo.getpresentacion());
-pantalla->display();
-Tics++;
-}
+            }
 
+        if(event.key.code == sf::Keyboard::Up){
+                actor.setEstado(camina_arriba);
+                y = 3;
+                if(x > 2){x = 0;}
+                actor.setpersonajeimagen(x*47,y*72,47,72);
+                if(chequearlimite()){
+                   actor.getpersonaje().move(0,-1);
+                }
+                x++;
 
-}
+            }
 
-void juego::crear_pantalla(int tamanio_x, int tamanio_y, char *titulo){
-pantalla = new RenderWindow(sf::VideoMode(tamanio_x,tamanio_y), titulo);
-pantalla->setFramerateLimit(60);
-}
+        if(event.key.code == sf::Keyboard::Down){
+                actor.setEstado(camina_abajo);
+                y = 0;
+                if(x > 2){x = 0;}
+                actor.setpersonajeimagen(x*47,y*72,47,72);
+                if(chequearlimite()){
+                   actor.getpersonaje().move(0,1);
+                }
+                x++;
 
-void juego::imprimir_menu(){
-mover_menu = new Event;
-Menu Principal;
-int variable =1;
-
-Principal.setnuevo(250,125,"Base05.ttf","JUEGO NUEVO",true);
-Principal.setcontinuar(250,200,"Base05.ttf","CONTINUAR JUEGO",false);
-Principal.setpuntuacion(250,275,"Base05.ttf","PUNTUACION",false);
-Principal.setsalir(250,350,"Base05.ttf","SALIR DEL JUEGO",false);
-Principal.setfondomenu();
-
-while(!Keyboard::isKeyPressed(Keyboard::Enter)){
-funciones_menu(&Principal);
-movimiento_menu(&Principal, &variable);
-}
-variable_valor(&variable);
-}
-
-void juego::funciones_menu(Menu *Principal){
-pantalla->clear();
-pantalla->draw(Principal->getfondomenu());
-pantalla->draw(Principal->getnuevo());
-pantalla->draw(Principal->getcontinuar());
-pantalla->draw(Principal->getpuntuacion());
-pantalla->draw(Principal->getsalir());
-pantalla->display();
-}
-
-void juego::movimiento_menu(Menu *Principal, int *variable){
-
-while(pantalla->pollEvent(*mover_menu)){
-switch(mover_menu->type){
-case Event::Closed:
-    pantalla->close();
-    exit(1);
-    break;
-
-
-case Event::KeyPressed:
-if(Keyboard::isKeyPressed(Keyboard::Up)){
-switch(*variable){
-case 1:
-    *variable = 4;
-Principal->setnuevo(250,125,"Base05.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"Base05.ttf","CONTINUAR JUEGO",false);
-Principal->setpuntuacion(250,275,"Base05.ttf","PUNTUACION",false);
-Principal->setsalir(250,350,"Base05.ttf","SALIR DEL JUEGO",true);
-    break;
-case 2:
-    *variable = 1;
-Principal->setnuevo(250,125,"Base05.ttf","JUEGO NUEVO",true);
-Principal->setcontinuar(250,200,"Base05.ttf","CONTINUAR JUEGO",false);
-Principal->setpuntuacion(250,275,"Base05.ttf","PUNTUACION",false);
-Principal->setsalir(250,350,"Base05.ttf","SALIR DEL JUEGO",false);
-    break;
-case 3:
-    *variable = 2;
-Principal->setnuevo(250,125,"Base05.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"Base05.ttf","CONTINUAR JUEGO",true);
-Principal->setpuntuacion(250,275,"Base05.ttf","PUNTUACION",false);
-Principal->setsalir(250,350,"Base05.ttf","SALIR DEL JUEGO",false);
-    break;
-case 4:
-    *variable =3;
-Principal->setnuevo(250,125,"Base05.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"Base05.ttf","CONTINUAR JUEGO",false);
-Principal->setpuntuacion(250,275,"Base05.ttf","PUNTUACION",true);
-Principal->setsalir(250,350,"Base05.ttf","SALIR DEL JUEGO",false);
-    break;
-    }}
-    if(Keyboard::isKeyPressed(Keyboard::Down)){
-switch(*variable){
-case 1:
-    *variable = 2;
-Principal->setnuevo(250,125,"Base05.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"Base05.ttf","CONTINUAR JUEGO",true);
-Principal->setpuntuacion(250,275,"Base05.ttf","PUNTUACION",false);
-Principal->setsalir(250,350,"Base05.ttf","SALIR DEL JUEGO",false);
-    break;
-case 2:
-    *variable = 3;
-Principal->setnuevo(250,125,"Base05.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"Base05.ttf","CONTINUAR JUEGO",false);
-Principal->setpuntuacion(250,275,"Base05.ttf","PUNTUACION",true);
-Principal->setsalir(250,350,"Base05.ttf","SALIR DEL JUEGO",false);
-    break;
-case 3:
-    *variable = 4;
-Principal->setnuevo(250,125,"Base05.ttf","JUEGO NUEVO",false);
-Principal->setcontinuar(250,200,"Base05.ttf","CONTINUAR JUEGO",false);
-Principal->setpuntuacion(250,275,"Base05.ttf","PUNTUACION",false);
-Principal->setsalir(250,350,"Base05.ttf","SALIR DEL JUEGO",true);
-    break;
-case 4:
-    *variable =1;
-Principal->setnuevo(250,125,"Base05.ttf","JUEGO NUEVO",true);
-Principal->setcontinuar(250,200,"Base05.ttf","CONTINUAR JUEGO",false);
-Principal->setpuntuacion(250,275,"Base05.ttf","PUNTUACION",false);
-Principal->setsalir(250,350,"Base05.ttf","SALIR DEL JUEGO",false);
-    break;
-    }}}}}
-
-void juego::variable_valor(int *variable){
-Mapa Mapita;
-
-switch(*variable){
-case 1:
-
-Mapita.setmapa();
-ciclo(&Mapita);
-
-break;
-/*
-case 2:
-
-break;
-case 3:
-
-break;
-*/
-case 4:
-return;
-break;
-
-}}
-
-void juego::caminar(Alha *Munieco){
-
-while(pantalla->pollEvent(*mover)){
-switch(mover->type){
-case Event::Closed:
-    pantalla->close();
-    exit(1);
-    break;
-
-
-case Event::KeyPressed:
-    if (Keyboard::isKeyPressed(Keyboard::Right)){
-    Munieco->setpersonajeimagende(Munieco->posicionpersonajex() + 15,Munieco->posicionpersonajey());
-    }
-    if (Keyboard::isKeyPressed(Keyboard::Left)){
-    Munieco->setpersonajeimageniz(Munieco->posicionpersonajex() - 15,Munieco->posicionpersonajey());
-    }
-    if (Keyboard::isKeyPressed(Keyboard::Up)){
-    Munieco->setpersonajeimagenat(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()-15);
-    }
-    if (Keyboard::isKeyPressed(Keyboard::Down)){
-    Munieco->setpersonajeimagen(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()+ 15);
-    };
-
-}
-}
-}
-
-void juego::entrarNivel(Casa *casucha, Alha *Munieco){
-
-if(casucha->getcasita().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())){
-   std::cout<<"Holi";
-
-   }
-if(casucha->getcasita1().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())){
-   std::cout<<"Holi";
-
-   }
-if(casucha->getcasita2().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())){
-   ///std::cout<<"primer nivel";
-   ingresar();
-
-   }
-if(casucha->getcasita3().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())){
-   std::cout<<"Holi";
-
-   }
-if(casucha->getcasita4().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())){
-   std::cout<<"Holi";
-
-   }
-
-}
-
-void juego::nosalircalle(Calle *callesita1, Alha *Munieco){
-
-while(!( (callesita1->getcallesita().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))         ||
-            (callesita1->getcallesita2().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
-            (callesita1->getcallesita3().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
-            (callesita1->getcallesita4().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
-            (callesita1->getcallesita5().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
-            (callesita1->getcallesita6().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
-            (callesita1->getcallesita7().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
-            (callesita1->getcallesita8().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
-            (callesita1->getcallesita9().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds()))       ||
-            (callesita1->getcallesita10().getGlobalBounds().intersects(Munieco->getpersonaje().getGlobalBounds())))){
-
-
-    if (Keyboard::isKeyPressed(Keyboard::Right)){
-    Munieco->setpersonajeimagende(Munieco->posicionpersonajex() - 15,Munieco->posicionpersonajey());
-    }
-        if(Keyboard::isKeyPressed(Keyboard::Left)){
-    Munieco->setpersonajeimageniz(Munieco->posicionpersonajex() +15 ,Munieco->posicionpersonajey());
-    }
-          if (Keyboard::isKeyPressed(Keyboard::Up)){
-    Munieco->setpersonajeimagenat(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()+15);
-    }
-          if (Keyboard::isKeyPressed(Keyboard::Down)){
-    Munieco->setpersonajeimagen(Munieco->posicionpersonajex() ,Munieco->posicionpersonajey()- 15);
-    };
-
-
-
-
-}}
-
-void juego::ingresar(){
-nivel level(1);
-Raviolete raviol;
-Alha principal;
-
-std::cout<<"VIDA RAVIOL: "<<raviol.getsalud();
-std::cout<<std::endl<<"VIDA YO: "<<principal.getsalud();
-std::cout<<std::endl;
-
-while(pantalla->isOpen()){
-pantalla->clear();
-pantalla->draw(level.getfondo1());
-pantalla->display();
-
-
-if(Keyboard::isKeyPressed(Keyboard::Enter)){
-raviol.bajar_salud(principal.getdanio());
-system("cls");
-std::cout<<"VIDA RAVIOL: "<<raviol.getsalud();
-std::cout<<std::endl<<"VIDA YO: "<<principal.getsalud();
-std::cout<<std::endl;
-
-}
-
-if(Keyboard::isKeyPressed(Keyboard::Space)){
-    if(principal.getsalud() < 90){
-        if(!(principal.defenderse())){
-            raviol.bajar_salud(principal.getdanio());
+            }
 
         }
-}
-else{principal.bajar_salud(raviol.getataque());}
-system("cls");
-std::cout<<"VIDA RAVIOL: "<<raviol.getsalud();
-std::cout<<std::endl<<"VIDA YO: "<<principal.getsalud();
-std::cout<<std::endl;
 
-}
+    gameloop(&window);
 
 
 
+    if(state == cerrar){
+    break;
+    }
+    }
 
 
 }
+
+void juego::gameloop(sf::RenderWindow *window){
+if(state == present){
+while(tics < 180){
+inicio.setlogo();
+window->clear();
+window->draw(inicio.getlogo());
+window->display();
+tics++;
 }
+state = menu;
+}
+if(state == menu){
+    imprimir_menu(window);
+    cmd(window);
+    choisemenu(window);
+}
+if(state == mapa){
+  imprimir_mapa(window);
+
+}
+
+}
+
+void juego::imprimir_menu(sf::RenderWindow *window){
+window->clear();
+window->draw(principal.getfondomenu());
+window->draw(principal.getnuevo());
+window->draw(principal.getcontinuar());
+window->draw(principal.getpuntuacion());
+window->draw(principal.getsalir());
+window->display();
+}
+
+void juego::cmd(sf::RenderWindow *window){
+if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+    if(opcion_menu == 1){
+        principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", false, 0);
+        principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
+        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
+        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", true, 3);
+        opcion_menu = 4;
+    }else{if(opcion_menu == 2){
+        principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", true, 0);
+        principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
+        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
+        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
+        opcion_menu = 1;
+    }else{if(opcion_menu == 3){
+        principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", false, 0);
+        principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", true, 1);
+        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
+        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
+        opcion_menu = 2;
+    }else{if(opcion_menu == 4){
+        principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", false, 0);
+        principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
+        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", true, 2);
+        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
+        opcion_menu = 3;
+    }
+    }
+    }
+    }
+}
+
+if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+    if(opcion_menu == 1){
+        principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", false, 0);
+        principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", true, 1);
+        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
+        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
+        opcion_menu = 2;
+    }else{if(opcion_menu == 2){
+        principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", false, 0);
+        principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
+        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", true, 2);
+        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
+        opcion_menu = 3;
+    }else{if(opcion_menu == 3){
+        principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", false, 0);
+        principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
+        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
+        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", true, 3);
+        opcion_menu = 4;
+    }else{if(opcion_menu == 4){
+        principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", true, 0);
+        principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
+        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
+        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
+        opcion_menu = 1;
+    }
+    }
+    }
+    }
+}
+
+
+
+}
+
+void juego::choisemenu(sf::RenderWindow *window){
+
+if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
+    switch(opcion_menu){
+        case 1:
+        state =  mapa;
+        break;
+        /*case 1:
+        break;
+        case 1:
+        break;
+        */
+        case 4:
+        state = cerrar;
+        break;
+
+
+
+    }
+}
+
+
+}
+
+void juego::imprimir_mapa(sf::RenderWindow *window){
+
+window->clear();
+window->draw(mapi.getmapa());
+window->draw(actor.getpersonaje());
+window->display();
+
+if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+    state = menu;
+}
+
+}
+
+void juego::cmd(int *x, int *y, sf::Event *event){
+if(event->key.code == sf::Keyboard::Right){
+        *y = 2;
+        *x++;
+        if(*x > 8){*x = 0;}
+        actor.setpersonajeimagen(*x*51,*y*77,60,60);
+
+
+    }
+if(event->key.code == sf::Keyboard::Left){
+        *y = 1;
+        if(*x > 8){*x = 0;}
+        actor.setpersonajeimagen(*x*51,*y*79,60,60);
+        x++;
+
+    }
+
+if(event->key.code == sf::Keyboard::Up){
+        *y = 3;
+        if(*x > 8){*x = 0;}
+        actor.setpersonajeimagen(*x*51,*y*75,60,60);
+        *x++;
+
+    }
+
+if(event->key.code == sf::Keyboard::Down){
+        *y = 0;
+        if(*x > 8){*x = 0;}
+        actor.setpersonajeimagen(*x*51,*y*77,60,65);
+        *x++;
+
+    }
+
+
+}
+
+void juego::imprimir_todos_los_limites(sf::RenderWindow *window){
+mapi.dibujar_limites(window,1,65,30,360,0);///izquierda
+mapi.dibujar_limites(window,340,1,30,360,1);
+mapi.dibujar_limites(window,340,1,30,425,2);///abajo
+mapi.dibujar_limites(window,1,210,370,425,3);///izquierda
+mapi.dibujar_limites(window,80,1,290,635,4);
+
+mapi.dibujar_limites(window,1,12,290,623,5);
+mapi.dibujar_limites(window,90,1,200,623,6);
+mapi.dibujar_limites(window,1,77,200,623,7);///izquierda
+mapi.dibujar_limites(window,258,1,200,700,8);///abajo
+mapi.dibujar_limites(window,1,18,458,682,9); ///derecha
+
+mapi.dibujar_limites(window,700,1,458,682,10);///abajo
+mapi.dibujar_limites(window,1,68,1158,614,11);///derecha
+mapi.dibujar_limites(window,700,1,458,614,12);
+mapi.dibujar_limites(window,1,192,458,422,13);///derecha
+mapi.dibujar_limites(window,610,1,458,422,14);///abajo
+
+mapi.dibujar_limites(window,1,138,1068,284,15);///derecha
+mapi.dibujar_limites(window,90,1,1068,284,16);///abajo
+mapi.dibujar_limites(window,1,136,1158,148,17);///derecha
+mapi.dibujar_limites(window,90,1,1068,148,18);
+mapi.dibujar_limites(window,1,64,1068,148,19);///izquierda
+
+
+mapi.dibujar_limites(window,90,1,978,212,20);
+mapi.dibujar_limites(window,1,136,978,212,21);///izquierda
+mapi.dibujar_limites(window,200,1,778,348,22);
+mapi.dibujar_limites(window,1,70,778,278,23);///derecha
+mapi.dibujar_limites(window,90,1,688,278,24);
+
+mapi.dibujar_limites(window,1,70,688,278,25);///izquierda
+mapi.dibujar_limites(window,230,1,458,348,26);
+mapi.dibujar_limites(window,1,160,458,188,27);///derecha
+mapi.dibujar_limites(window,1,172,370,188,28);///izquierda
+mapi.dibujar_limites(window,90,1,370,188,29);
+
+
+
+
+}
+
+bool juego::chequearlimite(){
+
+if(actor.getEstado() == camina_derecha){
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 458) &&
+     (actor.getpersonaje().getPosition().y >= 100 && actor.getpersonaje().getPosition().y <= 334)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 778) &&
+     (actor.getpersonaje().getPosition().y >= 230 && actor.getpersonaje().getPosition().y <= 338)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 1158) &&
+     (actor.getpersonaje().getPosition().y >= 90 && actor.getpersonaje().getPosition().y <= 236)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 1068) &&
+     (actor.getpersonaje().getPosition().y >= 212 && actor.getpersonaje().getPosition().y <= 350)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 458) &&
+     (actor.getpersonaje().getPosition().y >= 350 && actor.getpersonaje().getPosition().y <= 590)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 1158) &&
+     (actor.getpersonaje().getPosition().y >= 590 && actor.getpersonaje().getPosition().y <= 720)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 458) &&
+    (actor.getpersonaje().getPosition().y >= 620 && actor.getpersonaje().getPosition().y <= 720)){return false;}
+
+return true;
+}
+
+if(actor.getEstado() == camina_izquierda){
+if((actor.getpersonaje().getGlobalBounds().left == 370) &&
+    (actor.getpersonaje().getPosition().y >= 116 && actor.getpersonaje().getPosition().y <= 328)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().left == 688) &&
+    (actor.getpersonaje().getPosition().y >= 206 && actor.getpersonaje().getPosition().y <= 336)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().left == 978) &&
+    (actor.getpersonaje().getPosition().y >= 140 && actor.getpersonaje().getPosition().y <= 336)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().left == 1068) &&
+    (actor.getpersonaje().getPosition().y >= 76 && actor.getpersonaje().getPosition().y <= 200)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().left == 200) &&
+    (actor.getpersonaje().getPosition().y >= 550 && actor.getpersonaje().getPosition().y <= 720)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().left == 370) &&
+    (actor.getpersonaje().getPosition().y >= 353 && actor.getpersonaje().getPosition().y <= 615)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().left == 30) &&
+    (actor.getpersonaje().getPosition().y >= 288 && actor.getpersonaje().getPosition().y <= 410)){return false;}
+
+return true;
+}
+
+if(actor.getEstado() == camina_abajo){
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 425) &&
+    (actor.getpersonaje().getPosition().x >= 10 && actor.getpersonaje().getPosition().x <= 370)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 700) &&
+    (actor.getpersonaje().getPosition().x >= 150 && actor.getpersonaje().getPosition().x <= 458)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 682) &&
+    (actor.getpersonaje().getPosition().x >= 408 && actor.getpersonaje().getPosition().x <= 1158)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 422) &&
+    (actor.getpersonaje().getPosition().x >= 408 && actor.getpersonaje().getPosition().x <= 1068)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 284) &&
+    (actor.getpersonaje().getPosition().x >= 1018 && actor.getpersonaje().getPosition().x <= 1158)){return false;}
+
+return true;}
+
+if(actor.getEstado() == camina_arriba){
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 188) &&
+    (actor.getpersonaje().getPosition().x >= 320 && actor.getpersonaje().getPosition().x <= 460)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 348) &&
+    (actor.getpersonaje().getPosition().x >= 408 && actor.getpersonaje().getPosition().x <= 688)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 278) &&
+    (actor.getpersonaje().getPosition().x >= 638 && actor.getpersonaje().getPosition().x <= 778)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 348) &&
+    (actor.getpersonaje().getPosition().x >= 728 && actor.getpersonaje().getPosition().x <= 978)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 212) &&
+    (actor.getpersonaje().getPosition().x >= 928 && actor.getpersonaje().getPosition().x <= 1068)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 148) &&
+    (actor.getpersonaje().getPosition().x >= 1018 && actor.getpersonaje().getPosition().x <= 1158)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 614) &&
+    (actor.getpersonaje().getPosition().x >= 408 && actor.getpersonaje().getPosition().x <= 1158)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 623) &&
+    (actor.getpersonaje().getPosition().x >= 240 && actor.getpersonaje().getPosition().x <= 291)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 623) &&
+    (actor.getpersonaje().getPosition().x >= 150 && actor.getpersonaje().getPosition().x <= 290)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 635) &&
+    (actor.getpersonaje().getPosition().x >= 240 && actor.getpersonaje().getPosition().x <= 370)){return false;}
+
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 360) &&
+    (actor.getpersonaje().getPosition().x >= 0 && actor.getpersonaje().getPosition().x <= 370)){return false;}
+
+return true;}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

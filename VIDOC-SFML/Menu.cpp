@@ -1,14 +1,12 @@
 #include <SFML/Graphics.hpp>
 #include "Menu.h"
 
-using namespace sf;
-
-void Menu::setopciones(int Cantidad){
-Opciones = Cantidad;
-}
-
-void Menu::setopcionesataques(int Cantidad){
-Opciones = Cantidad;
+Menu::Menu(){
+setfondomenu();
+setopcion(300,100,"Base05.ttf","JUEGO NUEVO", true, 0);
+setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
+setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
+setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
 }
 
 void Menu::setfondomenu(){
@@ -17,82 +15,34 @@ Presentacion.setTexture(Prese);
 
 }
 
-Sprite &Menu::getfondomenu(){
+sf::Sprite &Menu::getfondomenu(){
 return Presentacion;
-
 }
 
-void Menu::setnuevo(int x,int y,char *Fuente,char *Titulo, bool Pinta){
-
+void Menu::setopcion(int x,int y,char *Fuente,char *Titulo, bool Pinta, int i){
 Tipografia.loadFromFile(Fuente);
-
-
-nuevo.setFont(Tipografia);
-nuevo.setString(Titulo);
-nuevo.setPosition(x,y);
+opcion[i].setFont(Tipografia);
+opcion[i].setString(Titulo);
+opcion[i].setPosition(x,y);
 if(Pinta){
-nuevo.setColor(Color::Red);
+opcion[i].setColor(sf::Color(115,47,32,255));
 }
 else{
-nuevo.setColor(Color::White);
+opcion[i].setColor(sf::Color::White);
 }}
 
-void Menu::setcontinuar(int x,int y,char *Fuente,char *Titulo, bool Pinta){
-
-Tipografia.loadFromFile(Fuente);
-
-
-continuar.setFont(Tipografia);
-continuar.setString(Titulo);
-continuar.setPosition(x,y);
-if(Pinta){
-continuar.setColor(Color::Red);
-}
-else{
-continuar.setColor(Color::White);
-}}
-
-void Menu::setpuntuacion(int x,int y,char *Fuente,char *Titulo, bool Pinta){
-
-Tipografia.loadFromFile(Fuente);
-
-
-puntuacion.setFont(Tipografia);
-puntuacion.setString(Titulo);
-puntuacion.setPosition(x,y);
-if(Pinta){
-puntuacion.setColor(Color::Red);
-}
-else{
-puntuacion.setColor(Color::White);
-}}
-
-void Menu::setsalir(int x,int y,char *Fuente,char *Titulo, bool Pinta){
-
-Tipografia.loadFromFile(Fuente);
-
-salir.setFont(Tipografia);
-salir.setString(Titulo);
-salir.setPosition(x,y);
-if(Pinta){
-salir.setColor(Color::Red);
-}
-else{
-salir.setColor(Color::White);
-}}
-
-Text &Menu::getnuevo(){
-return nuevo;
+sf::Text &Menu::getnuevo(){
+return opcion[0];
 }
 
-Text &Menu::getcontinuar(){
-return continuar;
+sf::Text &Menu::getcontinuar(){
+return opcion[1];
 }
 
-Text &Menu::getpuntuacion(){
-return puntuacion;
+sf::Text &Menu::getpuntuacion(){
+return opcion[2];
 }
 
-Text &Menu::getsalir(){
-return salir;
+sf::Text &Menu::getsalir(){
+return opcion[3];
 }

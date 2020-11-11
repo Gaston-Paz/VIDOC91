@@ -42,25 +42,19 @@
 		</Linker>
 		<Unit filename="Alha.cpp" />
 		<Unit filename="Alha.h" />
-		<Unit filename="Calle.cpp" />
-		<Unit filename="Calle.h" />
-		<Unit filename="Casa.cpp" />
-		<Unit filename="Casa.h" />
 		<Unit filename="Mapa.cpp" />
 		<Unit filename="Mapa.h" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.h" />
 		<Unit filename="Personaje.cpp" />
 		<Unit filename="Personaje.h" />
-		<Unit filename="Presentacion.cpp" />
-		<Unit filename="Presentacion.h" />
-		<Unit filename="Raviolete.cpp" />
-		<Unit filename="Raviolete.h" />
 		<Unit filename="juego.cpp" />
 		<Unit filename="juego.h" />
+		<Unit filename="limite.cpp" />
+		<Unit filename="limite.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="nivel.cpp" />
-		<Unit filename="nivel.h" />
+		<Unit filename="present.cpp" />
+		<Unit filename="present.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

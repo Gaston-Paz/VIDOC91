@@ -2,11 +2,18 @@
 #include "Personaje.h"
 #include "Alha.h"
 
-using namespace sf;
+
 
 Alha::Alha(){
 setnombre("Alha");
 setsalud(100);
+Diosito.loadFromFile("perso.png");
+division_personaje.x = 8 ;
+division_personaje.y = 4;
+Alhaito.setTexture(Diosito);
+Alhaito.setPosition(400,200);
+setpersonajeimagen(47,0,47,72);
+
 }
 
 int Alha::getdanio(){
@@ -29,61 +36,21 @@ break;
 return Danio;
 }
 
-void Alha::entrar_nivel(){
-
-}
-
 bool Alha::defenderse(){
 Defensa = rand()%1;
 srand(time(NULL));
 return Defensa;
 }
 
-
-Sprite &Alha::getpersonaje(){
+sf::Sprite &Alha::getpersonaje(){
 return Alhaito;
 }
 
-void Alha::setpersonajeimagen(int a, int b){
+void Alha::setpersonajeimagen(int a, int b, int c, int d){
 
+sf::IntRect posicion(a,b,c,d);
+Alhaito.setTextureRect(posicion);
 
-Diosito.loadFromFile("PERSONAJEPRUEBA.png");
-Alhaito.setTexture(Diosito);
-
-Alhaito.setPosition(a, b);
-}
-
-void Alha::setpersonajeimageniz(int a, int b){
-
-
-Diosito.loadFromFile("PERSONAJEIZQUIERDA.png");
-Alhaito.setTexture(Diosito);
-
-Alhaito.setPosition(a, b);
-}
-
-void Alha::setpersonajeimageniz2(int a, int b){
-
-
-Diosito.loadFromFile("PERSONAJEIZQUIERDA2.png");
-Alhaito.setTexture(Diosito);
-
-Alhaito.setPosition(a, b);
-}
-
-void Alha::setpersonajeimagende(int a, int b){
-
-
-Diosito.loadFromFile("PERSONAJEDERECHA.png");
-Alhaito.setTexture(Diosito);
-Alhaito.setPosition(a, b);
-}
-
-void Alha::setpersonajeimagenat(int a, int b){
-
-Diosito.loadFromFile("PERSONAJEATRAS.png");
-Alhaito.setTexture(Diosito);
-Alhaito.setPosition(a, b);
 }
 
 int Alha::posicionpersonajex(){
@@ -99,19 +66,10 @@ Tipo_ataque = rand()%4+1;
 srand(time(NULL));
 }
 
-
-/*void Alha::setpersonajeimagennivel(){
-Diosito_nivel = new Texture;
-Alhaito_nivel = new Sprite;
-Diosito_nivel->loadFromFile("Puto el que lee.pito");
-Alahito_nivel->setTexture(*Diosito_nivel);
-
+void Alha::setEstado(ESTADOS_PERSONAJE actual){
+movimiento = actual;
 }
 
-FALTA DESARROLLAR
-void entrar_nivel()
-int defenderse()
-void perder_vida()
-void curacion()
-void setpersonajeimagennivel()
-*/
+ESTADOS_PERSONAJE Alha::getEstado(){
+return movimiento;
+}

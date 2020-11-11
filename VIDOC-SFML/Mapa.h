@@ -1,16 +1,22 @@
 #ifndef MAPA_H_INCLUDED
 #define MAPA_H_INCLUDED
 #include <SFML/Graphics.hpp>
-using namespace sf;
+#include "limite.h"
 
 class Mapa{
 private:
-Sprite Mapa;
-Texture Archivo;
+sf::Sprite Map;
+sf::Texture Archivo;
+limite limit[30];
 
 public:
+Mapa();
 void setmapa();
-Sprite &getmapa();
+sf::Sprite &getmapa();
+void dibujar_limites(sf::RenderWindow *window,int x, int y, int a, int b, int p);
+sf::RectangleShape getlimite(int x);
+void cargar_limites();
+int globalBound(int x);
 };
 
 #endif // MAPA_H_INCLUDED
