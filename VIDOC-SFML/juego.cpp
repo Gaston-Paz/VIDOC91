@@ -5,6 +5,7 @@
 #include "Mapa.h"
 #include "Personaje.h"
 #include "Alha.h"
+#include "nivel.h"
 #include <iostream>
 
 juego::juego(){
@@ -28,7 +29,7 @@ juego::juego(){
                 if(x > 2){x = 0;}
                 actor.setpersonajeimagen(x*47,y*72,47,72);
                 if(chequearlimite()){
-                   actor.getpersonaje().move(1,0);
+                   actor.getpersonaje().move(4,0);
                 }
 
                 x++;
@@ -40,35 +41,35 @@ juego::juego(){
                 if(x > 2){x = 0;}
                 actor.setpersonajeimagen(x*47,y*72,47,72);
                 if(chequearlimite()){
-                   actor.getpersonaje().move(-1,0);
+                   actor.getpersonaje().move(-4,0);
                 }
                 x++;
 
             }
+            if(event.key.code == sf::Keyboard::Up){
+                    actor.setEstado(camina_arriba);
+                    y = 3;
+                    if(x > 2){x = 0;}
+                    actor.setpersonajeimagen(x*47,y*72,47,72);
+                    if(chequearlimite()){
+                       actor.getpersonaje().move(0,-4);
+                    }
+                    x++;
 
-        if(event.key.code == sf::Keyboard::Up){
-                actor.setEstado(camina_arriba);
-                y = 3;
-                if(x > 2){x = 0;}
-                actor.setpersonajeimagen(x*47,y*72,47,72);
-                if(chequearlimite()){
-                   actor.getpersonaje().move(0,-1);
                 }
-                x++;
+            if(event.key.code == sf::Keyboard::Down){
+                    actor.setEstado(camina_abajo);
+                    y = 0;
+                    if(x > 2){x = 0;}
+                    actor.setpersonajeimagen(x*47,y*72,47,72);
+                    if(chequearlimite()){
+                       actor.getpersonaje().move(0,4);
+                    }
+                    x++;
 
-            }
-
-        if(event.key.code == sf::Keyboard::Down){
-                actor.setEstado(camina_abajo);
-                y = 0;
-                if(x > 2){x = 0;}
-                actor.setpersonajeimagen(x*47,y*72,47,72);
-                if(chequearlimite()){
-                   actor.getpersonaje().move(0,1);
                 }
-                x++;
 
-            }
+
 
         }
 
@@ -85,6 +86,7 @@ juego::juego(){
 }
 
 void juego::gameloop(sf::RenderWindow *window){
+int a;
 if(state == present){
 while(tics < 180){
 inicio.setlogo();
@@ -102,9 +104,13 @@ if(state == menu){
 }
 if(state == mapa){
   imprimir_mapa(window);
+a = verificaringresonivel();
+}
+if(state == lucha){
+eleccionDeNivel(a , window);
+
 
 }
-
 }
 
 void juego::imprimir_menu(sf::RenderWindow *window){
@@ -219,6 +225,7 @@ if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
     state = menu;
 }
 
+
 }
 
 void juego::cmd(int *x, int *y, sf::Event *event){
@@ -257,112 +264,69 @@ if(event->key.code == sf::Keyboard::Down){
 
 }
 
-void juego::imprimir_todos_los_limites(sf::RenderWindow *window){
-mapi.dibujar_limites(window,1,65,30,360,0);///izquierda
-mapi.dibujar_limites(window,340,1,30,360,1);
-mapi.dibujar_limites(window,340,1,30,425,2);///abajo
-mapi.dibujar_limites(window,1,210,370,425,3);///izquierda
-mapi.dibujar_limites(window,80,1,290,635,4);
-
-mapi.dibujar_limites(window,1,12,290,623,5);
-mapi.dibujar_limites(window,90,1,200,623,6);
-mapi.dibujar_limites(window,1,77,200,623,7);///izquierda
-mapi.dibujar_limites(window,258,1,200,700,8);///abajo
-mapi.dibujar_limites(window,1,18,458,682,9); ///derecha
-
-mapi.dibujar_limites(window,700,1,458,682,10);///abajo
-mapi.dibujar_limites(window,1,68,1158,614,11);///derecha
-mapi.dibujar_limites(window,700,1,458,614,12);
-mapi.dibujar_limites(window,1,192,458,422,13);///derecha
-mapi.dibujar_limites(window,610,1,458,422,14);///abajo
-
-mapi.dibujar_limites(window,1,138,1068,284,15);///derecha
-mapi.dibujar_limites(window,90,1,1068,284,16);///abajo
-mapi.dibujar_limites(window,1,136,1158,148,17);///derecha
-mapi.dibujar_limites(window,90,1,1068,148,18);
-mapi.dibujar_limites(window,1,64,1068,148,19);///izquierda
-
-
-mapi.dibujar_limites(window,90,1,978,212,20);
-mapi.dibujar_limites(window,1,136,978,212,21);///izquierda
-mapi.dibujar_limites(window,200,1,778,348,22);
-mapi.dibujar_limites(window,1,70,778,278,23);///derecha
-mapi.dibujar_limites(window,90,1,688,278,24);
-
-mapi.dibujar_limites(window,1,70,688,278,25);///izquierda
-mapi.dibujar_limites(window,230,1,458,348,26);
-mapi.dibujar_limites(window,1,160,458,188,27);///derecha
-mapi.dibujar_limites(window,1,172,370,188,28);///izquierda
-mapi.dibujar_limites(window,90,1,370,188,29);
-
-
-
-
-}
-
 bool juego::chequearlimite(){
 
 if(actor.getEstado() == camina_derecha){
-if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 458) &&
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width +1 == 428) &&
      (actor.getpersonaje().getPosition().y >= 100 && actor.getpersonaje().getPosition().y <= 334)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 778) &&
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width +1 == 776) &&
      (actor.getpersonaje().getPosition().y >= 230 && actor.getpersonaje().getPosition().y <= 338)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 1158) &&
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width +1 == 1128) &&
      (actor.getpersonaje().getPosition().y >= 90 && actor.getpersonaje().getPosition().y <= 236)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 1068) &&
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width +1 == 1036) &&
      (actor.getpersonaje().getPosition().y >= 212 && actor.getpersonaje().getPosition().y <= 350)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 458) &&
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width +1 == 428) &&
      (actor.getpersonaje().getPosition().y >= 350 && actor.getpersonaje().getPosition().y <= 590)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 1158) &&
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width +1 == 1128) &&
      (actor.getpersonaje().getPosition().y >= 590 && actor.getpersonaje().getPosition().y <= 720)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width == 458) &&
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width +1 == 368) &&
     (actor.getpersonaje().getPosition().y >= 620 && actor.getpersonaje().getPosition().y <= 720)){return false;}
 
 return true;
 }
 
 if(actor.getEstado() == camina_izquierda){
-if((actor.getpersonaje().getGlobalBounds().left == 370) &&
+if((actor.getpersonaje().getGlobalBounds().left == 332) &&
     (actor.getpersonaje().getPosition().y >= 116 && actor.getpersonaje().getPosition().y <= 328)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().left == 688) &&
+if((actor.getpersonaje().getGlobalBounds().left == 680) &&
     (actor.getpersonaje().getPosition().y >= 206 && actor.getpersonaje().getPosition().y <= 336)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().left == 978) &&
+if((actor.getpersonaje().getGlobalBounds().left == 944) &&
     (actor.getpersonaje().getPosition().y >= 140 && actor.getpersonaje().getPosition().y <= 336)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().left == 1068) &&
+if((actor.getpersonaje().getGlobalBounds().left == 1032) &&
     (actor.getpersonaje().getPosition().y >= 76 && actor.getpersonaje().getPosition().y <= 200)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().left == 200) &&
+if((actor.getpersonaje().getGlobalBounds().left == 160) &&
     (actor.getpersonaje().getPosition().y >= 550 && actor.getpersonaje().getPosition().y <= 720)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().left == 370) &&
-    (actor.getpersonaje().getPosition().y >= 353 && actor.getpersonaje().getPosition().y <= 615)){return false;}
+if((actor.getpersonaje().getGlobalBounds().left == 332) &&
+    (actor.getpersonaje().getPosition().y >= 353 && actor.getpersonaje().getPosition().y <= 616)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().left == 30) &&
-    (actor.getpersonaje().getPosition().y >= 288 && actor.getpersonaje().getPosition().y <= 410)){return false;}
+if((actor.getpersonaje().getGlobalBounds().left == 32) &&
+    (actor.getpersonaje().getPosition().y >= 288 && actor.getpersonaje().getPosition().y <= 412)){return false;}
 
 return true;
 }
 
 if(actor.getEstado() == camina_abajo){
-if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 425) &&
-    (actor.getpersonaje().getPosition().x >= 10 && actor.getpersonaje().getPosition().x <= 370)){return false;}
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 424) &&
+    (actor.getpersonaje().getPosition().x >= 10 && actor.getpersonaje().getPosition().x <= 330)){return false;}
 
 if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 700) &&
     (actor.getpersonaje().getPosition().x >= 150 && actor.getpersonaje().getPosition().x <= 458)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 682) &&
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 680) &&
     (actor.getpersonaje().getPosition().x >= 408 && actor.getpersonaje().getPosition().x <= 1158)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 422) &&
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 424) &&
     (actor.getpersonaje().getPosition().x >= 408 && actor.getpersonaje().getPosition().x <= 1068)){return false;}
 
 if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 284) &&
@@ -371,46 +335,154 @@ if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalB
 return true;}
 
 if(actor.getEstado() == camina_arriba){
-if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 188) &&
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 200) &&
     (actor.getpersonaje().getPosition().x >= 320 && actor.getpersonaje().getPosition().x <= 460)){return false;}
 
 if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 348) &&
     (actor.getpersonaje().getPosition().x >= 408 && actor.getpersonaje().getPosition().x <= 688)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 278) &&
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 280) &&
     (actor.getpersonaje().getPosition().x >= 638 && actor.getpersonaje().getPosition().x <= 778)){return false;}
 
 if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 348) &&
     (actor.getpersonaje().getPosition().x >= 728 && actor.getpersonaje().getPosition().x <= 978)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 212) &&
-    (actor.getpersonaje().getPosition().x >= 928 && actor.getpersonaje().getPosition().x <= 1068)){return false;}
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 216) &&
+    (actor.getpersonaje().getPosition().x >= 928 && actor.getpersonaje().getPosition().x <= 1018)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 148) &&
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 160) &&
     (actor.getpersonaje().getPosition().x >= 1018 && actor.getpersonaje().getPosition().x <= 1158)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 614) &&
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 612) &&
     (actor.getpersonaje().getPosition().x >= 408 && actor.getpersonaje().getPosition().x <= 1158)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 623) &&
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 624) &&
     (actor.getpersonaje().getPosition().x >= 240 && actor.getpersonaje().getPosition().x <= 291)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 623) &&
-    (actor.getpersonaje().getPosition().x >= 150 && actor.getpersonaje().getPosition().x <= 290)){return false;}
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 624) &&
+    (actor.getpersonaje().getPosition().x >= 150 && actor.getpersonaje().getPosition().x <= 240)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 635) &&
-    (actor.getpersonaje().getPosition().x >= 240 && actor.getpersonaje().getPosition().x <= 370)){return false;}
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 640) &&
+    (actor.getpersonaje().getPosition().x >= 240 && actor.getpersonaje().getPosition().x <= 330)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 360) &&
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 364) &&
     (actor.getpersonaje().getPosition().x >= 0 && actor.getpersonaje().getPosition().x <= 370)){return false;}
 
 return true;}
 
 }
 
+int juego::verificaringresonivel(){
+int b = 0;
+
+if((actor.getpersonaje().getPosition().x >= 700 && actor.getpersonaje().getPosition().x <= 740)
+   && (actor.getpersonaje().getPosition().y >= 150 && actor.getpersonaje().getPosition().y <= 280)
+   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
+    ///INGRESO A NIVEL 1
+    std::cout<<"NIVEL 1"<<std::endl;
+    state = lucha;
+    b = 1;
+}
+if((actor.getpersonaje().getPosition().x >= 355 && actor.getpersonaje().getPosition().x <= 405)
+   && (actor.getpersonaje().getPosition().y >= 100 && actor.getpersonaje().getPosition().y <= 192)
+   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
+    ///INGRESO A NIVEL 2
+    std::cout<<"NIVEL 2"<<std::endl;
+    state = lucha;
+    b = 2;
+}
+if((actor.getpersonaje().getPosition().x >= 55 && actor.getpersonaje().getPosition().x <= 100)
+   && (actor.getpersonaje().getPosition().y >= 280 && actor.getpersonaje().getPosition().y <= 360)
+   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
+    ///INGRESO A NIVEL 3
+    std::cout<<"NIVEL 3"<<std::endl;
+    state = lucha;
+    b = 3;
+}
+if((actor.getpersonaje().getPosition().x >= 192 && actor.getpersonaje().getPosition().x <= 232)
+   && (actor.getpersonaje().getPosition().y >= 525 && actor.getpersonaje().getPosition().y <= 615)
+   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
+    ///INGRESO A NIVEL 4
+    std::cout<<"NIVEL 4"<<std::endl;
+    state = lucha;
+    b = 4;
+}
+if((actor.getpersonaje().getPosition().x >= 1065 && actor.getpersonaje().getPosition().x <= 1125)
+   && (actor.getpersonaje().getPosition().y >= 505 && actor.getpersonaje().getPosition().y <= 615)
+   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
+    ///INGRESO A CURACION
+    std::cout<<"NIVEL 5"<<std::endl;
+    state = lucha;
+    b = 5;
+}
+return b;
+}
+
+void juego::eleccionDeNivel(int level, sf::RenderWindow *window){
+nivel pelea(level);
+int a = 0;
+actor.setEstado(atacando);
+
+    while (window->isOpen())
+    {
+        sf::Event event;
+        while (window->pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed){
+                 window->close();
+            }
+
+        }
 
 
 
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+            a = 0;
+    }
+    if(actor.getsalud() < 30){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            a = 1;
+    }
+    }
+
+
+    ///BAJAMOS VIDA A MALO
+    if(a == 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && actor.getEstado() == atacando){
+        std::cout<<"SALUD MALO"<<std::endl;
+        std::cout<<malote.getsalud()<<std::endl;
+        malote.bajar_salud(actor.getdanio());
+        std::cout<<malote.getsalud()<<std::endl<<std::endl;
+        actor.setEstado(esperando);
+        malote.setEstado(ataque);
+
+    }
+    ///BAJAMOS VIDA A PRINCIPAL
+    if(malote.getEstado() == ataque){
+        std::cout<<"SALUD MIA"<<std::endl;
+        std::cout<<actor.getsalud()<<std::endl;
+        actor.bajar_salud(malote.getdanio());
+        std::cout<<actor.getsalud()<<std::endl<<std::endl;
+        malote.setEstado(espera);
+        actor.setEstado(atacando);
+        }
+
+
+
+
+window->clear();
+window->draw(pelea.getfondo1());
+window->draw(pelea.personajeprincipalnivel());
+window->draw(pelea.personajemalonivel());
+window->draw(pelea.getcaja(a));
+window->draw(pelea.getcajas(a));
+window->draw(pelea.getdefensa());
+window->draw(pelea.getatacar());
+window->display();
+
+
+}
+
+}
 
 
 

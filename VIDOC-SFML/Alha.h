@@ -8,7 +8,8 @@ camina_derecha,
 camina_izquierda,
 camina_arriba,
 camina_abajo,
-
+esperando,
+atacando
 };
 
 
@@ -27,18 +28,15 @@ void entrar_nivel();
 bool defenderse();
 sf::Sprite &getpersonaje();
 void curacion();
-sf::Sprite &getpersonajenivel();
 void setpersonajeimagennivel();
 void setpersonajeimagen(int a, int b, int c, int d);
-void setpersonajeimageniz(int a, int b);
-void setpersonajeimageniz2(int a, int b);
-void setpersonajeimagende(int a, int b);
-void setpersonajeimagenat(int a, int b);
 int posicionpersonajex();
 int posicionpersonajey();
 void setataque();
 void setEstado(ESTADOS_PERSONAJE actual);
 ESTADOS_PERSONAJE getEstado();
+sf::Sprite& getpersonajenivel();
+void setpersonajenivel();
 };
 
 

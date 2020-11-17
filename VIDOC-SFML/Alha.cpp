@@ -7,11 +7,10 @@
 Alha::Alha(){
 setnombre("Alha");
 setsalud(100);
-Diosito.loadFromFile("perso.png");
 division_personaje.x = 8 ;
 division_personaje.y = 4;
-Alhaito.setTexture(Diosito);
-Alhaito.setPosition(400,200);
+Alhaito.setTexture(personajes);
+Alhaito.setPosition(1056,160);
 setpersonajeimagen(47,0,47,72);
 
 }
@@ -30,7 +29,7 @@ case 3:
 Danio = 30;
 break;
 case 4:
-Danio = 60;
+Danio = 40;
 break;
 }
 return Danio;
@@ -63,7 +62,7 @@ return Alhaito.getPosition().y;
 
 void Alha::setataque(){
 Tipo_ataque = rand()%4+1;
-srand(time(NULL));
+
 }
 
 void Alha::setEstado(ESTADOS_PERSONAJE actual){
@@ -72,4 +71,19 @@ movimiento = actual;
 
 ESTADOS_PERSONAJE Alha::getEstado(){
 return movimiento;
+}
+
+void Alha::setpersonajenivel(){
+
+sf::IntRect posicion(45*1,78*2,45,70);
+Alhaito.setTextureRect(posicion);
+Alhaito.setPosition(100,180);
+Alhaito.scale(5,5);
+
+}
+
+sf::Sprite& Alha::getpersonajenivel(){
+
+return Alhaito;
+
 }

@@ -48,11 +48,15 @@
 		<Unit filename="Menu.h" />
 		<Unit filename="Personaje.cpp" />
 		<Unit filename="Personaje.h" />
+		<Unit filename="enemy.cpp" />
+		<Unit filename="enemy.h" />
 		<Unit filename="juego.cpp" />
 		<Unit filename="juego.h" />
 		<Unit filename="limite.cpp" />
 		<Unit filename="limite.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="nivel.cpp" />
+		<Unit filename="nivel.h" />
 		<Unit filename="present.cpp" />
 		<Unit filename="present.h" />
 		<Extensions>

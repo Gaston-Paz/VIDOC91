@@ -9,9 +9,10 @@ protected:
 char Nombre[50];
 int Salud;
 bool Defensa;
-
+sf::Texture personajes;
 
 public:
+Personaje();
 void setnombre(char Nombrecito[50]);
 void setsalud(int Saludcito);
 void setdefensa(bool Condicion);
@@ -20,6 +21,7 @@ char getnombre();
 bool getdefensa();
 void bajar_salud(int Danio);
 int getsalud();
+void setTextura();
 
 };
 

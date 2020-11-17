@@ -6,12 +6,14 @@
 #include "Mapa.h"
 #include "Personaje.h"
 #include "Alha.h"
+#include "nivel.h"
+#include "enemy.h"
 
 enum ESTADOS_JUEGO{
 present,
 menu,
 mapa,
-nivel,
+lucha,
 cerrar
 };
 
@@ -22,9 +24,13 @@ presentacion inicio;
 sf::RenderWindow window;
 Menu principal;
 Mapa mapi;
+Personaje perso;
+enemigo malote;
 Alha actor;
 int opcion_menu = 1;
 unsigned int tics = 0;
+unsigned int tiempojuego = 0;
+nivel pelea;
 
 public:
 juego();
@@ -34,8 +40,9 @@ void cmd(sf::RenderWindow *window);
 void choisemenu(sf::RenderWindow *window);
 void imprimir_mapa(sf::RenderWindow *window);
 void cmd(int *x, int *y, sf::Event *event);
-void imprimir_todos_los_limites(sf::RenderWindow *window);
 bool chequearlimite();
+int verificaringresonivel();
+void eleccionDeNivel(int level, sf::RenderWindow *window);
 };
 
 

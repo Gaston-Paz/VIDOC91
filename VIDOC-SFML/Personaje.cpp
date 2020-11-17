@@ -4,6 +4,10 @@
 
 using namespace sf;
 
+Personaje::Personaje(){
+setTextura();
+}
+
 void Personaje::setnombre(char Nombrecito[50]){
 strcpy(Nombre,Nombrecito);
 }
@@ -36,5 +40,8 @@ Salud -= Danio;
 }
 }
 
+void Personaje::setTextura(){
+personajes.loadFromFile("perso.png");
+}
 
 
