@@ -6,6 +6,7 @@ using namespace sf;
 
 Personaje::Personaje(){
 setTextura();
+setTexturavida();
 }
 
 void Personaje::setnombre(char Nombrecito[50]){
@@ -44,4 +45,6 @@ void Personaje::setTextura(){
 personajes.loadFromFile("perso.png");
 }
 
-
+void Personaje::setTexturavida(){
+vida.loadFromFile("barra.png");
+}

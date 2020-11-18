@@ -12,7 +12,7 @@ division_personaje.y = 4;
 Alhaito.setTexture(personajes);
 Alhaito.setPosition(1056,160);
 setpersonajeimagen(47,0,47,72);
-
+barraVida.setTexture(vida);
 }
 
 int Alha::getdanio(){
@@ -86,4 +86,31 @@ sf::Sprite& Alha::getpersonajenivel(){
 
 return Alhaito;
 
+}
+
+sf::Sprite& Alha::getbarraVida(int vida){
+int a;
+if(vida <= 100 && vida >= 90){
+    a = 0;
+}else{
+if(vida < 90 && vida >= 70){
+    a = 1;
+}else{
+if(vida < 70 && vida >= 50){
+    a = 2;
+}else{
+if(vida < 50 && vida >= 30){
+    a = 3;
+}else{
+if(vida < 30){
+    a = 4;
+}
+}
+}
+}
+}
+sf::IntRect recorte(0,a*98,470,98);
+barraVida.setTextureRect(recorte);
+barraVida.setPosition(30,5);
+return barraVida;
 }

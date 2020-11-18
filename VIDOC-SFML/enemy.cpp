@@ -4,6 +4,7 @@
 enemigo::enemigo(){
 Salud = 100;
 malo.setTexture(personajes);
+barraVida.setTexture(vida);
 }
 
 enemigo::enemigo(int level){
@@ -73,7 +74,6 @@ void enemigo::setdanio(){
 Tipo_ataque = rand()%4+1;
 }
 
-
 ESTADO_ENEMY enemigo::getEstado(){
 return movimieto;
 }
@@ -82,3 +82,29 @@ void enemigo::setEstado(ESTADO_ENEMY actual){
 movimieto = actual;
 }
 
+sf::Sprite& enemigo::getbarraVida(int vida){
+int a;
+if(vida <= 100 && vida >= 90){
+    a = 0;
+}else{
+if(vida < 90 && vida >= 70){
+    a = 1;
+}else{
+if(vida < 70 && vida >= 50){
+    a = 2;
+}else{
+if(vida < 50 && vida >= 30){
+    a = 3;
+}else{
+if(vida < 30){
+    a = 4;
+}
+}
+}
+}
+}
+sf::IntRect recorte(0,a*98,470,98);
+barraVida.setTextureRect(recorte);
+barraVida.setPosition(700,5);
+return barraVida;
+}

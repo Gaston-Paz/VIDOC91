@@ -10,6 +10,8 @@ char Nombre[50];
 int Salud;
 bool Defensa;
 sf::Texture personajes;
+sf::Texture vida;
+
 
 public:
 Personaje();
@@ -22,6 +24,7 @@ bool getdefensa();
 void bajar_salud(int Danio);
 int getsalud();
 void setTextura();
+void setTexturavida();
 
 };
 

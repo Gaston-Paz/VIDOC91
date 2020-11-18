@@ -20,6 +20,7 @@ sf::Texture Diosito;
 int Tipo_ataque;
 sf::Vector2i division_personaje;
 ESTADOS_PERSONAJE movimiento;
+sf::Sprite barraVida;
 
 public:
 Alha();
@@ -37,6 +38,8 @@ void setEstado(ESTADOS_PERSONAJE actual);
 ESTADOS_PERSONAJE getEstado();
 sf::Sprite& getpersonajenivel();
 void setpersonajenivel();
+sf::Sprite& getbarraVida(int vida);
+
 };
 
 

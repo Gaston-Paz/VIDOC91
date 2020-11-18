@@ -423,8 +423,7 @@ nivel pelea(level);
 int a = 0;
 actor.setEstado(atacando);
 
-    while (window->isOpen())
-    {
+    while (window->isOpen() && (actor.getsalud() != 0 && malote.getsalud() != 0)){
         sf::Event event;
         while (window->pollEvent(event))
         {
@@ -454,8 +453,10 @@ actor.setEstado(atacando);
         std::cout<<malote.getsalud()<<std::endl<<std::endl;
         actor.setEstado(esperando);
         malote.setEstado(ataque);
+        window->draw(actor.getbarraVida(actor.getsalud()));
+        window->draw(malote.getbarraVida(malote.getsalud()));
 
-    }
+    }else{
     ///BAJAMOS VIDA A PRINCIPAL
     if(malote.getEstado() == ataque){
         std::cout<<"SALUD MIA"<<std::endl;
@@ -464,9 +465,11 @@ actor.setEstado(atacando);
         std::cout<<actor.getsalud()<<std::endl<<std::endl;
         malote.setEstado(espera);
         actor.setEstado(atacando);
+        window->draw(actor.getbarraVida(actor.getsalud()));
+        window->draw(malote.getbarraVida(malote.getsalud()));
         }
 
-
+        }
 
 
 window->clear();
@@ -477,10 +480,14 @@ window->draw(pelea.getcaja(a));
 window->draw(pelea.getcajas(a));
 window->draw(pelea.getdefensa());
 window->draw(pelea.getatacar());
+window->draw(actor.getbarraVida(actor.getsalud()));
+window->draw(malote.getbarraVida(malote.getsalud()));
 window->display();
 
 
 }
+
+state = mapa;
 
 }
 

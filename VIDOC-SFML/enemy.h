@@ -13,6 +13,9 @@ private:
 sf::Sprite malo;
 int Tipo_ataque;
 ESTADO_ENEMY movimieto;
+sf::Sprite barraVida;
+
+
 public:
 enemigo();
 enemigo(int level);
@@ -23,6 +26,8 @@ int getdanio();
 void setdanio();
 void setEstado(ESTADO_ENEMY actual);
 ESTADO_ENEMY getEstado();
+sf::Sprite& getbarraVida(int vida);
+
 };
 
 
