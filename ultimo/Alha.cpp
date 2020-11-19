@@ -29,7 +29,7 @@ case 3:
 Danio = 30;
 break;
 case 4:
-Danio = 40;
+Danio = 25;
 break;
 }
 return Danio;

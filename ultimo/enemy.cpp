@@ -8,21 +8,36 @@ barraVida.setTexture(vida);
 }
 
 enemigo::enemigo(int level){
-switch(level){
-case 1:
-sf::Sprite malo;
 malo.setTexture(personajes);
-malo.setTextureRect(sf::IntRect(4*47,2*72,47,72));
-malo.setPosition(100,120);
-malo.scale(sf::Vector2f(5,5));
 
-break;
-///case 2:
-///break;
-///case 3:
-///break;
-///case 4:
-///break;
+if(level == 1){
+sf::IntRect posicion(47,367,45,70);
+malo.setTextureRect(posicion);
+malo.setPosition(900,155);
+malo.scale(5,5);
+
+}
+
+if(level == 2){
+sf::IntRect posicion(47,72,45,70);
+malo.setTextureRect(posicion);
+malo.setPosition(900,155);
+malo.scale(5,5);
+}
+
+if(level == 3){
+sf::IntRect posicion(7*47,367,45,70);
+malo.setTextureRect(posicion);
+malo.setPosition(900,155);
+malo.scale(5,5);
+}
+
+if(level == 4){
+sf::IntRect posicion(4*47,367,45,70);
+malo.setTextureRect(posicion);
+malo.setPosition(900,155);
+malo.scale(5,5);
+
 }
 
 
@@ -32,12 +47,44 @@ sf::Sprite &enemigo::getSprite(){
 return malo;
 }
 
-void enemigo::setmalonivel(){
+void enemigo::setmalonivel(int level){
 
+if(level == 1){
 sf::IntRect posicion(47,367,45,70);
 malo.setTextureRect(posicion);
 malo.setPosition(900,155);
 malo.scale(5,5);
+
+}
+
+if(level == 2){
+sf::IntRect posicion(4*47,72,45,70);
+malo.setTextureRect(posicion);
+malo.setPosition(900,155);
+malo.scale(5,5);
+}
+
+if(level == 3){
+sf::IntRect posicion(7*47,367,45,70);
+malo.setTextureRect(posicion);
+malo.setPosition(900,155);
+malo.scale(5,5);
+}
+
+if(level == 4){
+sf::IntRect posicion(4*47,367,45,70);
+malo.setTextureRect(posicion);
+malo.setPosition(900,155);
+malo.scale(5,5);
+
+}
+if(level == 5){
+sf::IntRect posicion(9*47,367,45,70);
+malo.setTextureRect(posicion);
+malo.setPosition(900,155);
+malo.scale(5,5);
+
+}
 
 }
 
@@ -47,9 +94,12 @@ return malo;
 
 }
 
-int enemigo::getdanio(){
+int enemigo::getdanio(int level){
 int danio;
 setdanio();
+
+switch(level){
+case 1:
 switch(Tipo_ataque){
 case 1:
 danio = 5;
@@ -63,10 +113,87 @@ break;
 case 4:
 danio = 20;
 break;
+}
+break;
+
+case 2:
+switch(Tipo_ataque){
+case 1:
+danio = 7;
+break;
+case 2:
+danio = 12;
+break;
+case 3:
+danio = 17;
+break;
+case 4:
+danio = 25;
+break;
+}
+
+break;
+
+case 3:
+
+switch(Tipo_ataque){
+case 1:
+danio = 10;
+break;
+case 2:
+danio = 15;
+break;
+case 3:
+danio = 20;
+break;
+case 4:
+danio = 22;
+break;
+}
+
+break;
+
+case 4:
+switch(Tipo_ataque){
+case 1:
+danio = 12;
+break;
+case 2:
+danio = 15;
+break;
+case 3:
+danio = 20;
+break;
+case 4:
+danio = 24;
+break;
+}
+
+
+break;
+
+case 5:
+switch(Tipo_ataque){
+case 1:
+danio = 15;
+break;
+case 2:
+danio = 17;
+break;
+case 3:
+danio = 20;
+break;
+case 4:
+danio = 30;
+break;
+}
+
+
+break;
+
 
 
 }
-
 return danio;
 }
 
@@ -109,9 +236,9 @@ barraVida.setPosition(750,5);
 return barraVida;
 }
 
-void enemigo::setpersonajeMuevenivel(int x){
-
-sf::IntRect posicion(47*x,367,45,70);
+void enemigo::setpersonajeMuevenivel(int x, int level){
+if(level == 1){
+sf::IntRect posicion(x*47,367,45,70);
 malo.setTextureRect(posicion);
 malo.setPosition(900,155);
 
@@ -120,5 +247,60 @@ if(malo.getPosition().x + malo.getGlobalBounds().left > 190){
 
 }
 
+}
+
+if(level == 2){
+sf::IntRect posicion((x*47)+150,80,45,70);
+malo.setTextureRect(posicion);
+malo.setPosition(900,155);
+
+if(malo.getPosition().x + malo.getGlobalBounds().left > 190){
+    malo.move(-600,0);
 
 }
+
+}
+
+if(level == 3){
+sf::IntRect posicion((x*47)+290,367,45,70);
+malo.setTextureRect(posicion);
+malo.setPosition(900,155);
+
+if(malo.getPosition().x + malo.getGlobalBounds().left > 190){
+    malo.move(-600,0);
+
+}
+
+}
+
+if(level == 4){
+sf::IntRect posicion((x*47)+142,367,45,70);
+malo.setTextureRect(posicion);
+malo.setPosition(900,155);
+
+if(malo.getPosition().x + malo.getGlobalBounds().left > 190){
+    malo.move(-600,0);
+
+}
+
+}
+
+if(level == 5){
+sf::IntRect posicion((x*47)+430,367,45,70);
+malo.setTextureRect(posicion);
+malo.setPosition(900,155);
+
+if(malo.getPosition().x + malo.getGlobalBounds().left > 190){
+    malo.move(-600,0);
+
+}
+
+}
+
+
+
+
+
+}
+
+

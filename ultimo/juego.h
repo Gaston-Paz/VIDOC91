@@ -8,13 +8,15 @@
 #include "Alha.h"
 #include "nivel.h"
 #include "enemy.h"
+#include "puntuacion.h"
 
 enum ESTADOS_JUEGO{
 present,
 menu,
 mapa,
 lucha,
-cerrar
+cerrar,
+nombrejugador
 };
 
 class juego{
@@ -32,6 +34,8 @@ unsigned int tics = 0;
 unsigned int tiempojuego = 0;
 nivel pelea;
 unsigned int tiempoAtaque = 0;
+puntos puntua;
+bool nivelesDesbloqueados[6];
 
 public:
 juego();
@@ -47,6 +51,7 @@ void eleccionDeNivel(int level, sf::RenderWindow *window);
 void principalAtaca();
 void imprimirpantallanivel(int a, sf::RenderWindow *window, nivel *pelea, bool turno);
 void imprimirpantallanivel(int a, sf::RenderWindow *window, nivel *pelea);
+void setNivelesDesbloquados();
 };
 
 

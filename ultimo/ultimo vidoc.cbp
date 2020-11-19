@@ -46,7 +46,6 @@
 		<Unit filename="Calle.h" />
 		<Unit filename="Casa.cpp" />
 		<Unit filename="Casa.h" />
-		<Unit filename="Enemigo.cpp" />
 		<Unit filename="Enemigo.h" />
 		<Unit filename="Mapa.cpp" />
 		<Unit filename="Mapa.h" />
@@ -68,6 +67,8 @@
 		<Unit filename="nivel.h" />
 		<Unit filename="present.cpp" />
 		<Unit filename="present.h" />
+		<Unit filename="puntuacion.cpp" />
+		<Unit filename="puntuacion.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

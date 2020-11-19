@@ -9,7 +9,7 @@
 #include <iostream>
 
 juego::juego(){
-
+    setNivelesDesbloquados();
     state = present;
     sf::RenderWindow window(sf::VideoMode(1280, 720), "VIDOC 91");
     window.setFramerateLimit(60);
@@ -98,12 +98,15 @@ tics++;
 state = menu;
 }
 if(state == menu){
+    window->setFramerateLimit(10);
     imprimir_menu(window);
     cmd(window);
     choisemenu(window);
 }
+
+window->setFramerateLimit(60);
 if(state == mapa){
-  imprimir_mapa(window);
+imprimir_mapa(window);
 a = verificaringresonivel();
 }
 if(state == lucha){
@@ -121,6 +124,9 @@ window->draw(principal.getcontinuar());
 window->draw(principal.getpuntuacion());
 window->draw(principal.getsalir());
 window->display();
+
+
+
 }
 
 void juego::cmd(sf::RenderWindow *window){
@@ -345,7 +351,7 @@ if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalB
     (actor.getpersonaje().getPosition().x >= 638 && actor.getpersonaje().getPosition().x <= 778)){return false;}
 
 if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 348) &&
-    (actor.getpersonaje().getPosition().x >= 728 && actor.getpersonaje().getPosition().x <= 978)){return false;}
+    (actor.getpersonaje().getPosition().x >= 728 && actor.getpersonaje().getPosition().x <= 928)){return false;}
 
 if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 216) &&
     (actor.getpersonaje().getPosition().x >= 928 && actor.getpersonaje().getPosition().x <= 1018)){return false;}
@@ -377,7 +383,7 @@ int b = 0;
 
 if((actor.getpersonaje().getPosition().x >= 700 && actor.getpersonaje().getPosition().x <= 740)
    && (actor.getpersonaje().getPosition().y >= 150 && actor.getpersonaje().getPosition().y <= 280)
-   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
+   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) && nivelesDesbloqueados[0] == true){
     ///INGRESO A NIVEL 1
     std::cout<<"NIVEL 1"<<std::endl;
     state = lucha;
@@ -385,7 +391,7 @@ if((actor.getpersonaje().getPosition().x >= 700 && actor.getpersonaje().getPosit
 }
 if((actor.getpersonaje().getPosition().x >= 355 && actor.getpersonaje().getPosition().x <= 405)
    && (actor.getpersonaje().getPosition().y >= 100 && actor.getpersonaje().getPosition().y <= 192)
-   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
+   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))&& nivelesDesbloqueados[1] == true){
     ///INGRESO A NIVEL 2
     std::cout<<"NIVEL 2"<<std::endl;
     state = lucha;
@@ -393,7 +399,7 @@ if((actor.getpersonaje().getPosition().x >= 355 && actor.getpersonaje().getPosit
 }
 if((actor.getpersonaje().getPosition().x >= 55 && actor.getpersonaje().getPosition().x <= 100)
    && (actor.getpersonaje().getPosition().y >= 280 && actor.getpersonaje().getPosition().y <= 360)
-   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
+   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))&& nivelesDesbloqueados[2] == true){
     ///INGRESO A NIVEL 3
     std::cout<<"NIVEL 3"<<std::endl;
     state = lucha;
@@ -401,7 +407,7 @@ if((actor.getpersonaje().getPosition().x >= 55 && actor.getpersonaje().getPositi
 }
 if((actor.getpersonaje().getPosition().x >= 192 && actor.getpersonaje().getPosition().x <= 232)
    && (actor.getpersonaje().getPosition().y >= 525 && actor.getpersonaje().getPosition().y <= 615)
-   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
+   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))&& nivelesDesbloqueados[3] == true){
     ///INGRESO A NIVEL 4
     std::cout<<"NIVEL 4"<<std::endl;
     state = lucha;
@@ -409,7 +415,7 @@ if((actor.getpersonaje().getPosition().x >= 192 && actor.getpersonaje().getPosit
 }
 if((actor.getpersonaje().getPosition().x >= 1065 && actor.getpersonaje().getPosition().x <= 1125)
    && (actor.getpersonaje().getPosition().y >= 505 && actor.getpersonaje().getPosition().y <= 615)
-   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
+   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))&& nivelesDesbloqueados[4] == true){
     ///INGRESO A CURACION
     std::cout<<"NIVEL 5"<<std::endl;
     state = lucha;
@@ -425,7 +431,9 @@ int x = 1;
 int i = 0;
 int y = 0;
 bool turno = true;
-pelea.getpersonaje().setsalud(25);
+bool banderaDefensa = true;
+pelea.getpersonaje().setEstado(atacando);
+pelea.getmalo().setEstado(espera);
 
     while (window->isOpen() && (pelea.getpersonaje().getsalud() != 0 && pelea.getmalo().getsalud() != 0)){
         sf::Event event;
@@ -436,35 +444,36 @@ pelea.getpersonaje().setsalud(25);
             }
 
         }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
             a = 0;}
 
-if(pelea.getpersonaje().getsalud() < 30){
+if(pelea.getpersonaje().getsalud() < 30 && banderaDefensa == true){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
             a = 1;
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
                 std::cout<<"VIDA MIA: "<<pelea.getpersonaje().getsalud()<<std::endl;
                 std::cout<<"VIDA el: "<<pelea.getmalo().getsalud()<<std::endl;
                 while(tiempoAtaque < 180){
-                    pelea.getmalo().setpersonajeMuevenivel(x);
+                    pelea.getmalo().setpersonajeMuevenivel(x,level);
 
                     if(x == 2){
                         x = 0;
                     }else{x++;}
                         tiempoAtaque++;
-                        imprimirpantallanivel(a, window, &pelea,turno);
+                        imprimirpantallanivel(a, window, &pelea,false);
                     }
 
                 tiempoAtaque = 0;
                 pelea.getmalo().getmalonivel().setPosition(900,155);
 
-                int danio = pelea.getmalo().getdanio();
+                int danio = pelea.getmalo().getdanio(level);
                 pelea.getmalo().bajar_salud(danio/2);
 
                 pelea.getpersonaje().curacion(danio/2);
                 a=0;
                 std::cout<<"VIDA MIA: "<<pelea.getpersonaje().getsalud()<<std::endl;
                 std::cout<<"VIDA el: "<<pelea.getmalo().getsalud()<<std::endl;
+                banderaDefensa = false;
             }
 
         }
@@ -501,7 +510,7 @@ if(pelea.getpersonaje().getsalud() < 30){
     ///BAJAMOS VIDA A PRINCIPAL
     if(pelea.getmalo().getEstado() == ataque){
         while(tiempoAtaque < 180){
-            pelea.getmalo().setpersonajeMuevenivel(x);
+            pelea.getmalo().setpersonajeMuevenivel(x,level);
 
             if(x == 2){
                 x = 0;
@@ -514,7 +523,7 @@ if(pelea.getpersonaje().getsalud() < 30){
         pelea.getmalo().getmalonivel().setPosition(900,155);
 
 
-        pelea.getpersonaje().bajar_salud(pelea.getmalo().getdanio());
+        pelea.getpersonaje().bajar_salud(pelea.getmalo().getdanio(level));
 
         pelea.getmalo().setEstado(espera);
         pelea.getpersonaje().setEstado(atacando);
@@ -546,7 +555,11 @@ window->display();
 tiempoAtaque++;
 }
 state = mapa;
+
+puntua.setpuntos(pelea.getpersonaje().getsalud());
+nivelesDesbloqueados[level]=true;
 }
+
 else{
 if(pelea.getpersonaje().getsalud() <= 0){
 pelea.setmuerte(false);
@@ -565,9 +578,9 @@ tiempoAtaque++;
 state = menu;
 }
 }
+tiempoAtaque=0;
+
 }
-
-
 
 void juego::imprimirpantallanivel(int a, sf::RenderWindow *window, nivel *pelea, bool turno){
 if(turno){
@@ -619,8 +632,14 @@ window->display();
 
 }
 
-
-
+void juego::setNivelesDesbloquados(){
+nivelesDesbloqueados[0] = true;
+nivelesDesbloqueados[1] = false;
+nivelesDesbloqueados[2] = false;
+nivelesDesbloqueados[3] = false;
+nivelesDesbloqueados[4] = false;
+nivelesDesbloqueados[5] = false;
+}
 
 
 

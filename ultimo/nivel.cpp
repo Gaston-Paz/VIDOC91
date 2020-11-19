@@ -9,7 +9,8 @@ nivel::nivel(int level){
 setfondos1(level);
 princi.setEstado(atacando);
 princi.setpersonajenivel();
-maldito.setmalonivel();
+maldito.setmalonivel(level);
+
 setTexturaGolpe();
 golpe.scale(1,1);
 fuent.loadFromFile("Base05.ttf");
@@ -32,14 +33,28 @@ switch(level){
 case 1:
 fondo.loadFromFile("nivel1.png");
 fondi.setTexture(fondo);
-
 break;
-///case 2:
-///break;
-///case 3:
-///break;
-///case 4:
-///break;
+
+case 2:
+fondo.loadFromFile("nivel2.png");
+fondi.setTexture(fondo);
+break;
+
+case 3:
+fondo.loadFromFile("nivel3.png");
+fondi.setTexture(fondo);
+break;
+
+case 4:
+fondo.loadFromFile("nivel4.png");
+fondi.setTexture(fondo);
+break;
+
+case 5:
+fondo.loadFromFile("nivel5.png");
+fondi.setTexture(fondo);
+break;
+
 }
 
 }

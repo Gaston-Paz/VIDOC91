@@ -72,7 +72,7 @@
 	<SFML/Graphics.hpp>
 	"present.h"
 
-1605741454 source:c:\users\gastón\desktop\ultimo\alha.cpp
+1605813637 source:c:\users\gastón\desktop\ultimo\alha.cpp
 	<SFML/Graphics.hpp>
 	"Personaje.h"
 	"Alha.h"
@@ -507,11 +507,11 @@
 1604603817 c:\users\gastón\desktop\ultimo\casa.h
 	<SFML/Graphics.hpp>
 
-1605732862 source:c:\users\gastón\desktop\ultimo\enemy.cpp
+1605815287 source:c:\users\gastón\desktop\ultimo\enemy.cpp
 	"enemy.h"
 	"Alha.h"
 
-1605733450 c:\users\gastón\desktop\ultimo\enemy.h
+1605813199 c:\users\gastón\desktop\ultimo\enemy.h
 	<SFML/Graphics.hpp>
 	"Personaje.h"
 
@@ -519,7 +519,7 @@
 	<iostream>
 	"juego.h"
 
-1605736874 c:\users\gastón\desktop\ultimo\juego.h
+1605815929 c:\users\gastón\desktop\ultimo\juego.h
 	<SFML/Graphics.hpp>
 	"present.h"
 	"Menu.h"
@@ -528,6 +528,7 @@
 	"Alha.h"
 	"nivel.h"
 	"enemy.h"
+	"puntuacion.h"
 
 1604808239 c:\users\gastón\desktop\ultimo\present.h
 	<SFML/Graphics.hpp>
@@ -581,11 +582,11 @@
 
 1605382515 source:c:\users\gastón\desktop\ultimo\enemigo.cpp
 
-1605741447 source:c:\users\gastón\desktop\ultimo\nivel.cpp
+1605815120 source:c:\users\gastón\desktop\ultimo\nivel.cpp
 	<SFML/Graphics.hpp>
 	"nivel.h"
 
-1605745859 source:c:\users\gastón\desktop\ultimo\juego.cpp
+1605815929 source:c:\users\gastón\desktop\ultimo\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"present.h"
@@ -595,4 +596,10 @@
 	"Alha.h"
 	"nivel.h"
 	<iostream>
+
+1605751433 c:\users\gastón\desktop\ultimo\puntuacion.h
+	<SFML/Graphics.hpp>
+
+1605751433 source:c:\users\gastón\desktop\ultimo\puntuacion.cpp
+	"puntuacion.h"
 

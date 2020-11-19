@@ -20,14 +20,14 @@ public:
 enemigo();
 enemigo(int level);
 sf::Sprite &getSprite();
-void setmalonivel();
+void setmalonivel(int level);
 sf::Sprite& getmalonivel();
-int getdanio();
+int getdanio(int level);
 void setdanio();
 void setEstado(ESTADO_ENEMY actual);
 ESTADO_ENEMY getEstado();
 sf::Sprite& getbarraVida(int vida);
-void setpersonajeMuevenivel(int x);
+void setpersonajeMuevenivel(int x, int level);
 };
 
 
