@@ -22,6 +22,8 @@ sf::Vector2i division_personaje;
 ESTADOS_PERSONAJE movimiento;
 sf::Sprite barraVida;
 
+
+
 public:
 Alha();
 int getdanio();
@@ -39,6 +41,11 @@ ESTADOS_PERSONAJE getEstado();
 sf::Sprite& getpersonajenivel();
 void setpersonajenivel();
 sf::Sprite& getbarraVida(int vida);
+void ataca(int x);
+void setpersonajeMuevenivel(int x);
+
+
+
 
 };
 

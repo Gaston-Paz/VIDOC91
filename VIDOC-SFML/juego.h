@@ -31,6 +31,7 @@ int opcion_menu = 1;
 unsigned int tics = 0;
 unsigned int tiempojuego = 0;
 nivel pelea;
+unsigned int tiempoAtaque = 0;
 
 public:
 juego();
@@ -43,6 +44,9 @@ void cmd(int *x, int *y, sf::Event *event);
 bool chequearlimite();
 int verificaringresonivel();
 void eleccionDeNivel(int level, sf::RenderWindow *window);
+void principalAtaca();
+void imprimirpantallanivel(int a, sf::RenderWindow *window, nivel *pelea);
+
 };
 
 

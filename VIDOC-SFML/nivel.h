@@ -17,6 +17,8 @@ sf::Text ataque;
 sf::Text defensa;
 sf::RectangleShape cajas;
 sf::RectangleShape caja;
+
+
 public:
 nivel();
 nivel(int level);
@@ -29,7 +31,9 @@ sf::RectangleShape getcaja(int caji);
 sf::RectangleShape getcajas(int caji);
 sf::Text& getdefensa();
 sf::Text& getatacar();
-
+Alha& getpersonaje();
+enemigo& getmalo();
+void principalAtaca(int x);
 };
 
 #endif // NIVEL_H_INCLUDED

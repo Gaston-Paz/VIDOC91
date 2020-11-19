@@ -105,6 +105,6 @@ if(vida < 30){
 }
 sf::IntRect recorte(0,a*98,470,98);
 barraVida.setTextureRect(recorte);
-barraVida.setPosition(700,5);
+barraVida.setPosition(750,5);
 return barraVida;
 }

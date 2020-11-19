@@ -75,10 +75,25 @@ return movimiento;
 
 void Alha::setpersonajenivel(){
 
-sf::IntRect posicion(45*1,78*2,45,70);
+sf::IntRect posicion(45,78*2,45,70);
 Alhaito.setTextureRect(posicion);
 Alhaito.setPosition(100,180);
 Alhaito.scale(5,5);
+
+
+}
+
+void Alha::setpersonajeMuevenivel(int x){
+
+sf::IntRect posicion(45*x,78*2,45,70);
+Alhaito.setTextureRect(posicion);
+Alhaito.setPosition(100,180);
+
+if(Alhaito.getPosition().x + Alhaito.getGlobalBounds().width < 890){
+    Alhaito.move(600,0);
+
+}
+
 
 }
 
@@ -114,3 +129,12 @@ barraVida.setTextureRect(recorte);
 barraVida.setPosition(30,5);
 return barraVida;
 }
+
+void Alha::ataca(int x){
+
+setpersonajenivel();
+
+
+
+}
+

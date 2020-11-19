@@ -1880,7 +1880,7 @@
 1604611048 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\calle.h
 	<SFML/Graphics.hpp>
 
-1605725407 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\alha.cpp
+1605730898 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\alha.cpp
 	<SFML/Graphics.hpp>
 	"Personaje.h"
 	"Alha.h"
@@ -2297,7 +2297,7 @@
 1605725262 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\personaje.h
 	<SFML/Graphics.hpp>
 
-1605725262 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\alha.h
+1605730891 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\alha.h
 	<SFML/Graphics.hpp>
 	"Personaje.h"
 
@@ -2308,7 +2308,7 @@
 1604602055 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\calle.h
 	<SFML/Graphics.hpp>
 
-1605725688 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\juego.cpp
+1605730685 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"present.h"
@@ -2319,7 +2319,7 @@
 	"nivel.h"
 	<iostream>
 
-1605655033 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\juego.h
+1605730569 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\juego.h
 	<SFML/Graphics.hpp>
 	"present.h"
 	"Menu.h"
@@ -2355,11 +2355,11 @@
 	<SFML/Graphics.hpp>
 	"Menu.h"
 
-1605653513 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\nivel.cpp
+1605730910 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\nivel.cpp
 	<SFML/Graphics.hpp>
 	"nivel.h"
 
-1605652632 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\nivel.h
+1605728275 c:\users\gastón\documents\github\vidoc91\vidoc-sfml\nivel.h
 	<SFML/Graphics.hpp>
 	"Alha.h"
 	"enemy.h"
@@ -2940,7 +2940,7 @@
 	"enemy.h"
 	"Alha.h"
 
-1605725407 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\enemy.cpp
+1605727508 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\enemy.cpp
 	"enemy.h"
 	"Alha.h"
 

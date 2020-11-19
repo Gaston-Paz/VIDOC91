@@ -421,9 +421,10 @@ return b;
 void juego::eleccionDeNivel(int level, sf::RenderWindow *window){
 nivel pelea(level);
 int a = 0;
-actor.setEstado(atacando);
+int x = 1;
+pelea.getpersonaje().setEstado(atacando);
 
-    while (window->isOpen() && (actor.getsalud() != 0 && malote.getsalud() != 0)){
+    while (window->isOpen() && (pelea.getpersonaje().getsalud() != 0 && pelea.getmalo().getsalud() != 0)){
         sf::Event event;
         while (window->pollEvent(event))
         {
@@ -438,7 +439,7 @@ actor.setEstado(atacando);
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
             a = 0;
     }
-    if(actor.getsalud() < 30){
+    if(pelea.getpersonaje().getsalud() < 30){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
             a = 1;
     }
@@ -446,51 +447,71 @@ actor.setEstado(atacando);
 
 
     ///BAJAMOS VIDA A MALO
-    if(a == 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && actor.getEstado() == atacando){
+    if(a == 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && pelea.getpersonaje().getEstado() == atacando){
+        while(tiempoAtaque < 300){
+            pelea.getpersonaje().setpersonajeMuevenivel(x);
+            imprimirpantallanivel(a, window, &pelea);
+
+            if(x == 2){
+                x = 0;
+            }else{x++;}
+                tiempoAtaque++;
+            }
+
+
+
+        tiempoAtaque = 0;
+
+        ///DESPUES DE ESOS 5 SEGUNDOS PASA LO DE ABAJO
         std::cout<<"SALUD MALO"<<std::endl;
-        std::cout<<malote.getsalud()<<std::endl;
-        malote.bajar_salud(actor.getdanio());
-        std::cout<<malote.getsalud()<<std::endl<<std::endl;
-        actor.setEstado(esperando);
-        malote.setEstado(ataque);
-        window->draw(actor.getbarraVida(actor.getsalud()));
-        window->draw(malote.getbarraVida(malote.getsalud()));
+        std::cout<<pelea.getmalo().getsalud()<<std::endl;
+
+        pelea.getmalo().bajar_salud(pelea.getpersonaje().getdanio());
+        std::cout<<pelea.getmalo().getsalud()<<std::endl<<std::endl;
+        pelea.getpersonaje().setEstado(esperando);
+        pelea.getmalo().setEstado(ataque);
+
+
 
     }else{
     ///BAJAMOS VIDA A PRINCIPAL
-    if(malote.getEstado() == ataque){
+    if(pelea.getmalo().getEstado() == ataque){
         std::cout<<"SALUD MIA"<<std::endl;
-        std::cout<<actor.getsalud()<<std::endl;
-        actor.bajar_salud(malote.getdanio());
-        std::cout<<actor.getsalud()<<std::endl<<std::endl;
-        malote.setEstado(espera);
-        actor.setEstado(atacando);
-        window->draw(actor.getbarraVida(actor.getsalud()));
-        window->draw(malote.getbarraVida(malote.getsalud()));
-        }
+        std::cout<<pelea.getpersonaje().getsalud()<<std::endl;
+        pelea.getpersonaje().bajar_salud(pelea.getmalo().getdanio());
+        std::cout<<pelea.getpersonaje().getsalud()<<std::endl<<std::endl;
+        pelea.getmalo().setEstado(espera);
+        pelea.getpersonaje().setEstado(atacando);
 
         }
 
-
-window->clear();
-window->draw(pelea.getfondo1());
-window->draw(pelea.personajeprincipalnivel());
-window->draw(pelea.personajemalonivel());
-window->draw(pelea.getcaja(a));
-window->draw(pelea.getcajas(a));
-window->draw(pelea.getdefensa());
-window->draw(pelea.getatacar());
-window->draw(actor.getbarraVida(actor.getsalud()));
-window->draw(malote.getbarraVida(malote.getsalud()));
-window->display();
+        }
 
 
-}
+imprimirpantallanivel(a, window, &pelea);
+
+
 
 state = mapa;
 
 }
+}
 
+void juego::imprimirpantallanivel(int a, sf::RenderWindow *window, nivel *pelea){
+window->clear();
+window->draw(pelea->getfondo1());
+window->draw(pelea->personajeprincipalnivel());
+window->draw(pelea->personajemalonivel());
+window->draw(pelea->getcaja(a));
+window->draw(pelea->getcajas(a));
+window->draw(pelea->getdefensa());
+window->draw(pelea->getatacar());
+window->draw(pelea->getpersonaje().getbarraVida(pelea->getpersonaje().getsalud()));
+window->draw(pelea->getmalo().getbarraVida(pelea->getmalo().getsalud()));
+window->display();
+
+
+}
 
 
 

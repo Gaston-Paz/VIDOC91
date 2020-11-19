@@ -7,8 +7,10 @@ nivel::nivel(){
 
 nivel::nivel(int level){
 setfondos1(level);
+princi.setEstado(atacando);
 princi.setpersonajenivel();
 maldito.setmalonivel();
+
 
 fuent.loadFromFile("Base05.ttf");
 
@@ -92,4 +94,20 @@ return cajas;
 if(caji == 1){
 cajas.setFillColor(sf::Color::Red);
 return cajas;}
+}
+
+Alha& nivel::getpersonaje(){
+return princi;
+}
+
+enemigo& nivel::getmalo(){
+return maldito;
+}
+
+void nivel::principalAtaca(int x){
+
+princi.setpersonajenivel();
+
+
+
 }
