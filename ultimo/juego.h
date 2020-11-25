@@ -1,6 +1,7 @@
 #ifndef JUEGO_H_INCLUDED
 #define JUEGO_H_INCLUDED
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "present.h"
 #include "Menu.h"
 #include "Mapa.h"

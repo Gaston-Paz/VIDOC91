@@ -25,6 +25,8 @@ defensa.setString("DEFENDER");
 defensa.setPosition(800,575);
 defensa.scale(2,2);
 
+musica.openFromFile("nivel.wav");
+
 
 }
 
@@ -188,5 +190,7 @@ winOlose.setFillColor(sf::Color::Green);
 
 }
 
-
+sf::Music& nivel::getMusica(){
+return musica;
+}
 

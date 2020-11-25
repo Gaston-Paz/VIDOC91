@@ -14,7 +14,7 @@ juego::juego(){
     sf::RenderWindow window(sf::VideoMode(1280, 720), "VIDOC 91");
     window.setFramerateLimit(60);
     int x = 0, y = 0;
-
+    mapi.getMusica().play();
     while (window.isOpen())
     {
         sf::Event event;
@@ -434,6 +434,9 @@ bool turno = true;
 bool banderaDefensa = true;
 pelea.getpersonaje().setEstado(atacando);
 pelea.getmalo().setEstado(espera);
+mapi.getMusica().stop();
+pelea.getMusica().play();
+
 
     while (window->isOpen() && (pelea.getpersonaje().getsalud() != 0 && pelea.getmalo().getsalud() != 0)){
         sf::Event event;

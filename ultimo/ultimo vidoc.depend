@@ -519,8 +519,9 @@
 	<iostream>
 	"juego.h"
 
-1605815929 c:\users\gastón\desktop\ultimo\juego.h
+1606330686 c:\users\gastón\desktop\ultimo\juego.h
 	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
 	"present.h"
 	"Menu.h"
 	"Mapa.h"
@@ -536,27 +537,30 @@
 1604809681 c:\users\gastón\desktop\ultimo\menu.h
 	<SFML/Graphics.hpp>
 
-1605119039 c:\users\gastón\desktop\ultimo\mapa.h
+1606331465 c:\users\gastón\desktop\ultimo\mapa.h
 	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
 	"limite.h"
 
 1605120973 c:\users\gastón\desktop\ultimo\limite.h
 	<SFML/Graphics.hpp>
 
-1605740299 c:\users\gastón\desktop\ultimo\nivel.h
+1606330722 c:\users\gastón\desktop\ultimo\nivel.h
 	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
 	"Alha.h"
 	"enemy.h"
 
 1605121017 source:c:\users\gastón\desktop\ultimo\limite.cpp
 	"limite.h"
 
-1605654107 source:c:\users\gastón\desktop\ultimo\main.cpp
+1606330686 source:c:\users\gastón\desktop\ultimo\main.cpp
 	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
 	"juego.h"
 	<ctime>
 
-1605120973 source:c:\users\gastón\desktop\ultimo\mapa.cpp
+1606331471 source:c:\users\gastón\desktop\ultimo\mapa.cpp
 	<SFML/Graphics.hpp>
 	"Mapa.h"
 
@@ -582,11 +586,11 @@
 
 1605382515 source:c:\users\gastón\desktop\ultimo\enemigo.cpp
 
-1605815120 source:c:\users\gastón\desktop\ultimo\nivel.cpp
+1606330700 source:c:\users\gastón\desktop\ultimo\nivel.cpp
 	<SFML/Graphics.hpp>
 	"nivel.h"
 
-1605815929 source:c:\users\gastón\desktop\ultimo\juego.cpp
+1606331450 source:c:\users\gastón\desktop\ultimo\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"present.h"
@@ -602,4 +606,108 @@
 
 1605751433 source:c:\users\gastón\desktop\ultimo\puntuacion.cpp
 	"puntuacion.h"
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio.hpp
+	<SFML/System.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/Audio/Listener.hpp>
+	<SFML/Audio/Music.hpp>
+	<SFML/Audio/OutputSoundFile.hpp>
+	<SFML/Audio/Sound.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundBufferRecorder.hpp>
+	<SFML/Audio/SoundFileFactory.hpp>
+	<SFML/Audio/SoundFileReader.hpp>
+	<SFML/Audio/SoundFileWriter.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/Audio/SoundStream.hpp>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\inputsoundfile.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<algorithm>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\export.hpp
+	<SFML/Config.hpp>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\listener.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\music.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundStream.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\soundstream.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/System/Mutex.hpp>
+	<cstdlib>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\soundsource.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Vector3.hpp>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\alresource.hpp
+	<SFML/Audio/Export.hpp>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\outputsoundfile.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<string>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\sound.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\soundbuffer.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<set>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\soundbufferrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<vector>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\soundrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<vector>
+	<string>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\soundfilefactory.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+	<vector>
+	<SFML/Audio/SoundFileFactory.inl>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\soundfilefactory.inl
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\soundfilereader.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+
+1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\soundfilewriter.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
 

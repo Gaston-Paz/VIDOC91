@@ -4,7 +4,8 @@
 Mapa::Mapa(){
 setmapa();
 limite limit;
-cargar_limites();
+///cargar_limites();
+musica.openFromFile("mapa.wav");
 }
 
 void Mapa::setmapa(){
@@ -23,7 +24,7 @@ window->draw(limit[p].getlimite(x,y,a,b));
 sf::RectangleShape Mapa::getlimite(int x){
 return limit[x].lim;
 }
-
+/*
 void Mapa::cargar_limites(){
 limit[0].setearlimite(1,65,30,360);
 limit[1].setearlimite(340,1,30,360);
@@ -57,3 +58,8 @@ limit[28].setearlimite(1,172,370,188);
 limit[29].setearlimite(90,1,370,188);
 }
 
+*/
+
+sf::Music& Mapa::getMusica(){
+return musica;
+}
