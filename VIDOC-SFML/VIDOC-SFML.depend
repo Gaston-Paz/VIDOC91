@@ -423,17 +423,15 @@
 	<iostream>
 	"juego.h"
 
-1604612017 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.cpp
+1605817149 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
-	"Presentacion.h"
+	"present.h"
 	"Menu.h"
 	"Mapa.h"
+	"Personaje.h"
 	"Alha.h"
-	"Casa.h"
-	"Calle.h"
 	"nivel.h"
-	"Raviolete.h"
 	<iostream>
 
 1603226158 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\sfml\include\sfml\graphics.hpp
@@ -845,37 +843,38 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1604611048 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.h
+1605817149 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\juego.h
 	<SFML/Graphics.hpp>
+	"present.h"
 	"Menu.h"
 	"Mapa.h"
+	"Personaje.h"
 	"Alha.h"
-	"Casa.h"
-	"Calle.h"
+	"nivel.h"
+	"enemy.h"
 
-1604611048 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\main.cpp
+1605656198 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\main.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
-	"Presentacion.h"
-	"Menu.h"
+	<ctime>
 
-1604611048 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\nivel.cpp
+1605817149 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\nivel.cpp
 	<SFML/Graphics.hpp>
 	"nivel.h"
 
-1604611048 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\nivel.h
+1605817149 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\nivel.h
 	<SFML/Graphics.hpp>
 	"Alha.h"
-	"Raviolete.h"
+	"enemy.h"
 
 1604611048 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\presentacion.h
 	<SFML/Graphics.hpp>
 
-1604611048 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\menu.cpp
+1605215707 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\menu.cpp
 	<SFML/Graphics.hpp>
 	"Menu.h"
 
-1604611048 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\menu.h
+1605215707 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\menu.h
 	<SFML/Graphics.hpp>
 
 1604611048 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\presentacion.cpp
@@ -1842,29 +1841,30 @@
 	<SFML/Graphics.hpp>
 	"Casa.h"
 
-1604611048 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\alha.cpp
+1605817149 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\alha.cpp
 	<SFML/Graphics.hpp>
 	"Personaje.h"
 	"Alha.h"
 
-1604611048 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\personaje.h
+1605726282 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\personaje.h
 	<SFML/Graphics.hpp>
 
-1604611048 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\alha.h
+1605817149 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\alha.h
 	<SFML/Graphics.hpp>
 	"Personaje.h"
 
-1604611048 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\mapa.h
+1605215707 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\mapa.h
 	<SFML/Graphics.hpp>
+	"limite.h"
 
 1604264078 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\include\casa.h
 	<SFML/Graphics.hpp>
 
-1604611145 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\mapa.cpp
+1605215707 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\mapa.cpp
 	<SFML/Graphics.hpp>
 	"Mapa.h"
 
-1604611048 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\personaje.cpp
+1605726282 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\personaje.cpp
 	<SFML/Graphics.hpp>
 	"Personaje.h"
 	<cstring>
@@ -2958,6 +2958,27 @@
 	<SFML/Graphics.hpp>
 
 1604810708 source:c:\users\gastón\documents\github\vidoc91\vidoc-sfml\present.cpp
+	<SFML/Graphics.hpp>
+	"present.h"
+
+1605817149 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\enemy.cpp
+	"enemy.h"
+	"Alha.h"
+
+1605726282 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\enemy.h
+	<SFML/Graphics.hpp>
+	"Personaje.h"
+
+1605215707 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\present.h
+	<SFML/Graphics.hpp>
+
+1605215707 c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\limite.h
+	<SFML/Graphics.hpp>
+
+1605215707 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\limite.cpp
+	"limite.h"
+
+1605215707 source:c:\users\raviolete7\desktop\vidoc91\vidoc-sfml\present.cpp
 	<SFML/Graphics.hpp>
 	"present.h"
 

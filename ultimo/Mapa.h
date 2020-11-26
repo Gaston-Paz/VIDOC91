@@ -10,7 +10,9 @@ private:
     sf::Texture Archivo;
     limite limit[30];
     sf::Music musica;
-
+    sf::Text puntosmapa;
+    sf::Font fuentemapa;
+    sf::Text nivelmapa;
 public:
     Mapa();
     void setmapa();
@@ -19,6 +21,10 @@ public:
     sf::RectangleShape getlimite(int x);
     int globalBound(int x);
     sf::Music& getMusica();
+    void setpuntosmapa();
+    sf::Text &getpuntosmapa();
+    sf::Text &getnivelmapa();
+    void setnivelmapa();
 };
 
 #endif // MAPA_H_INCLUDED

@@ -189,10 +189,15 @@ if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
 }
 
 void juego::imprimir_mapa(sf::RenderWindow *window){
-
+conversor.setpuntaje(puntua.getpuntos());
+conversor.setpuntajenivel(avance.getNivelAlcanzado());
 window->clear();
 window->draw(mapi.getmapa());
 window->draw(actor.getpersonaje());
+window->draw(conversor.gettexto());
+window->draw(mapi.getpuntosmapa());
+window->draw(mapi.getnivelmapa());
+window->draw(conversor.getpuntajenivel());
 window->display();
 
 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){

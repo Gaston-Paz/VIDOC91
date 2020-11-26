@@ -11,6 +11,8 @@
 #include "enemy.h"
 #include "puntuacion.h"
 #include "partida.h"
+#include "convert.h"
+#include <sstream>
 
 enum ESTADOS_JUEGO{
 present,
@@ -40,6 +42,7 @@ private:
     puntos puntua;
     bool nivelesDesbloqueados[6];
     Partida avance;
+    Convert conversor;
 
 public:
     juego(int );

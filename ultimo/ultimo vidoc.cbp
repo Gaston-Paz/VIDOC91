@@ -56,6 +56,8 @@
 		<Unit filename="Personaje.h" />
 		<Unit filename="Presentacion.cpp" />
 		<Unit filename="Presentacion.h" />
+		<Unit filename="convert.cpp" />
+		<Unit filename="convert.h" />
 		<Unit filename="enemy.cpp" />
 		<Unit filename="enemy.h" />
 		<Unit filename="fecha.cpp" />
