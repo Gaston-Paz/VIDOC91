@@ -17,7 +17,6 @@ public:
     sf::Sprite &getmapa();
     void dibujar_limites(sf::RenderWindow *window,int x, int y, int a, int b, int p);
     sf::RectangleShape getlimite(int x);
-    void cargar_limites();
     int globalBound(int x);
     sf::Music& getMusica();
 };

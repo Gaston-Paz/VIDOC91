@@ -519,7 +519,7 @@
 	<iostream>
 	"juego.h"
 
-1606330686 c:\users\gastón\desktop\ultimo\juego.h
+1606418262 c:\users\gastón\desktop\ultimo\juego.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	"present.h"
@@ -530,14 +530,15 @@
 	"nivel.h"
 	"enemy.h"
 	"puntuacion.h"
+	"partida.h"
 
 1604808239 c:\users\gastón\desktop\ultimo\present.h
 	<SFML/Graphics.hpp>
 
-1604809681 c:\users\gastón\desktop\ultimo\menu.h
+1606340606 c:\users\gastón\desktop\ultimo\menu.h
 	<SFML/Graphics.hpp>
 
-1606331465 c:\users\gastón\desktop\ultimo\mapa.h
+1606332899 c:\users\gastón\desktop\ultimo\mapa.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	"limite.h"
@@ -545,7 +546,7 @@
 1605120973 c:\users\gastón\desktop\ultimo\limite.h
 	<SFML/Graphics.hpp>
 
-1606330722 c:\users\gastón\desktop\ultimo\nivel.h
+1606335332 c:\users\gastón\desktop\ultimo\nivel.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	"Alha.h"
@@ -554,17 +555,18 @@
 1605121017 source:c:\users\gastón\desktop\ultimo\limite.cpp
 	"limite.h"
 
-1606330686 source:c:\users\gastón\desktop\ultimo\main.cpp
+1606420498 source:c:\users\gastón\desktop\ultimo\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	"juego.h"
 	<ctime>
+	<iostream>
 
-1606331471 source:c:\users\gastón\desktop\ultimo\mapa.cpp
+1606332899 source:c:\users\gastón\desktop\ultimo\mapa.cpp
 	<SFML/Graphics.hpp>
 	"Mapa.h"
 
-1604810708 source:c:\users\gastón\desktop\ultimo\menu.cpp
+1606340874 source:c:\users\gastón\desktop\ultimo\menu.cpp
 	<SFML/Graphics.hpp>
 	"Menu.h"
 
@@ -586,11 +588,11 @@
 
 1605382515 source:c:\users\gastón\desktop\ultimo\enemigo.cpp
 
-1606330700 source:c:\users\gastón\desktop\ultimo\nivel.cpp
+1606335338 source:c:\users\gastón\desktop\ultimo\nivel.cpp
 	<SFML/Graphics.hpp>
 	"nivel.h"
 
-1606331450 source:c:\users\gastón\desktop\ultimo\juego.cpp
+1606420498 source:c:\users\gastón\desktop\ultimo\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"present.h"
@@ -601,10 +603,11 @@
 	"nivel.h"
 	<iostream>
 
-1605751433 c:\users\gastón\desktop\ultimo\puntuacion.h
+1606338053 c:\users\gastón\desktop\ultimo\puntuacion.h
 	<SFML/Graphics.hpp>
+	"fecha.h"
 
-1605751433 source:c:\users\gastón\desktop\ultimo\puntuacion.cpp
+1606340074 source:c:\users\gastón\desktop\ultimo\puntuacion.cpp
 	"puntuacion.h"
 
 1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio.hpp
@@ -710,4 +713,18 @@
 1604601022 c:\users\gastón\desktop\ultimo\sfml\include\sfml\audio\soundfilewriter.hpp
 	<SFML/Audio/Export.hpp>
 	<string>
+
+1606061678 c:\users\gastón\desktop\ultimo\fecha.h
+
+1606416639 c:\users\gastón\desktop\ultimo\partida.h
+	<SFML/Graphics.hpp>
+	"Menu.h"
+
+1606061722 source:c:\users\gastón\desktop\ultimo\fecha.cpp
+	"fecha.h"
+	<iostream>
+
+1606417361 source:c:\users\gastón\desktop\ultimo\partida.cpp
+	"partida.h"
+	<iostream>
 

@@ -7,6 +7,7 @@ setopcion(300,100,"Base05.ttf","JUEGO NUEVO", true, 0);
 setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
 setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
 setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
+Tipografia.loadFromFile("Base05.ttf");
 }
 
 void Menu::setfondomenu(){
@@ -45,4 +46,7 @@ return opcion[2];
 
 sf::Text &Menu::getsalir(){
 return opcion[3];
+}
+sf::Font &Menu::getfuente(){
+return Tipografia;
 }

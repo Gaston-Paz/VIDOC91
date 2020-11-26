@@ -24,7 +24,7 @@ private:
     sf::Sprite muerte;
     sf::Text winOlose;
     sf::Music musica;
-
+    sf::Music explosion;
 
 
 public:
@@ -50,7 +50,7 @@ public:
     void setMensajeFinal(bool perdio);
     sf::Text perdiste();
     sf::Music& getMusica();
-
+    sf::Music& getexplosion();
 
 };
 

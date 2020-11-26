@@ -8,13 +8,19 @@
 #include "nivel.h"
 #include <iostream>
 
+juego::juego(int ){
+
+}
+
 juego::juego(){
+
     setNivelesDesbloquados();
     state = present;
     sf::RenderWindow window(sf::VideoMode(1280, 720), "VIDOC 91");
     window.setFramerateLimit(60);
-    int x = 0, y = 0;
-    mapi.getMusica().play();
+
+    ///mapi.getMusica().play();
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -23,53 +29,6 @@ juego::juego(){
             if (event.type == sf::Event::Closed){
                  window.close();
             }
-            if(event.key.code == sf::Keyboard::Right){
-                actor.setEstado(camina_derecha);
-                y = 2;
-                if(x > 2){x = 0;}
-                actor.setpersonajeimagen(x*47,y*72,47,72);
-                if(chequearlimite()){
-                   actor.getpersonaje().move(4,0);
-                }
-
-                x++;
-
-            }
-            if(event.key.code == sf::Keyboard::Left){
-                actor.setEstado(camina_izquierda);
-                y = 1;
-                if(x > 2){x = 0;}
-                actor.setpersonajeimagen(x*47,y*72,47,72);
-                if(chequearlimite()){
-                   actor.getpersonaje().move(-4,0);
-                }
-                x++;
-
-            }
-            if(event.key.code == sf::Keyboard::Up){
-                    actor.setEstado(camina_arriba);
-                    y = 3;
-                    if(x > 2){x = 0;}
-                    actor.setpersonajeimagen(x*47,y*72,47,72);
-                    if(chequearlimite()){
-                       actor.getpersonaje().move(0,-4);
-                    }
-                    x++;
-
-                }
-            if(event.key.code == sf::Keyboard::Down){
-                    actor.setEstado(camina_abajo);
-                    y = 0;
-                    if(x > 2){x = 0;}
-                    actor.setpersonajeimagen(x*47,y*72,47,72);
-                    if(chequearlimite()){
-                       actor.getpersonaje().move(0,4);
-                    }
-                    x++;
-
-                }
-
-
 
         }
 
@@ -86,7 +45,8 @@ juego::juego(){
 }
 
 void juego::gameloop(sf::RenderWindow *window){
-int a;
+int a = 0;
+
 if(state == present){
 while(tics < 30){
 inicio.setlogo();
@@ -106,14 +66,18 @@ if(state == menu){
 
 window->setFramerateLimit(60);
 if(state == mapa){
-imprimir_mapa(window);
-a = verificaringresonivel();
+mapas(&a, window);
 }
+
 if(state == lucha){
 eleccionDeNivel(a , window);
+}
 
+if(state == guardar){
+eleccionPartida(avance.seccionPartida(window));
 
 }
+
 }
 
 void juego::imprimir_menu(sf::RenderWindow *window){
@@ -203,9 +167,13 @@ if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
         case 1:
         state =  mapa;
         break;
-        /*case 1:
+        case 2:
+        cargarPartida();
+        state =  mapa;
         break;
-        case 1:
+        /*
+        case 3:
+        ver puntuaciones
         break;
         */
         case 4:
@@ -421,6 +389,18 @@ if((actor.getpersonaje().getPosition().x >= 1065 && actor.getpersonaje().getPosi
     state = lucha;
     b = 5;
 }
+if((actor.getpersonaje().getPosition().x >= 1030 && actor.getpersonaje().getPosition().x <= 1100)
+   && (actor.getpersonaje().getPosition().y >= 140 && actor.getpersonaje().getPosition().y <= 160)
+   && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
+    ///INGRESO A CURACION
+    std::cout<<"GUARDAR"<<std::endl;
+    state = guardar;
+    b = 6;
+
+}
+
+
+
 return b;
 }
 
@@ -450,43 +430,44 @@ pelea.getMusica().play();
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
             a = 0;}
 
-if(pelea.getpersonaje().getsalud() < 30 && banderaDefensa == true){
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            a = 1;
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
-                std::cout<<"VIDA MIA: "<<pelea.getpersonaje().getsalud()<<std::endl;
-                std::cout<<"VIDA el: "<<pelea.getmalo().getsalud()<<std::endl;
-                while(tiempoAtaque < 180){
-                    pelea.getmalo().setpersonajeMuevenivel(x,level);
+        if(pelea.getpersonaje().getsalud() < 30 && banderaDefensa == true){
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+                    a = 1;
+                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
+                        std::cout<<"VIDA MIA: "<<pelea.getpersonaje().getsalud()<<std::endl;
+                        std::cout<<"VIDA el: "<<pelea.getmalo().getsalud()<<std::endl;
+                        while(tiempoAtaque < 180){
+                            pelea.getmalo().setpersonajeMuevenivel(x,level);
 
-                    if(x == 2){
-                        x = 0;
-                    }else{x++;}
-                        tiempoAtaque++;
-                        imprimirpantallanivel(a, window, &pelea,false);
+                            if(x == 2){
+                                x = 0;
+                            }else{x++;}
+                                tiempoAtaque++;
+                                imprimirpantallanivel(a, window, &pelea,false);
+                            }
+
+                        tiempoAtaque = 0;
+                        pelea.getmalo().getmalonivel().setPosition(900,155);
+
+                        int danio = pelea.getmalo().getdanio(level);
+                        pelea.getmalo().bajar_salud(danio/2);
+
+                        pelea.getpersonaje().curacion(danio/2);
+                        a=0;
+                        std::cout<<"VIDA MIA: "<<pelea.getpersonaje().getsalud()<<std::endl;
+                        std::cout<<"VIDA el: "<<pelea.getmalo().getsalud()<<std::endl;
+                        banderaDefensa = false;
                     }
 
-                tiempoAtaque = 0;
-                pelea.getmalo().getmalonivel().setPosition(900,155);
-
-                int danio = pelea.getmalo().getdanio(level);
-                pelea.getmalo().bajar_salud(danio/2);
-
-                pelea.getpersonaje().curacion(danio/2);
-                a=0;
-                std::cout<<"VIDA MIA: "<<pelea.getpersonaje().getsalud()<<std::endl;
-                std::cout<<"VIDA el: "<<pelea.getmalo().getsalud()<<std::endl;
-                banderaDefensa = false;
+                }
             }
-
-        }
-    }
 
 
 
     ///BAJAMOS VIDA A MALO
     if(a == 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && pelea.getpersonaje().getEstado() == atacando){
         while(tiempoAtaque < 180){
+
             pelea.getpersonaje().setpersonajeMuevenivel(x);
             if(x == 2){
                 x = 0;
@@ -543,6 +524,9 @@ if(pelea.getpersonaje().getsalud() < 30 && banderaDefensa == true){
 imprimirpantallanivel(a, window, &pelea);
 }
 
+pelea.getMusica().pause();
+pelea.getexplosion().play();
+
 if(pelea.getmalo().getsalud() <= 0){
 pelea.setmuerte(true);
 pelea.setMensajeFinal(false);
@@ -558,7 +542,7 @@ window->display();
 tiempoAtaque++;
 }
 state = mapa;
-
+std::cout<<"setea a mapa"<<std::endl;
 puntua.setpuntos(pelea.getpersonaje().getsalud());
 nivelesDesbloqueados[level]=true;
 }
@@ -644,6 +628,122 @@ nivelesDesbloqueados[4] = false;
 nivelesDesbloqueados[5] = false;
 }
 
+void juego::mapas(int *a,sf::RenderWindow *window){
+mapi.getMusica().play();
+int x = 0, y = 0;
+while (window->isOpen() && *a == 0)
+    {
+        sf::Event event;
+        while (window->pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed){
+                 window->close();
+            }
+            if(event.key.code == sf::Keyboard::Right){
+                actor.setEstado(camina_derecha);
+                y = 2;
+                if(x > 2){x = 0;}
+                actor.setpersonajeimagen(x*47,y*72,47,72);
+                if(chequearlimite()){
+                   actor.getpersonaje().move(4,0);
+                }
+
+                x++;
+
+            }
+            if(event.key.code == sf::Keyboard::Left){
+                actor.setEstado(camina_izquierda);
+                y = 1;
+                if(x > 2){x = 0;}
+                actor.setpersonajeimagen(x*47,y*72,47,72);
+                if(chequearlimite()){
+                   actor.getpersonaje().move(-4,0);
+                }
+                x++;
+
+            }
+            if(event.key.code == sf::Keyboard::Up){
+                    actor.setEstado(camina_arriba);
+                    y = 3;
+                    if(x > 2){x = 0;}
+                    actor.setpersonajeimagen(x*47,y*72,47,72);
+                    if(chequearlimite()){
+                       actor.getpersonaje().move(0,-4);
+                    }
+                    x++;
+
+                }
+            if(event.key.code == sf::Keyboard::Down){
+                    actor.setEstado(camina_abajo);
+                    y = 0;
+                    if(x > 2){x = 0;}
+                    actor.setpersonajeimagen(x*47,y*72,47,72);
+                    if(chequearlimite()){
+                       actor.getpersonaje().move(0,4);
+                    }
+                    x++;
+
+                }
 
 
+        }
+*a = verificaringresonivel();
+imprimir_mapa(window);
+
+
+
+
+
+}
+
+
+}
+
+int juego::buscarNivelAlcanzado(){
+int x;
+for(x=0;x<5;x++){
+    if(nivelesDesbloqueados[x] == false){
+        return x;
+    }
+}
+return 1;
+}
+
+void juego::eleccionPartida(int opc){
+
+switch(opc){
+case 1:
+    avance.setPuntosAcumulados(puntua.getpuntos());
+    avance.setNivelAlcanzado(buscarNivelAlcanzado());
+    avance.guardarEnDisco();
+break;
+
+case 2:
+    puntua.guardarEnDisco();
+break;
+
+case 3:
+    state = mapa;
+break;
+
+}
+
+}
+
+void juego::cargarPartida(){
+int x, tam;
+avance.leerDeDisco();
+tam = avance.getNivelAlcanzado();
+puntua.setpuntos(avance.getPuntosAcumulados());
+
+for(x=0;x<tam;x++){
+    nivelesDesbloqueados[x] = true;
+}
+
+
+}
+
+Partida juego::getAvance(){
+return avance;
+}
 

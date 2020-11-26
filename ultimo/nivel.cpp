@@ -26,6 +26,7 @@ defensa.setPosition(800,575);
 defensa.scale(2,2);
 
 musica.openFromFile("nivel.wav");
+explosion.openFromFile("explota.ogg");
 
 
 }
@@ -192,5 +193,9 @@ winOlose.setFillColor(sf::Color::Green);
 
 sf::Music& nivel::getMusica(){
 return musica;
+}
+
+sf::Music& nivel::getexplosion(){
+return explosion;
 }
 
