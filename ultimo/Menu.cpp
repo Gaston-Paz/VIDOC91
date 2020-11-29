@@ -47,6 +47,7 @@ return opcion[2];
 sf::Text &Menu::getsalir(){
 return opcion[3];
 }
+
 sf::Font &Menu::getfuente(){
 return Tipografia;
 }

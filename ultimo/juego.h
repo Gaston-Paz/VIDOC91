@@ -34,15 +34,15 @@ private:
     Personaje perso;
     enemigo malote;
     Alha actor;
-    int opcion_menu = 1;
-    unsigned int tics = 0;
-    unsigned int tiempojuego = 0;
     nivel pelea;
-    unsigned int tiempoAtaque = 0;
     puntos puntua;
-    bool nivelesDesbloqueados[6];
     Partida avance;
     Convert conversor;
+    unsigned int tics = 0;
+    unsigned int tiempojuego = 0;
+    unsigned int tiempoAtaque = 0;
+    int opcion_menu = 1;
+    bool nivelesDesbloqueados[6];
 
 public:
     juego(int );

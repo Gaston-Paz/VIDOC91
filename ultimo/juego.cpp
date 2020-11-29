@@ -19,7 +19,7 @@ juego::juego(){
     sf::RenderWindow window(sf::VideoMode(1280, 720), "VIDOC 91");
     window.setFramerateLimit(60);
 
-    ///mapi.getMusica().play();
+    mapi.getMusica().play();
 
     while (window.isOpen())
     {
@@ -36,9 +36,7 @@ juego::juego(){
 
 
 
-    if(state == cerrar){
-    break;
-    }
+    if(state == cerrar){break;}
     }
 
 
@@ -56,7 +54,8 @@ window->display();
 tics++;
 }
 state = menu;
-}
+}else{
+
 if(state == menu){
     window->setFramerateLimit(10);
     imprimir_menu(window);
@@ -64,20 +63,24 @@ if(state == menu){
     choisemenu(window);
 }
 
-window->setFramerateLimit(60);
+else{
 if(state == mapa){
+window->setFramerateLimit(60);
 mapas(&a, window);
 }
-
+else{
 if(state == lucha){
 eleccionDeNivel(a , window);
 }
-
+else{
 if(state == guardar){
 eleccionPartida(avance.seccionPartida(window));
 
 }
-
+}
+}
+}
+}
 }
 
 void juego::imprimir_menu(sf::RenderWindow *window){
@@ -166,6 +169,8 @@ if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
     switch(opcion_menu){
         case 1:
         state =  mapa;
+        avance.setNivelAlcanzado(1);
+        puntua.setPuntos(0);
         break;
         case 2:
         cargarPartida();
@@ -199,11 +204,6 @@ window->draw(mapi.getpuntosmapa());
 window->draw(mapi.getnivelmapa());
 window->draw(conversor.getpuntajenivel());
 window->display();
-
-if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
-    state = menu;
-}
-
 
 }
 
@@ -256,7 +256,7 @@ if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobal
      (actor.getpersonaje().getPosition().y >= 90 && actor.getpersonaje().getPosition().y <= 236)){return false;}
 
 if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width +1 == 1036) &&
-     (actor.getpersonaje().getPosition().y >= 212 && actor.getpersonaje().getPosition().y <= 350)){return false;}
+     (actor.getpersonaje().getPosition().y >= 212 && actor.getpersonaje().getPosition().y <= 360)){return false;}
 
 if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width +1 == 428) &&
      (actor.getpersonaje().getPosition().y >= 350 && actor.getpersonaje().getPosition().y <= 590)){return false;}
@@ -264,7 +264,7 @@ if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobal
 if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width +1 == 1128) &&
      (actor.getpersonaje().getPosition().y >= 590 && actor.getpersonaje().getPosition().y <= 720)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width +1 == 368) &&
+if((actor.getpersonaje().getGlobalBounds().left + actor.getpersonaje().getGlobalBounds().width +1 == 428) &&
     (actor.getpersonaje().getPosition().y >= 620 && actor.getpersonaje().getPosition().y <= 720)){return false;}
 
 return true;
@@ -344,8 +344,8 @@ if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalB
 if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 640) &&
     (actor.getpersonaje().getPosition().x >= 240 && actor.getpersonaje().getPosition().x <= 330)){return false;}
 
-if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 364) &&
-    (actor.getpersonaje().getPosition().x >= 0 && actor.getpersonaje().getPosition().x <= 370)){return false;}
+if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 360) &&
+    (actor.getpersonaje().getPosition().x >= 0 && actor.getpersonaje().getPosition().x <= 348)){return false;}
 
 return true;}
 
@@ -395,7 +395,7 @@ if((actor.getpersonaje().getPosition().x >= 1065 && actor.getpersonaje().getPosi
     b = 5;
 }
 if((actor.getpersonaje().getPosition().x >= 1030 && actor.getpersonaje().getPosition().x <= 1100)
-   && (actor.getpersonaje().getPosition().y >= 140 && actor.getpersonaje().getPosition().y <= 160)
+   && (actor.getpersonaje().getPosition().y >= 100 && actor.getpersonaje().getPosition().y <= 130)
    && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
     ///INGRESO A CURACION
     std::cout<<"GUARDAR"<<std::endl;
@@ -548,8 +548,9 @@ tiempoAtaque++;
 }
 state = mapa;
 std::cout<<"setea a mapa"<<std::endl;
-puntua.setpuntos(pelea.getpersonaje().getsalud());
+puntua.setAgregaPuntos(pelea.getpersonaje().getsalud());
 nivelesDesbloqueados[level]=true;
+avance.setNivelAlcanzado(level+1);
 }
 
 else{
@@ -691,9 +692,20 @@ while (window->isOpen() && *a == 0)
                 }
 
 
+
         }
-*a = verificaringresonivel();
+
+
+            if(event.key.code == sf::Keyboard::Escape){
+                    state = menu;
+                    break;
+
+                }
+
+
 imprimir_mapa(window);
+*a = verificaringresonivel();
+
 
 
 
@@ -739,7 +751,7 @@ void juego::cargarPartida(){
 int x, tam;
 avance.leerDeDisco();
 tam = avance.getNivelAlcanzado();
-puntua.setpuntos(avance.getPuntosAcumulados());
+puntua.setPuntos(avance.getPuntosAcumulados());
 
 for(x=0;x<tam;x++){
     nivelesDesbloqueados[x] = true;

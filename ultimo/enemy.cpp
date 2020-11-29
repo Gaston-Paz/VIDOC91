@@ -60,7 +60,7 @@ malo.scale(5,5);
 if(level == 2){
 sf::IntRect posicion(4*47,72,45,70);
 malo.setTextureRect(posicion);
-malo.setPosition(900,155);
+malo.setPosition(900,125);
 malo.scale(5,5);
 }
 

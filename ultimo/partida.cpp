@@ -1,5 +1,6 @@
 #include "partida.h"
 #include <iostream>
+
 Partida::Partida(){
 fondo.loadFromFile("guardar.png");
 fon.setTexture(fondo);
@@ -10,18 +11,23 @@ guardarPuntos.scale(2,2);
 volver.scale(2,2);
 puntosAcumulados = 0;
 }
+
 void Partida::setNivelAlcanzado(int aux){
 nivelAlcanzado = aux;
 }
+
 void Partida::setPuntosAcumulados(int aux){
 puntosAcumulados = aux;
 }
+
 int Partida::getNivelAlcanzado(){
 return nivelAlcanzado;
 }
+
 int Partida::getPuntosAcumulados(){
 return puntosAcumulados;
 }
+
 bool Partida::leerDeDisco(){
 bool leyo = false;
 FILE *p = fopen("partida.dat","rb");
@@ -30,15 +36,18 @@ leyo = fread(this, sizeof(Partida),1,p);
 fclose(p);
 return leyo;
 }
+
 void Partida::guardarEnDisco(){
 FILE *p = fopen("partida.dat","wb");
 if(p == NULL) return;
 fwrite(this, sizeof(Partida),1,p);
 fclose(p);
 }
+
 sf::Sprite& Partida::getSprite(){
 return fon;
 }
+
 void Partida::setOpciones(int a){
 if(a == 1){
 guardarPartida.setFont(fuent);
@@ -106,15 +115,19 @@ volver.setPosition(350,500);
 
 
 }
+
 sf::Text& Partida::getVolver(){
 return volver;
 }
+
 sf::Text& Partida::getguardarPartida(){
 return guardarPartida;
 }
+
 sf::Text& Partida::getguardarPuntos(){
 return guardarPuntos;
 }
+
 int Partida::seccionPartida(sf::RenderWindow *window){
 int a = 1;
 while (window->isOpen() && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)))

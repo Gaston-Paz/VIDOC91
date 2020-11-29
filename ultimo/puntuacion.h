@@ -11,11 +11,12 @@ private:
 
 public:
     puntos();
-    void setpuntos(int points);
+    void setPuntos(int points);
     int getpuntos();
     void guardarEnDisco();
     bool leerDeDisco(int );
     void mostrar();
+    void setAgregaPuntos(int points);
 
 };
 

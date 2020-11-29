@@ -27,7 +27,6 @@ return textito;
 
 }
 
-
 void Convert::setpuntajenivel(int aux){
 puntitos = aux;
 std::stringstream cambiador;
