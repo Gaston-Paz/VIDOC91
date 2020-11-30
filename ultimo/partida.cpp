@@ -7,7 +7,6 @@ fon.setTexture(fondo);
 setOpciones(1);
 fuent.loadFromFile("Base05.ttf");
 guardarPartida.scale(2,2);
-guardarPuntos.scale(2,2);
 volver.scale(2,2);
 puntosAcumulados = 0;
 }
@@ -52,68 +51,27 @@ void Partida::setOpciones(int a){
 if(a == 1){
 guardarPartida.setFont(fuent);
 guardarPartida.setString("GUARDAR PARTIDA");
-guardarPartida.setPosition(350,100);
+guardarPartida.setPosition(350,200);
 guardarPartida.setFillColor(sf::Color::Yellow);
-
-
-guardarPuntos.setFont(fuent);
-guardarPuntos.setString("GUARDAR PUNTOS");
-guardarPuntos.setFillColor(sf::Color::White);
-guardarPuntos.setPosition(350,300);
-
-
 
 volver.setFont(fuent);
 volver.setString("VOLVER AL MAPA");
 volver.setFillColor(sf::Color::White);
-volver.setPosition(350,500);
+volver.setPosition(350,400);
 
 }
 if(a == 2){
 guardarPartida.setFont(fuent);
 guardarPartida.setString("GUARDAR PARTIDA");
-guardarPartida.setPosition(350,100);
+guardarPartida.setPosition(350,200);
 guardarPartida.setFillColor(sf::Color::White);
-
-
-guardarPuntos.setFont(fuent);
-guardarPuntos.setString("GUARDAR PUNTOS");
-guardarPuntos.setFillColor(sf::Color::Yellow);
-guardarPuntos.setPosition(350,300);
-
-
-
-volver.setFont(fuent);
-volver.setString("VOLVER AL MAPA");
-volver.setFillColor(sf::Color::White);
-volver.setPosition(350,500);
-
-}
-if(a == 3){
-guardarPartida.setFont(fuent);
-guardarPartida.setString("GUARDAR PARTIDA");
-guardarPartida.setPosition(350,100);
-guardarPartida.setFillColor(sf::Color::White);
-
-
-guardarPuntos.setFont(fuent);
-guardarPuntos.setString("GUARDAR PUNTOS");
-guardarPuntos.setFillColor(sf::Color::White);
-guardarPuntos.setPosition(350,300);
-
-
 
 volver.setFont(fuent);
 volver.setString("VOLVER AL MAPA");
 volver.setFillColor(sf::Color::Yellow);
-volver.setPosition(350,500);
+volver.setPosition(350,400);
 
 }
-
-
-
-
-
 }
 
 sf::Text& Partida::getVolver(){
@@ -122,10 +80,6 @@ return volver;
 
 sf::Text& Partida::getguardarPartida(){
 return guardarPartida;
-}
-
-sf::Text& Partida::getguardarPuntos(){
-return guardarPuntos;
 }
 
 int Partida::seccionPartida(sf::RenderWindow *window){
@@ -142,29 +96,27 @@ while (window->isOpen() && !(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)))
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
                     if(a == 1){
-                        a=3;}else{
-                    if(a == 3){
                         a=2;}else{
                     if(a == 2){
                         a=1;}
+                        }
                     std::cout<<"arriba"<<std::endl;
                     }
-                    }
-                }
+
+
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
                      if(a == 1){
                         a=2;}else{
-                    if(a == 3){
-                        a=1;}else{
                     if(a == 2){
-                        a=3;}
+                        a=1;}
+                        }
                     std::cout<<"abajo"<<std::endl;
+
                     }
-                    }
-    }
 
 
-        }
+
+
 
 
 
@@ -176,14 +128,14 @@ window->setFramerateLimit(10);
 window->clear();
 window->draw(getSprite());
 window->draw(getguardarPartida());
-window->draw(getguardarPuntos());
 window->draw(getVolver());
 window->display();
 
 
 }
 
-return a;
+
 
 }
-
+return a;
+}

@@ -1849,7 +1849,7 @@
 	<iostream>
 	"juego.h"
 
-1606669089 c:\users\gastón\documents\github\vidoc91\ultimo\juego.h
+1606764017 c:\users\gastón\documents\github\vidoc91\ultimo\juego.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	"present.h"
@@ -1971,7 +1971,7 @@
 1604808239 c:\users\gastón\documents\github\vidoc91\ultimo\present.h
 	<SFML/Graphics.hpp>
 
-1606340606 c:\users\gastón\documents\github\vidoc91\ultimo\menu.h
+1606765982 c:\users\gastón\documents\github\vidoc91\ultimo\menu.h
 	<SFML/Graphics.hpp>
 
 1606668910 c:\users\gastón\documents\github\vidoc91\ultimo\mapa.h
@@ -1992,7 +1992,7 @@
 	<SFML/Graphics.hpp>
 	"fecha.h"
 
-1606416639 c:\users\gastón\documents\github\vidoc91\ultimo\partida.h
+1606766866 c:\users\gastón\documents\github\vidoc91\ultimo\partida.h
 	<SFML/Graphics.hpp>
 	"Menu.h"
 
@@ -2001,7 +2001,7 @@
 	<SFML/Graphics.hpp>
 	"Menu.h"
 
-1606673131 source:c:\users\gastón\documents\github\vidoc91\ultimo\juego.cpp
+1606766866 source:c:\users\gastón\documents\github\vidoc91\ultimo\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"present.h"
@@ -2056,7 +2056,7 @@
 	<iostream>
 	"convert.h"
 
-1606669089 source:c:\users\gastón\documents\github\vidoc91\ultimo\menu.cpp
+1606765995 source:c:\users\gastón\documents\github\vidoc91\ultimo\menu.cpp
 	<SFML/Graphics.hpp>
 	"Menu.h"
 

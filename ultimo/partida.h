@@ -10,7 +10,6 @@ private:
     sf::Sprite fon;
     sf::Font fuent;
     sf::Text guardarPartida;
-    sf::Text guardarPuntos;
     sf::Text volver;
 
 public:
@@ -24,7 +23,6 @@ public:
     sf::Sprite& getSprite();
     void setOpciones(int );
     sf::Text& getVolver();
-    sf::Text& getguardarPuntos();
     sf::Text& getguardarPartida();
     int seccionPartida(sf::RenderWindow *window);
 

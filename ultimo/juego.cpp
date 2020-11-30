@@ -19,7 +19,9 @@ juego::juego(){
     sf::RenderWindow window(sf::VideoMode(1280, 720), "VIDOC 91");
     window.setFramerateLimit(60);
 
+
     mapi.getMusica().play();
+
 
     while (window.isOpen())
     {
@@ -54,7 +56,9 @@ window->display();
 tics++;
 }
 state = menu;
-}else{
+}
+
+
 
 if(state == menu){
     window->setFramerateLimit(10);
@@ -63,24 +67,24 @@ if(state == menu){
     choisemenu(window);
 }
 
-else{
+
+
+
 if(state == mapa){
 window->setFramerateLimit(60);
 mapas(&a, window);
 }
-else{
+
+
 if(state == lucha){
 eleccionDeNivel(a , window);
 }
-else{
+
+
 if(state == guardar){
 eleccionPartida(avance.seccionPartida(window));
+}
 
-}
-}
-}
-}
-}
 }
 
 void juego::imprimir_menu(sf::RenderWindow *window){
@@ -88,7 +92,6 @@ window->clear();
 window->draw(principal.getfondomenu());
 window->draw(principal.getnuevo());
 window->draw(principal.getcontinuar());
-window->draw(principal.getpuntuacion());
 window->draw(principal.getsalir());
 window->display();
 
@@ -101,59 +104,40 @@ if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
     if(opcion_menu == 1){
         principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", false, 0);
         principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
-        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
-        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", true, 3);
-        opcion_menu = 4;
+        principal.setopcion(300,300,"Base05.ttf", "SALIR DEL JUEGO", true, 2);
+        opcion_menu = 3;
     }else{if(opcion_menu == 2){
         principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", true, 0);
         principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
-        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
-        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
+        principal.setopcion(300,300,"Base05.ttf", "SALIR DEL JUEGO", false, 2);
         opcion_menu = 1;
     }else{if(opcion_menu == 3){
         principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", false, 0);
         principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", true, 1);
-        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
-        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
+        principal.setopcion(300,300,"Base05.ttf", "SALIR DEL JUEGO", false, 2);
         opcion_menu = 2;
-    }else{if(opcion_menu == 4){
-        principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", false, 0);
-        principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
-        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", true, 2);
-        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
-        opcion_menu = 3;
     }
     }
     }
     }
-}
+
 
 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
     if(opcion_menu == 1){
         principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", false, 0);
         principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", true, 1);
-        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
-        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
+        principal.setopcion(300,300,"Base05.ttf", "SALIR DEL JUEGO", false, 2);
         opcion_menu = 2;
     }else{if(opcion_menu == 2){
         principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", false, 0);
         principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
-        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", true, 2);
-        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
+        principal.setopcion(300,300,"Base05.ttf", "SALIR DEL JUEGO", true, 2);
         opcion_menu = 3;
     }else{if(opcion_menu == 3){
-        principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", false, 0);
-        principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
-        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
-        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", true, 3);
-        opcion_menu = 4;
-    }else{if(opcion_menu == 4){
         principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", true, 0);
         principal.setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
-        principal.setopcion(300,300,"Base05.ttf", "PUNTUACIONES", false, 2);
-        principal.setopcion(300,400,"Base05.ttf", "SALIR DEL JUEGO", false, 3);
+        principal.setopcion(300,300,"Base05.ttf", "SALIR DEL JUEGO", false, 2);
         opcion_menu = 1;
-    }
     }
     }
     }
@@ -167,21 +151,19 @@ void juego::choisemenu(sf::RenderWindow *window){
 
 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
     switch(opcion_menu){
+
         case 1:
         state =  mapa;
         avance.setNivelAlcanzado(1);
         puntua.setPuntos(0);
         break;
+
         case 2:
         cargarPartida();
         state =  mapa;
         break;
-        /*
+
         case 3:
-        ver puntuaciones
-        break;
-        */
-        case 4:
         state = cerrar;
         break;
 
@@ -216,6 +198,7 @@ if(event->key.code == sf::Keyboard::Right){
 
 
     }
+
 if(event->key.code == sf::Keyboard::Left){
         *y = 1;
         if(*x > 8){*x = 0;}
@@ -345,7 +328,7 @@ if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalB
     (actor.getpersonaje().getPosition().x >= 240 && actor.getpersonaje().getPosition().x <= 330)){return false;}
 
 if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalBounds().height == 360) &&
-    (actor.getpersonaje().getPosition().x >= 0 && actor.getpersonaje().getPosition().x <= 348)){return false;}
+    (actor.getpersonaje().getPosition().x >= 0 && actor.getpersonaje().getPosition().x <= 332)){return false;}
 
 return true;}
 
@@ -417,6 +400,7 @@ int i = 0;
 int y = 0;
 bool turno = true;
 bool banderaDefensa = true;
+
 pelea.getpersonaje().setEstado(atacando);
 pelea.getmalo().setEstado(espera);
 mapi.getMusica().stop();
@@ -435,6 +419,7 @@ pelea.getMusica().play();
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
             a = 0;}
 
+
         if(pelea.getpersonaje().getsalud() < 30 && banderaDefensa == true){
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
                     a = 1;
@@ -448,7 +433,7 @@ pelea.getMusica().play();
                                 x = 0;
                             }else{x++;}
                                 tiempoAtaque++;
-                                imprimirpantallanivel(a, window, &pelea,false);
+                                imprimirpantallanivel(a, window, &pelea, false);
                             }
 
                         tiempoAtaque = 0;
@@ -466,7 +451,6 @@ pelea.getMusica().play();
 
                 }
             }
-
 
 
     ///BAJAMOS VIDA A MALO
@@ -524,9 +508,8 @@ pelea.getMusica().play();
         }}
 
 
-
-
 imprimirpantallanivel(a, window, &pelea);
+
 }
 
 pelea.getMusica().pause();
@@ -571,6 +554,7 @@ tiempoAtaque++;
 state = menu;
 }
 }
+
 tiempoAtaque=0;
 
 }
@@ -591,6 +575,7 @@ window->draw(pelea->getmalo().getbarraVida(pelea->getmalo().getsalud()));
 window->draw(pelea->getSpriteGolpe());
 window->display();
 }
+
 else{
 pelea->recorteGolpe(0,2, turno);
 window->clear();
@@ -706,11 +691,6 @@ while (window->isOpen() && *a == 0)
 imprimir_mapa(window);
 *a = verificaringresonivel();
 
-
-
-
-
-
 }
 
 
@@ -736,10 +716,6 @@ case 1:
 break;
 
 case 2:
-    puntua.guardarEnDisco();
-break;
-
-case 3:
     state = mapa;
 break;
 

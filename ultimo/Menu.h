@@ -5,7 +5,7 @@
 class Menu{
 private:
     int Opciones;
-    sf::Text opcion[4];
+    sf::Text opcion[3];
     sf::Font Tipografia;
     sf::Texture Prese;
     sf::Sprite Presentacion;
@@ -19,7 +19,6 @@ public:
     sf::Sprite &getfondomenu();
     sf::Text &getnuevo();
     sf::Text &getcontinuar();
-    sf::Text &getpuntuacion();
     sf::Text &getsalir();
     sf::Font &getfuente();
 };
