@@ -12,7 +12,6 @@ void puntos::setPuntos(int points){
 punto = points;
 }
 
-
 int puntos::getpuntos(){
 return punto;
 }
@@ -23,6 +22,7 @@ if(p == NULL)return;
 fwrite(this, sizeof(puntos),1,p);
 fclose(p);
 }
+
 bool puntos::leerDeDisco(int pos){
 bool leyo = false;
 FILE *p = fopen("Puntuaciones.dat", "rb");

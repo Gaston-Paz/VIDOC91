@@ -6,6 +6,7 @@ class Partida{
 private:
     int nivelAlcanzado;
     int puntosAcumulados;
+    unsigned int tics = 0;
     sf::Texture fondo;
     sf::Sprite fon;
     sf::Font fuent;
@@ -25,6 +26,7 @@ public:
     sf::Text& getVolver();
     sf::Text& getguardarPartida();
     int seccionPartida(sf::RenderWindow *window);
+    void seleccionado(int , sf::RenderWindow *window);
 
 };
 

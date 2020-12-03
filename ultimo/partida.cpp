@@ -72,6 +72,30 @@ volver.setFillColor(sf::Color::Yellow);
 volver.setPosition(350,400);
 
 }
+if(a == 3){
+guardarPartida.setFont(fuent);
+guardarPartida.setString("GUARDAR PARTIDA");
+guardarPartida.setPosition(350,200);
+guardarPartida.setFillColor(sf::Color::Red);
+
+volver.setFont(fuent);
+volver.setString("VOLVER AL MAPA");
+volver.setFillColor(sf::Color::White);
+volver.setPosition(350,400);
+
+}
+if(a == 4){
+guardarPartida.setFont(fuent);
+guardarPartida.setString("GUARDAR PARTIDA");
+guardarPartida.setPosition(350,200);
+guardarPartida.setFillColor(sf::Color::White);
+
+volver.setFont(fuent);
+volver.setString("VOLVER AL MAPA");
+volver.setFillColor(sf::Color::Red);
+volver.setPosition(350,400);
+
+}
 }
 
 sf::Text& Partida::getVolver(){
@@ -137,5 +161,33 @@ window->display();
 
 
 }
+
+seleccionado(a, window);
 return a;
+}
+
+void Partida::seleccionado(int a,sf::RenderWindow *window){
+while(tics < 20){
+if(a == 1){
+setOpciones(3);
+window->setFramerateLimit(10);
+window->clear();
+window->draw(getSprite());
+window->draw(getguardarPartida());
+window->draw(getVolver());
+window->display();
+}else{
+setOpciones(4);
+window->setFramerateLimit(10);
+window->clear();
+window->draw(getSprite());
+window->draw(getguardarPartida());
+window->draw(getVolver());
+window->display();
+
+}
+
+tics++;
+}
+tics = 0;
 }

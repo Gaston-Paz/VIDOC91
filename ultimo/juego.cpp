@@ -19,7 +19,7 @@ juego::juego(){
     sf::RenderWindow window(sf::VideoMode(1280, 720), "VIDOC 91");
     window.setFramerateLimit(60);
 
-
+    mapi.getMusica().setLoop(true);
     mapi.getMusica().play();
 
 
@@ -149,7 +149,7 @@ if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
 
 void juego::choisemenu(sf::RenderWindow *window){
 
-if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
+if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
     switch(opcion_menu){
 
         case 1:
@@ -331,7 +331,7 @@ if((actor.getpersonaje().getGlobalBounds().top + actor.getpersonaje().getGlobalB
     (actor.getpersonaje().getPosition().x >= 0 && actor.getpersonaje().getPosition().x <= 332)){return false;}
 
 return true;}
-
+return true;
 }
 
 int juego::verificaringresonivel(){
@@ -396,14 +396,13 @@ void juego::eleccionDeNivel(int level, sf::RenderWindow *window){
 nivel pelea(level);
 int a = 0;
 int x = 1;
-int i = 0;
-int y = 0;
 bool turno = true;
 bool banderaDefensa = true;
 
 pelea.getpersonaje().setEstado(atacando);
 pelea.getmalo().setEstado(espera);
 mapi.getMusica().stop();
+pelea.getMusica().setLoop(true);
 pelea.getMusica().play();
 
 
@@ -423,7 +422,7 @@ pelea.getMusica().play();
         if(pelea.getpersonaje().getsalud() < 30 && banderaDefensa == true){
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
                     a = 1;
-                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
+                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
                         std::cout<<"VIDA MIA: "<<pelea.getpersonaje().getsalud()<<std::endl;
                         std::cout<<"VIDA el: "<<pelea.getmalo().getsalud()<<std::endl;
                         while(tiempoAtaque < 180){
@@ -454,7 +453,7 @@ pelea.getMusica().play();
 
 
     ///BAJAMOS VIDA A MALO
-    if(a == 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && pelea.getpersonaje().getEstado() == atacando){
+    if(a == 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && pelea.getpersonaje().getEstado() == atacando){
         while(tiempoAtaque < 180){
 
             pelea.getpersonaje().setpersonajeMuevenivel(x);
@@ -713,6 +712,7 @@ case 1:
     avance.setPuntosAcumulados(puntua.getpuntos());
     avance.setNivelAlcanzado(buscarNivelAlcanzado());
     avance.guardarEnDisco();
+    state = mapa;
 break;
 
 case 2:
