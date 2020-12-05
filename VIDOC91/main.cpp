@@ -1,9 +1,12 @@
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include "juego.h"
+#include <ctime>
 #include <iostream>
-
-using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
-    return 0;
-}
+srand(time(NULL));
+juego nuevo;
+
+return 0;}

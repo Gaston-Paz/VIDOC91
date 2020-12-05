@@ -1,6 +1,0 @@
-#ifndef ENEMIGO_H_INCLUDED
-#define ENEMIGO_H_INCLUDED
-
-
-
-#endif // ENEMIGO_H_INCLUDED
