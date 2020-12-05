@@ -13,6 +13,7 @@
 #include "partida.h"
 #include "convert.h"
 #include <sstream>
+#include "Menu-Partida.h"
 
 enum ESTADOS_JUEGO{
 present,
@@ -43,6 +44,7 @@ private:
     unsigned int tiempoAtaque = 0;
     int opcion_menu = 1;
     bool nivelesDesbloqueados[6];
+    Menu_Partida main_Partida;
 
 public:
     juego(int );

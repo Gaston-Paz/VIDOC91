@@ -58,17 +58,12 @@ tics++;
 state = menu;
 }
 
-
-
 if(state == menu){
-    window->setFramerateLimit(10);
+    window->setFramerateLimit(15);
     imprimir_menu(window);
     cmd(window);
     choisemenu(window);
 }
-
-
-
 
 if(state == mapa){
 window->setFramerateLimit(60);
@@ -82,7 +77,7 @@ eleccionDeNivel(a , window);
 
 
 if(state == guardar){
-eleccionPartida(avance.seccionPartida(window));
+eleccionPartida(main_Partida.seccionPartida(window));
 }
 
 }
@@ -149,7 +144,7 @@ if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
 
 void juego::choisemenu(sf::RenderWindow *window){
 
-if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
     switch(opcion_menu){
 
         case 1:
@@ -422,7 +417,7 @@ pelea.getMusica().play();
         if(pelea.getpersonaje().getsalud() < 30 && banderaDefensa == true){
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
                     a = 1;
-                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
                         std::cout<<"VIDA MIA: "<<pelea.getpersonaje().getsalud()<<std::endl;
                         std::cout<<"VIDA el: "<<pelea.getmalo().getsalud()<<std::endl;
                         while(tiempoAtaque < 180){
@@ -453,7 +448,7 @@ pelea.getMusica().play();
 
 
     ///BAJAMOS VIDA A MALO
-    if(a == 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && pelea.getpersonaje().getEstado() == atacando){
+    if(a == 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && pelea.getpersonaje().getEstado() == atacando){
         while(tiempoAtaque < 180){
 
             pelea.getpersonaje().setpersonajeMuevenivel(x);

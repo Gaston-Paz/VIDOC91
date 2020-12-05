@@ -50,6 +50,8 @@
 		<Unit filename="Enemigo.h" />
 		<Unit filename="Mapa.cpp" />
 		<Unit filename="Mapa.h" />
+		<Unit filename="Menu-Partida.cpp" />
+		<Unit filename="Menu-Partida.h" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.h" />
 		<Unit filename="Personaje.cpp" />
