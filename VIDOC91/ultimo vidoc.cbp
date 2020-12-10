@@ -55,7 +55,6 @@
 		<Unit filename="convert.h" />
 		<Unit filename="enemy.cpp" />
 		<Unit filename="enemy.h" />
-		<Unit filename="fecha.h" />
 		<Unit filename="juego.cpp" />
 		<Unit filename="juego.h" />
 		<Unit filename="main.cpp" />

@@ -51,8 +51,8 @@ public:
     juego();
     void gameloop(sf::RenderWindow *window);
     void imprimir_menu(sf::RenderWindow *window);
-    void cmd(sf::RenderWindow *window);
-    void choisemenu(sf::RenderWindow *window);
+    void cmd();
+    void choisemenu();
     void imprimir_mapa(sf::RenderWindow *window);
     bool chequearlimite();
     int verificaringresonivel();

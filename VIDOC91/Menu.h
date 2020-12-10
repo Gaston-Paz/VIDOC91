@@ -4,7 +4,6 @@
 
 class Menu{
 private:
-    int Opciones;
     sf::Text opcion[3];
     sf::Font Tipografia;
     sf::Texture Prese;

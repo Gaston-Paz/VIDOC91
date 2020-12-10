@@ -58,8 +58,8 @@ state = menu;
 if(state == menu){
     window->setFramerateLimit(15);
     imprimir_menu(window);
-    cmd(window);
-    choisemenu(window);
+    cmd();
+    choisemenu();
 }
 
 if(state == mapa){
@@ -87,7 +87,7 @@ window->draw(principal.getsalir());
 window->display();
 }
 
-void juego::cmd(sf::RenderWindow *window){
+void juego::cmd(){
 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
     if(opcion_menu == 1){
         principal.setopcion(300,100,"Base05.ttf","JUEGO NUEVO", false, 0);
@@ -132,12 +132,13 @@ if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
 
 }
 
-void juego::choisemenu(sf::RenderWindow *window){
+void juego::choisemenu(){
 
 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
     switch(opcion_menu){
 
         case 1:
+        setNivelesDesbloquados();
         state =  mapa;
         avance.setNivelAlcanzado(1);
         puntua.setPuntos(0);
@@ -171,6 +172,7 @@ while (window->isOpen() && *a == 0)
             if (event.type == sf::Event::Closed){
                  window->close();
             }
+            ///MOVIMIENTOS DEL JUGADOR.
             if(event.key.code == sf::Keyboard::Right){
                 actor.setEstado(camina_derecha);
                 y = 2;
@@ -396,7 +398,7 @@ if((actor.getpersonaje().getPosition().x >= 192 && actor.getpersonaje().getPosit
 if((actor.getpersonaje().getPosition().x >= 1065 && actor.getpersonaje().getPosition().x <= 1125)
    && (actor.getpersonaje().getPosition().y >= 505 && actor.getpersonaje().getPosition().y <= 615)
    && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))&& nivelesDesbloqueados[4] == true){
-    ///INGRESO A CURACION
+    ///INGRESO A NIVEL 5
     std::cout<<"NIVEL 5"<<std::endl;
     state = lucha;
     b = 5;
@@ -404,7 +406,7 @@ if((actor.getpersonaje().getPosition().x >= 1065 && actor.getpersonaje().getPosi
 if((actor.getpersonaje().getPosition().x >= 1030 && actor.getpersonaje().getPosition().x <= 1100)
    && (actor.getpersonaje().getPosition().y >= 100 && actor.getpersonaje().getPosition().y <= 130)
    && (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
-    ///INGRESO A CURACION
+    ///INGRESO A GUARDADO
     std::cout<<"GUARDAR"<<std::endl;
     state = guardar;
     b = 6;

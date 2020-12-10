@@ -3,10 +3,10 @@
 
 Menu::Menu(){
 setfondomenu();
+Tipografia.loadFromFile("Base05.ttf");
 setopcion(300,100,"Base05.ttf","JUEGO NUEVO", true, 0);
 setopcion(300,200,"Base05.ttf", "CONTINUAR PARTIDA", false, 1);
 setopcion(300,300,"Base05.ttf", "SALIR DEL JUEGO", false, 2);
-Tipografia.loadFromFile("Base05.ttf");
 }
 
 void Menu::setfondomenu(){
@@ -19,7 +19,6 @@ return Presentacion;
 }
 
 void Menu::setopcion(int x,int y,char *Fuente,char *Titulo, bool Pinta, int i){
-Tipografia.loadFromFile(Fuente);
 opcion[i].setFont(Tipografia);
 opcion[i].setString(Titulo);
 opcion[i].setPosition(x,y);
