@@ -461,9 +461,7 @@ pelea.getMusica().play();
                         while(tiempoAtaque < 180){
                             pelea.getmalo().setpersonajeMuevenivel(x,level);
 
-                            if(x == 2){
-                                x = 0;
-                            }else{x++;}
+                            if(x == 2){x = 0;}else{x++;}
                                 tiempoAtaque++;
                                 imprimirpantallanivel(a, window, &pelea, false);
                             }
@@ -493,9 +491,7 @@ pelea.getMusica().play();
         while(tiempoAtaque < 180){
 
             pelea.getpersonaje().setpersonajeMuevenivel(x);
-            if(x == 2){
-                x = 0;
-            }else{x++;}
+            if(x == 2){x = 0;}else{x++;}
                 tiempoAtaque++;
                 imprimirpantallanivel(a, window, &pelea, turno);
             }
@@ -522,9 +518,7 @@ pelea.getMusica().play();
         while(tiempoAtaque < 180){
             pelea.getmalo().setpersonajeMuevenivel(x,level);
 
-            if(x == 2){
-                x = 0;
-            }else{x++;}
+            if(x == 2){x = 0;}else{x++;}
                 tiempoAtaque++;
                 imprimirpantallanivel(a, window, &pelea,turno);
             }

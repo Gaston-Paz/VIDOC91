@@ -3170,7 +3170,7 @@
 	<sstream>
 	"Menu.h"
 
-1607197368 c:\users\gastón\documents\github\vidoc91\vidoc91\menu.h
+1607633907 c:\users\gastón\documents\github\vidoc91\vidoc91\menu.h
 	<SFML/Graphics.hpp>
 
 1607196181 source:c:\users\gastón\documents\github\vidoc91\vidoc91\enemy.cpp
@@ -3181,7 +3181,7 @@
 	<SFML/Graphics.hpp>
 	"Personaje.h"
 
-1607197014 source:c:\users\gastón\documents\github\vidoc91\vidoc91\juego.cpp
+1607633988 source:c:\users\gastón\documents\github\vidoc91\vidoc91\juego.cpp
 	<SFML/Graphics.hpp>
 	"juego.h"
 	"present.h"
@@ -3192,7 +3192,7 @@
 	"nivel.h"
 	<iostream>
 
-1607197947 c:\users\gastón\documents\github\vidoc91\vidoc91\juego.h
+1607633907 c:\users\gastón\documents\github\vidoc91\vidoc91\juego.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<sstream>
@@ -3349,7 +3349,7 @@
 	"Menu-Partida.h"
 	<iostream>
 
-1607197368 source:c:\users\gastón\documents\github\vidoc91\vidoc91\menu.cpp
+1607633907 source:c:\users\gastón\documents\github\vidoc91\vidoc91\menu.cpp
 	<SFML/Graphics.hpp>
 	"Menu.h"
 
